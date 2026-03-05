@@ -70,7 +70,7 @@ function openSpecsModal(vehicleId) {
 
     if (vehicle.specs) {
         let specsHTML = `
-            <div class="col-lg-5">
+            <div class="col-lg-5 order-2 order-lg-1">
                 <div class="table-responsive" style="max-height: 70vh; overflow-y: auto;">
                     <table class="table align-middle mb-0">
                         <tbody>`;
@@ -88,7 +88,7 @@ function openSpecsModal(vehicleId) {
                     </table>
                 </div>
             </div>
-            <div class="col-lg-7 d-flex align-items-center justify-content-center rounded-4" style="background-color: #f5f6f7;">
+            <div class="col-lg-7 order-1 order-lg-2 d-flex align-items-center justify-content-center rounded-4 mb-4 mb-lg-0" style="background-color: #f5f6f7;">
                 <img src="${vehicle.img}" alt="${vehicle.name}" class="img-fluid drop-shadow-lg" style="max-height: 500px; width: 100%; object-fit: contain;">
             </div>`;
             
