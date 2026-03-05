@@ -74,10 +74,30 @@ const scooterData = [
         ]
     },
     { 
-        id: 'viper', name: 'Viper', type: 'scooter', img: '../Data/Images/Scooter/Viper.webp', price: '27.000.000 VND', price_old: '29.900.000 VND', range: '198 km', speed: '78 km/h', charge: '3.5h', waterproof: 'IP67', link: '#feliz-s-details', isNew: true,
+        id: 'viper', name: 'Viper', type: 'scooter', img: '../Data/Images/Scooter/Viper.webp', price: '27.000.000 VND', price_old: '29.900.000 VND', range: '82 km', speed: '70 km/h', charge: '4.5h', waterproof: 'IP67', link: '#feliz-s-details', isNew: true,
+        colors: [
+            { name: 'Vàng Cát', code: '#E1C699', img: '../Data/Images/Scooter/Viper.webp' }
+        ],
         specs: [
-            { label: "Range", value: "198 km" },
-            { label: "Max Speed", value: "78 km/h" }
+            { label: "Colors", value: "Đỏ Đen, Trắng, Đen, Xám Xi Măng, Vàng Cát" },
+            { label: "Length x Width x Height", value: "1907 x 692 x 1135 mm" },
+            { label: "Wheel base", value: "1320 mm" },
+            { label: "Saddle Height", value: "780 mm" },
+            { label: "Ground Clearance", value: "138 mm" },
+            { label: "Trunk Capacity", value: "10L (khi lắp 2 PIN)" },
+            { label: "Tire Size (Front - Rear)", value: "90/90-14 | 110/80-14" },
+            { label: "Suspension", value: "Ống lồng-giảm chấn thủy lực; Giảm xóc đôi, giảm chấn thủy lực có bình dầu phụ" },
+            { label: "Lock Type", value: "Khóa thông minh" },
+            { label: "Battery Type", value: "LFP" },
+            { label: "Battery Capacity", value: "1.5 kWh (Tùy chọn thêm 1 pin 1.5 kWh)" },
+            { label: "Battery Weight", value: "12.5 ± 0.5 kg" },
+            { label: "Charging Time", value: "Khoảng 4h30 phút (0-100%)" },
+            { label: "Range", value: "Khoảng 82 km (+74 km khi lắp thêm pin phụ)" },
+            { label: "Nominal Power", value: "1800 W" },
+            { label: "Max Power", value: "3000 W" },
+            { label: "Engine Type", value: "BLDC Inhub" },
+            { label: "Max Speed", value: "70 km/h" },
+            { label: "Acceleration (0-50km/h)", value: "15 giây (1 người 65 Kg)" }
         ]
     },
 ];

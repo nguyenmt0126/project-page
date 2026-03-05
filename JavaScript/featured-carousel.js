@@ -93,8 +93,13 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
         <div class="mb-4">
             <span class="spec-label">${t('spec_price_from')}</span>
             <p class="lead text-primary fw-bold" style="font-size: 2rem; margin-bottom: 0;" id="${infoId}-price"></p>
-            <p class="text-muted text-decoration-line-through" style="font-size: 1.2rem; margin-bottom: 0.5rem;" id="${infoId}-price-old"></p>
-            <span class="badge bg-danger" id="${infoId}-discount"></span>
+            <div class="d-flex align-items-center flex-wrap">
+                <div class="me-3">
+                    <p class="text-muted text-decoration-line-through" style="font-size: 1.2rem; margin-bottom: 0;" id="${infoId}-price-old"></p>
+                    <span class="badge bg-danger" id="${infoId}-discount"></span>
+                </div>
+                <div id="${infoId}-colors" class="d-flex align-items-center gap-2 mt-2 mt-sm-0"></div>
+            </div>
         </div>
         
         <div class="specs-grid mb-5">
@@ -112,6 +117,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
     const priceEl = document.getElementById(`${infoId}-price`);
     const priceOldEl = document.getElementById(`${infoId}-price-old`);
     const discountEl = document.getElementById(`${infoId}-discount`);
+    const colorsEl = document.getElementById(`${infoId}-colors`);
     const linkEl = document.getElementById(`${infoId}-link`);
     const specValueEls = infoBox.querySelectorAll('.spec-value[data-spec]');
 
@@ -154,6 +160,44 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
 
         const discountText = vehicle.type === 'car' ? t('spec_discount_10') : t('spec_discount_8');
         discountEl.textContent = discountText;
+
+        // Handle Colors
+        if (colorsEl) {
+            colorsEl.innerHTML = '';
+            if (vehicle.colors && vehicle.colors.length > 0) {
+                vehicle.colors.forEach(color => {
+                    const swatch = document.createElement('div');
+                    swatch.className = 'color-swatch';
+                    swatch.title = color.name;
+                    swatch.style.backgroundColor = color.code;
+                    swatch.setAttribute('data-img', color.img);
+                    
+                    if (color.code.toUpperCase() === '#FFFFFF') {
+                        swatch.innerHTML = '<div class="swatch-border"></div>';
+                    }
+
+                    // Check if this color matches current image
+                    if (imgElement.src.includes(color.img.split('/').pop())) {
+                        swatch.classList.add('active');
+                    }
+
+                    swatch.addEventListener('click', function() {
+                        // Update Image
+                        imgElement.style.opacity = '0.5';
+                        setTimeout(() => {
+                            imgElement.src = this.getAttribute('data-img');
+                            imgElement.style.opacity = '1';
+                        }, 150);
+
+                        // Update Active State
+                        colorsEl.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+
+                    colorsEl.appendChild(swatch);
+                });
+            }
+        }
 
         linkEl.href = '#'; // Prevent default navigation
         linkEl.onclick = (e) => {

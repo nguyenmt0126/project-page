@@ -71,7 +71,16 @@ const translations = {
         "Battery Capacity": "Battery Capacity",
         "Range (WLTP)": "Range (WLTP)",
         "AC Charging (11kW)": "AC Charging (11kW)",
-        "DC Fast Charging (10-70%)": "DC Fast Charging (10-70%)"
+        "DC Fast Charging (10-70%)": "DC Fast Charging (10-70%)",
+        "Colors": "Colors",
+        "Saddle Height": "Saddle Height",
+        "Tire Size (Front - Rear)": "Tire Size (Front - Rear)",
+        "Suspension": "Suspension",
+        "Lock Type": "Lock Type",
+        "Battery Weight": "Battery Weight",
+        "Nominal Power": "Nominal Power",
+        "Engine Type": "Engine Type",
+        "Acceleration (0-50km/h)": "Acceleration (0-50km/h)"
     },
     vi: {
         // Navbar
@@ -141,7 +150,16 @@ const translations = {
         "Battery Capacity": "Dung lượng pin",
         "Range (WLTP)": "Quãng đường (WLTP)",
         "AC Charging (11kW)": "Sạc AC (11kW)",
-        "DC Fast Charging (10-70%)": "Sạc nhanh DC (10-70%)"
+        "DC Fast Charging (10-70%)": "Sạc nhanh DC (10-70%)",
+        "Colors": "Màu sắc",
+        "Saddle Height": "Chiều cao yên",
+        "Tire Size (Front - Rear)": "Kích thước lốp Trước - Sau",
+        "Suspension": "Giảm xóc trước và sau",
+        "Lock Type": "Khóa xe",
+        "Battery Weight": "Trọng lượng pin",
+        "Nominal Power": "Công suất danh định",
+        "Engine Type": "Loại động cơ",
+        "Acceleration (0-50km/h)": "Tăng tốc 0 - 50 km/h"
     }
 };
 

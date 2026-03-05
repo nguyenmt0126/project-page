@@ -72,7 +72,7 @@ body {
 }
 
 .brand-text {
-    color: var(--primary-dark);
+
 }
 
 /* Navigation Links */
@@ -1026,4 +1026,39 @@ html {
 .modal-body .spec-card {
     box-shadow: none; /* Remove hover effect inside modal */
     transform: none;
+}
+
+/* ============================================
+   COLOR SWATCHES
+   ============================================ */
+.color-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.color-swatch.active {
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* For white swatch, add an inner border to make it visible */
+.color-swatch .swatch-border {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
 }
