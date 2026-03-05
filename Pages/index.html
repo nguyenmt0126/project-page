@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Green Energy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Css/style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light fixed-top" id="mainNavbar" data-bs-theme="light">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="fas fa-leaf me-2 brand-icon"></i>
+                <span class="brand-text text-uppercase">L-Corparation</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-i18n="nav_home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown mega-menu">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" data-i18n="nav_vehicles">Vehicles</a>
+                        <div class="dropdown-menu mega-menu-content">
+                            <div class="container">
+                                <!-- Cars -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="mega-menu-title" data-i18n="cars_title">Cars</h6>
+                                    </div>
+                                </div>
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                    <div class="carousel-view">
+                                        <div class="carousel-track" id="cars-track">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <hr class="my-3">
+                                <!-- Scooters -->
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h6 class="mega-menu-title" data-i18n="scooters_title">Scooters</h6>
+                                    </div>
+                                </div>
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                    <div class="carousel-view">
+                                        <div class="carousel-track" id="scooters-track">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_charging">Charging</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center navbar-actions">
+                    <a href="#" class="btn btn-outline-dark btn-sm me-2" id="lang-toggle" style="border-radius: 20px; font-weight: bold; min-width: 40px;">VI</a>
+                    <div class="user-login">
+                        <a href="#" class="user-link">
+                            <i class="fas fa-user-circle user-icon m-0 p-0"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </nav>
+
+    <section class="hero-section">
+        <video autoplay muted loop playsinline class="hero-video" poster="https://static-cms-prod.vinfastauto.com/ve-chung-toi-video-poster_1664352279.jpg">
+            <source src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container-fluid">
+            <div class="row align-items-center" style="min-height: 100vh;">
+                <div class="col-12 text-center">
+                    <h1 class="display-3 fw-bold" data-i18n="hero_title">Welcome to GreenTech</h1>
+                    <p class="lead" data-i18n="hero_subtitle">Experience the future of sustainable transportation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="featured-vehicle-section" id="featured-cars">
+        <div class="container-fluid p-0 m-0">
+            <div class="featured-vehicle-wrapper">
+                <button class="spec-nav-btn prev" id="car-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="featured-vehicle-content flex-grow-1 px-3">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div class="featured-img-container">
+                                <img src="" alt="Car Image" id="car-main-img" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="featured-info-container" id="car-info-box">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="spec-nav-btn next" id="car-next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Scooters Section -->
+    <section class="featured-vehicle-section bg-light" id="featured-scooters">
+        <div class="container-fluid p-0 m-0">
+            <div class="featured-vehicle-wrapper">
+                <button class="spec-nav-btn prev" id="scooter-prev-btn"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="featured-vehicle-content flex-grow-1 px-3">
+                    <div class="row align-items-center">
+                        <div class="col-lg-7 mb-4 mb-lg-0">
+                            <div class="featured-img-container">
+                                <img src="" alt="Scooter Image" id="scooter-main-img" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="featured-info-container" id="scooter-info-box">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="spec-nav-btn next" id="scooter-next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Specs Modal -->
+    <div class="modal fade" id="vehicleSpecModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="modal-header bg-light border-0">
+                    <h5 class="modal-title fw-bold text-uppercase ls-1" id="vehicleSpecModalLabel" data-i18n="modal_title">Technical Specifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 p-lg-5">
+                    <div class="row" id="specsModalContent">
+                        <!-- Spec cards will be injected here by JavaScript -->
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" data-i18n="modal_close">Close</button>
+                    <a href="#" class="btn btn-dark rounded-pill px-5 py-2 fw-bold shadow-sm" id="modalPreOrderBtn" data-i18n="modal_deposit" data-bs-dismiss="modal">Deposit Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JavaScript/car-data.js"></script>
+    <script src="../JavaScript/scooter-data.js"></script>
+    <script src="../JavaScript/language-data.js"></script>
+    <script src="../JavaScript/navbar.js"></script>
+    <script src="../JavaScript/mega-menu.js"></script>
+    <script src="../JavaScript/featured-carousel.js"></script>
+    <script src="../JavaScript/main.js"></script>
+</body>
+</html>
