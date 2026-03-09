@@ -71,10 +71,6 @@ body {
     transform: rotate(-10deg) scale(1.1);
 }
 
-.brand-text {
-
-}
-
 /* Navigation Links */
 .navbar-nav .nav-link {
     color: var(--text-dark) !important;
@@ -215,6 +211,24 @@ body {
 }
 
 /* ============================================
+   MODAL FIX - Prevent Navbar Shift When Modal Opens
+   ============================================ */
+
+body.modal-open {
+    overflow: hidden !important; /* Enforce hiding scrollbar on body */
+    padding-right: var(--scrollbar-width) !important;
+}
+
+body.modal-open .navbar.fixed-top {
+    padding-right: var(--scrollbar-width) !important;
+}
+
+body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
+    position: relative;
+    left: calc(var(--scrollbar-width) / 2);
+}
+
+/* ============================================
    USER LOGIN
    ============================================ */
 
@@ -304,7 +318,7 @@ body {
         font-size: 1.5rem;
     }
 
-    .navbar-actions .btn {
+    .navbar-actions .btn-icon {
         width: 36px;
         height: 36px;
         padding: 0;
@@ -339,6 +353,12 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    animation: heroVideoZoom 20s linear infinite alternate;
+}
+
+@keyframes heroVideoZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
 }
 
 .hero-overlay {
@@ -347,7 +367,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
     z-index: 1;
 }
 
@@ -356,16 +376,33 @@ body {
     z-index: 2;
 }
 
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .hero-section h1 {
     color: var(--white);
     margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    opacity: 0;
+    animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.3s;
 }
 
 .hero-section p {
     color: var(--white);
     font-size: 1.25rem;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    opacity: 0;
+    animation: heroFadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.6s;
 }
 
 /* ============================================
@@ -551,7 +588,7 @@ html {
     padding: 0 10px; 
 }
 
-/* Responsive cho carousel */
+/* Responsive for carousel */
 @media (max-width: 992px) {
     .carousel-card {
         flex: 0 0 33.33%; 
@@ -561,7 +598,7 @@ html {
 
 @media (max-width: 768px) {
     .carousel-card {
-        flex: 0 0 50%; /* Mobile hiện 2 */
+        flex: 0 0 50%; /* Mobile shows 2 */
         max-width: 50%;
     }
 }

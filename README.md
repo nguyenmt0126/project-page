@@ -1,6 +1,6 @@
-# GreenTech Website
+# L-Corparation Website
 
-Website giới thiệu sản phẩm xe điện GreenTech (VinFast), được xây dựng với HTML, CSS, và JavaScript thuần.
+Website giới thiệu sản phẩm xe điện của L-Corparation, được xây dựng với HTML, CSS, và JavaScript thuần.
 
 ## Tính năng chính
 

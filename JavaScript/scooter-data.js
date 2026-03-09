@@ -75,9 +75,6 @@ const scooterData = [
     },
     { 
         id: 'viper', name: 'Viper', type: 'scooter', img: '../Data/Images/Scooter/Viper.webp', price: '27.000.000 VND', price_old: '29.900.000 VND', range: '82 km', speed: '70 km/h', charge: '4.5h', waterproof: 'IP67', link: '#feliz-s-details', isNew: true,
-        colors: [
-            { name: 'Vàng Cát', code: '#E1C699', img: '../Data/Images/Scooter/Viper.webp' }
-        ],
         specs: [
             { label: "Colors", value: "Đỏ Đen, Trắng, Đen, Xám Xi Măng, Vàng Cát" },
             { label: "Length x Width x Height", value: "1907 x 692 x 1135 mm" },

@@ -46,6 +46,22 @@ style.textContent = `
 document.head.appendChild(style);
 
 /**
+ * Calculate scrollbar width and set as CSS variable
+ * This helps prevent layout shift when modal opens
+ */
+(function() {
+    // Create a temporary element to measure scrollbar width
+    const scrollDiv = document.createElement('div');
+    scrollDiv.style.cssText = 'width:99px;height:99px;overflow:scroll;position:absolute;top:-9999px';
+    document.body.appendChild(scrollDiv);
+    const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+    document.body.removeChild(scrollDiv);
+    
+    // Set as CSS variable
+    document.documentElement.style.setProperty('--scrollbar-width', scrollbarWidth + 'px');
+})();
+
+/**
  * Open Vehicle Specs Modal with detailed brochure-style layout
  */
 function openSpecsModal(vehicleId) {

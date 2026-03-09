@@ -14,7 +14,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top" id="mainNavbar" data-bs-theme="light">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#">
                 <i class="fas fa-leaf me-2 brand-icon"></i>
                 <span class="brand-text text-uppercase">L-Corparation</span>
@@ -30,37 +30,35 @@
                         <a class="nav-link" href="#" data-i18n="nav_home">Home</a>
                     </li>
                     <li class="nav-item dropdown mega-menu">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" data-i18n="nav_vehicles">Vehicles</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-i18n="nav_vehicles">Vehicles</a>
                         <div class="dropdown-menu mega-menu-content">
                             <div class="container">
                                 <!-- Cars -->
                                 <div class="row">
                                     <div class="col-12">
                                         <h6 class="mega-menu-title" data-i18n="cars_title">Cars</h6>
-                                    </div>
-                                </div>
-                                <div class="carousel-wrapper">
-                                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                                    <div class="carousel-view">
-                                        <div class="carousel-track" id="cars-track">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <div class="carousel-view">
+                                                <div class="carousel-track" id="cars-track"></div>
+                                            </div>
+                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                                         </div>
                                     </div>
-                                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                                 </div>
                                 <hr class="my-3">
                                 <!-- Scooters -->
                                 <div class="row">
                                     <div class="col-12">
                                         <h6 class="mega-menu-title" data-i18n="scooters_title">Scooters</h6>
-                                    </div>
-                                </div>
-                                <div class="carousel-wrapper">
-                                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
-                                    <div class="carousel-view">
-                                        <div class="carousel-track" id="scooters-track">
+                                        <div class="carousel-wrapper">
+                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <div class="carousel-view">
+                                                <div class="carousel-track" id="scooters-track"></div>
+                                            </div>
+                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                                         </div>
                                     </div>
-                                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -72,15 +70,10 @@
                 </ul>
 
                 <div class="d-flex align-items-center navbar-actions">
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2" id="lang-toggle" style="border-radius: 20px; font-weight: bold; min-width: 40px;">VI</a>
-                    <div class="user-login">
-                        <a href="#" class="user-link">
-                            <i class="fas fa-user-circle user-icon m-0 p-0"></i>
-                        </a>
-                    </div>
+                    <a href="#" class="btn btn-outline-dark btn-sm me-2 btn-icon" id="lang-toggle" style="border-radius: 20px; font-weight: bold; min-width: 40px;">VI</a>
                 </div>
             </div>
-        </div>  
+        </div>
     </nav>
 
     <section class="hero-section">

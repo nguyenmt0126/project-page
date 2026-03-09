@@ -3,10 +3,6 @@
  */
 
 function initVehicleSpecCarousel() {
-    if (typeof carData === 'undefined' || typeof scooterData === 'undefined') {
-        console.error('carData or scooterData is not defined.');
-        return;
-    }
     setupCarousel(carData, 'car-main-img', 'car-info-box', 'car-prev-btn', 'car-next-btn');
     setupCarousel(scooterData, 'scooter-main-img', 'scooter-info-box', 'scooter-prev-btn', 'scooter-next-btn');
 }
