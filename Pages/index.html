@@ -63,13 +63,14 @@
                             </div>
                         </div>
                     </li>
+                    <li class="nav-item"><a class="nav-link" href="#accessory" data-i18n="nav_accessory"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#about-us" data-i18n="nav_about"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#charging" data-i18n="nav_charging"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#news" data-i18n="nav_news"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact"></a></li>
                 </ul>
 
-                <div class="d-flex align-items-center navbar-actions">
+    <div class="d-flex align-items-center navbar-actions">
                     <a href="#" class="btn btn-outline-dark btn-sm me-2 btn-icon" id="lang-toggle" style="border-radius: 20px; font-weight: bold; min-width: 40px;">VI</a>
                 </div>
             </div>
@@ -147,6 +148,87 @@
 
                 <button class="spec-nav-btn next" id="scooter-next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
+        </div>
+    </section>
+
+<!-- Accessories Section -->
+    <section class="accessories-section" id="accessory">
+        <div class="accessories-wrapper">
+            <!-- Vehicle Type Tabs -->
+            <div class="accessories-vehicle-tabs">
+                <button
+                    id="accessories-tab-car"
+                    class="accessories-vehicle-tab active"
+                    type="button"
+                    data-i18n="accessories_tab_car"
+                >
+                    Phụ kiện ô tô
+                </button>
+                <button
+                    id="accessories-tab-scooter"
+                    class="accessories-vehicle-tab"
+                    type="button"
+                    data-i18n="accessories_tab_scooter"
+                >
+                    Phụ kiện xe máy điện
+                </button>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="accessories-sidebar">
+                <h3 class="accessories-sidebar-title" data-i18n="accessories_sidebar_title">Danh mục</h3>
+                <!-- Search Bar in Sidebar -->
+                <div class="accessories-sidebar-search">
+                    <div class="accessories-search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input
+                            type="text"
+                            class="accessories-search-input"
+                            id="accessories-search-input"
+                            placeholder="Tìm kiếm phụ kiện..."
+                            data-i18n-placeholder="accessories_search_placeholder"
+                        >
+                        <button class="accessories-search-btn" id="accessories-search-btn" data-i18n="accessories_search_button">Tìm</button>
+                    </div>
+                </div>
+
+                <ul class="accessories-category-list" id="accessories-categories">
+                    <!-- Categories will be rendered by JS -->
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="accessories-main">
+                <!-- Results Info -->
+                <div class="accessories-results-info">
+                    <span class="accessories-results-count">
+                        Tìm thấy <strong id="accessories-count">0</strong> sản phẩm
+                    </span>
+                </div>
+
+                <!-- Items Grid -->
+                <div class="accessories-grid" id="accessories-grid">
+                    <!-- Items will be rendered by JS -->
+                </div>
+
+                <!-- Load More Button -->
+                <div class="accessories-load-more-wrapper">
+                    <button
+                        class="accessories-load-more-btn"
+                        id="accessories-load-more-btn"
+                        data-i18n="accessories_load_more"
+                    >
+                        Xem thêm phụ kiện
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="accessories-empty" id="accessories-empty" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h4 data-i18n="accessories_empty_title">Không tìm thấy sản phẩm</h4>
+                    <p data-i18n="accessories_empty_text">Vui lòng thử từ khóa khác hoặc chọn danh mục khác</p>
+                </div>
+            </main>
         </div>
     </section>
 
@@ -276,14 +358,16 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JavaScript/section-loader.js"></script>
     <script src="../JavaScript/car-data.js"></script>
     <script src="../JavaScript/scooter-data.js"></script>
+    <script src="../JavaScript/accessories-data.js"></script>
     <script src="../JavaScript/language-data.js"></script>
     <script src="../JavaScript/navbar.js"></script>
     <script src="../JavaScript/mega-menu.js"></script>
     <script src="../JavaScript/featured-carousel.js"></script>
+    <script src="../JavaScript/accessories-render.js"></script>
     <script src="../JavaScript/main.js"></script>
 </body>
 </html>

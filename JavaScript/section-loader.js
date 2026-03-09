@@ -8,7 +8,7 @@
 const SECTION_ANIMATIONS = {
     'featured-cars': 'animation-slide-up',
     'featured-scooters': 'animation-slide-left',
-    'about-us': 'animation-zoom-in',
+    'about-us': 'animation-slide-right',
     'footer': 'animation-fade-in'
 };
 

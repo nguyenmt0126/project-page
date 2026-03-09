@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof initCarousels === 'function') {
         initCarousels();
     }
+    
+    // 3. Initialize Accessories Section
+    if (typeof initAccessories === 'function') {
+        initAccessories();
+    }
 });
 
 /**

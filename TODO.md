@@ -1,20 +1,10 @@
-# TODO - Fix Vehicle Hover Effects
+# TODO - Xóa Accessories
 
-## Task: Fix hover on vehicle images in mega menu
-
-### Steps:
-1. [x] Read and understand the current CSS and HTML structure
-2. [x] Add CSS to fix image zoom effect (only zoom image, not affect text)
-3. [x] Redesign "Xem chi tiết" text styling
-4. [x] Test the changes (by opening the file in browser)
-
-### Changes made in Css/style.css:
-- Added `.mega-menu-item` overflow: hidden to contain image zoom effect
-- Added `.mega-menu-item img` hover transform effect (scale 1.1)
-- Added new styling for `.mega-menu-details-link` (Xem chi tiết text):
-  - Gradient background with green tones
-  - Pill-shaped border (border-radius: 20px)
-  - Uppercase text with letter spacing
-  - Hover effect: background changes to solid green, text turns white, adds shadow
-  - Added shine animation effect using ::before pseudo-element
+## Tasks:
+- [x] 1. Xóa JavaScript/accessories.js
+- [x] 2. Xóa JavaScript/accessories-data.js
+- [x] 3. Sửa Pages/index.html - Xóa accessories section và script references
+- [x] 4. Sửa JavaScript/language-data.js - Xóa accessory translations
+- [x] 5. Sửa JavaScript/section-loader.js - Xóa accessories loading logic
+- [x] 6. Sửa Css/style.css - Xóa accessory-related styles
 

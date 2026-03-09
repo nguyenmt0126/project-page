@@ -7,10 +7,12 @@ const translations = {
         // Navbar
         "nav_home": "Home",
         "nav_vehicles": "Vehicles",
+        "nav_accessory": "Accessories",
         "nav_charging": "Charging",
         "nav_news": "News",
         "nav_about": "About",
         "nav_contact": "Contact",
+        "nav_register": "Register",
         
         // Mega Menu
         "cars_title": "Cars",
@@ -52,6 +54,26 @@ const translations = {
         "badge_new": "New",
         "badge_car": "Electric Car",
         "badge_scooter": "E-Scooter",
+
+        // Accessories
+        "accessories_sidebar_title": "Categories",
+        "accessories_search_placeholder": "Search accessories...",
+        "accessories_search_button": "Search",
+        "accessories_results_prefix": "Found",
+        "accessories_results_suffix": "products",
+        "accessories_empty_title": "No products found",
+        "accessories_empty_text": "Please try a different keyword or choose another category.",
+        "accessories_load_more": "Load more accessories",
+        "accessories_fit_for": "Suitable for:",
+        "accessories_cart_button": "Add to cart",
+        "accessories_cat_all": "All",
+        "accessories_cat_exterior": "Exterior",
+        "accessories_cat_interior": "Interior",
+        "accessories_cat_safety": "Safety",
+        "accessories_cat_charging": "Charging & Battery",
+        "accessories_cat_maintenance": "Maintenance",
+        "accessories_tab_car": "Car accessories",
+        "accessories_tab_scooter": "E-scooter accessories",
 
         // About Us
         "about_tagline": "Our Vision",
@@ -127,10 +149,12 @@ const translations = {
         // Navbar
         "nav_home": "Trang chủ",
         "nav_vehicles": "Sản phẩm",
+        "nav_accessory": "Phụ kiện",
         "nav_charging": "Trạm sạc",
         "nav_news": "Tin tức",
         "nav_about": "Về chúng tôi",
         "nav_contact": "Liên hệ",
+        "nav_register": "Đăng ký",
 
         // Mega Menu
         "cars_title": "Ô tô",
@@ -172,6 +196,26 @@ const translations = {
         "badge_new": "Mới",
         "badge_car": "Ô tô điện",
         "badge_scooter": "Xe máy điện",
+
+        // Accessories
+        "accessories_sidebar_title": "Danh mục",
+        "accessories_search_placeholder": "Tìm kiếm phụ kiện...",
+        "accessories_search_button": "Tìm",
+        "accessories_results_prefix": "Tìm thấy",
+        "accessories_results_suffix": "sản phẩm",
+        "accessories_empty_title": "Không tìm thấy sản phẩm",
+        "accessories_empty_text": "Vui lòng thử từ khóa khác hoặc chọn danh mục khác",
+        "accessories_load_more": "Xem thêm phụ kiện",
+        "accessories_fit_for": "Phù hợp:",
+        "accessories_cart_button": "Giỏ hàng",
+        "accessories_cat_all": "Tất cả",
+        "accessories_cat_exterior": "Ngoại thất",
+        "accessories_cat_interior": "Nội thất",
+        "accessories_cat_safety": "Bảo hộ",
+        "accessories_cat_charging": "Sạc & Pin",
+        "accessories_cat_maintenance": "Bảo dưỡng",
+        "accessories_tab_car": "Phụ kiện ô tô",
+        "accessories_tab_scooter": "Phụ kiện xe máy điện",
 
         // About Us
         "about_tagline": "Tầm nhìn của chúng tôi",
@@ -255,11 +299,19 @@ function setLanguage(lang) {
     if (!translations[lang]) return;
     currentLang = lang;
     
-    // Update static elements
+    // Update static elements (textContent)
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang][key]) {
             element.textContent = translations[lang][key];
+        }
+    });
+
+    // Update placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key]) {
+            element.setAttribute('placeholder', translations[lang][key]);
         }
     });
 
@@ -270,6 +322,8 @@ function setLanguage(lang) {
     // Re-render dynamic components
     if (typeof initVehicleSpecCarousel === 'function') initVehicleSpecCarousel();
     if (typeof renderMegaMenuContent === 'function') renderMegaMenuContent();
+    if (typeof renderCategories === 'function') renderCategories();
+    if (typeof renderAccessories === 'function') renderAccessories();
 }
 
 // Initialize
