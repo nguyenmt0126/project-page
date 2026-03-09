@@ -1,5 +1,5 @@
 /**
- * GreenTech - Main JavaScript Entry Point
+ * L-Corparation - Main JavaScript Entry Point
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -116,3 +116,35 @@ function openSpecsModal(vehicleId) {
     const modal = new bootstrap.Modal(document.getElementById('vehicleSpecModal'));
     modal.show();
 }
+
+/**
+ * Handle About Us Read More/Less toggle
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const aboutReadMoreBtn = document.getElementById('aboutReadMoreBtn');
+    const aboutMoreContent = document.getElementById('aboutMoreContent');
+    
+    if (aboutReadMoreBtn && aboutMoreContent) {
+        aboutMoreContent.addEventListener('shown.bs.collapse', function() {
+            const span = aboutReadMoreBtn.querySelector('span');
+            const icon = aboutReadMoreBtn.querySelector('i');
+            if (span) span.setAttribute('data-i18n', 'about_read_less');
+            if (span) span.textContent = t('about_read_less');
+            if (icon) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        });
+        
+        aboutMoreContent.addEventListener('hidden.bs.collapse', function() {
+            const span = aboutReadMoreBtn.querySelector('span');
+            const icon = aboutReadMoreBtn.querySelector('i');
+            if (span) span.setAttribute('data-i18n', 'about_read_more');
+            if (span) span.textContent = t('about_read_more');
+            if (icon) {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        });
+    }
+});

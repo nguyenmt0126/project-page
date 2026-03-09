@@ -1,5 +1,5 @@
 /**
- * GreenTech - Scooter Data
+ * L-Corparation - Scooter Data
  */
 
 const scooterData = [

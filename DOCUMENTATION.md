@@ -1,10 +1,10 @@
-# Tài liệu Xây dựng Agent - Website GreenTech
+# Tài liệu Xây dựng Agent - Website L-Corparation
 
-Tài liệu này ghi lại quá trình và logic xây dựng các thành phần chính của website GreenTech, nhằm mục đích cung cấp thông tin cho AI agent để hiểu và tái tạo các chức năng.
+Tài liệu này ghi lại quá trình và logic xây dựng các thành phần chính của website L-Corparation, nhằm mục đích cung cấp thông tin cho AI agent để hiểu và tái tạo các chức năng.
 
 ## 1. Tổng quan Dự án
 
--   **Mục tiêu:** Xây dựng một trang web giới thiệu sản phẩm cho công ty xe điện "GreenTech".
+-   **Mục tiêu:** Xây dựng một trang web giới thiệu sản phẩm cho công ty xe điện "L-Corparation".
 -   **Công nghệ chính:** HTML, CSS, JavaScript (Bootstrap 5).
 -   **Điểm nổi bật:** Giao diện động, tải dữ liệu từ một file riêng biệt và có các hiệu ứng chuyển động mượt mà.
 

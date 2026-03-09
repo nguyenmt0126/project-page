@@ -1,5 +1,5 @@
 /**
- * GreenTech - Car Data
+ * L-Corparation - Car Data
  */
 
 const carData = [

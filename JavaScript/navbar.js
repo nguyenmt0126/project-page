@@ -1,5 +1,5 @@
 /**
- * GreenTech - Navbar & Scroll Functions
+ * L-Corparation - Navbar & Scroll Functions
  */
 
 function initNavbarScroll() {

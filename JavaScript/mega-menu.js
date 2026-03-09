@@ -1,5 +1,5 @@
 /**
- * GreenTech - Mega Menu Functions
+ * L-Corparation - Mega Menu Functions
  */
 
 function renderMegaMenuContent() {

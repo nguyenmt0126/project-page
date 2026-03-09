@@ -1,110 +1,131 @@
 /**
- * GreenTech - Featured Vehicle Carousel Functions
+ * L-Corparation - Featured Vehicle Carousel Functions
  */
 
 function initVehicleSpecCarousel() {
-    setupCarousel(carData, 'car-main-img', 'car-info-box', 'car-prev-btn', 'car-next-btn');
-    setupCarousel(scooterData, 'scooter-main-img', 'scooter-info-box', 'scooter-prev-btn', 'scooter-next-btn');
+    setupCarousel(carData, 'car-main-img', 'car-info-box', 'car-prev-btn', 'car-next-btn', 'car-bullets');
+    setupCarousel(scooterData, 'scooter-main-img', 'scooter-info-box', 'scooter-prev-btn', 'scooter-next-btn', 'scooter-bullets');
 }
 
-function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
+function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     const imgElement = document.getElementById(imgId);
     const infoBox = document.getElementById(infoId);
     const prevBtn = document.getElementById(prevBtnId);
     const nextBtn = document.getElementById(nextBtnId);
+    const bulletsContainer = document.getElementById(bulletsId);
 
-    if (!imgElement || !infoBox || !prevBtn || !nextBtn || data.length === 0) return;
+    if (!imgElement || !infoBox || !prevBtn || !nextBtn || !bulletsContainer || data.length === 0) return;
 
     let currentIndex = 0;
+
+    // Generate bullet buttons
+    bulletsContainer.innerHTML = '';
+    data.forEach((_, index) => {
+        const bullet = document.createElement('button');
+        bullet.className = 'bullet-btn' + (index === 0 ? ' active' : '');
+        bullet.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        bullet.addEventListener('click', () => {
+            currentIndex = index;
+            updateDisplay(currentIndex);
+            updateBullets();
+        });
+        bulletsContainer.appendChild(bullet);
+    });
+
+    function updateBullets() {
+        const bullets = bulletsContainer.querySelectorAll('.bullet-btn');
+        bullets.forEach((bullet, index) => {
+            if (index === currentIndex) {
+                bullet.classList.add('active');
+            } else {
+                bullet.classList.remove('active');
+            }
+        });
+    }
 
     // 1. Initialize Static Structure
     const firstVehicle = data[0];
     const typeLabel = firstVehicle.type === 'car' ? t('badge_car') : t('badge_scooter');
     let specsHTML = '';
+    
+    const specIconMap = {
+        'spec_range': 'fas fa-road',
+        'spec_seats': 'fas fa-users',
+        'spec_power': 'fas fa-bolt',
+        'spec_acceleration': 'fas fa-tachometer-alt',
+        'spec_warranty': 'fas fa-shield-alt',
+        'spec_airbags': 'fas fa-check-circle',
+        'spec_max_speed': 'fas fa-tachometer-alt',
+        'spec_charge': 'fas fa-charging-station',
+        'spec_waterproof': 'fas fa-water',
+        'spec_engine': 'fas fa-cogs',
+        'spec_trunk': 'fas fa-box-open'
+    };
 
-    if (firstVehicle.type === 'car') {
-        specsHTML = `
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_range')}</span>
-                <span class="spec-value" data-spec="range"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_seats')}</span>
-                <span class="spec-value" data-spec="seats"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_power')}</span>
-                <span class="spec-value" data-spec="power"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_acceleration')}</span>
-                <span class="spec-value" data-spec="acceleration"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_warranty')}</span>
-                <span class="spec-value">${t('spec_warranty_val')}</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_airbags')}</span>
-                <span class="spec-value">${t('spec_airbags_val')}</span>
+    const generateSpecItem = (specKey, dataKey, staticValue = null) => {
+        const iconClass = specIconMap[specKey] || 'fas fa-info-circle';
+        const valueHTML = staticValue 
+            ? `<span class="spec-value">${t(staticValue)}</span>`
+            : `<span class="spec-value" data-spec="${dataKey}"></span>`;
+        
+        return `
+            <div class="spec-item-optimized">
+                <i class="${iconClass}"></i>
+                <div>
+                    <span class="spec-label">${t(specKey)}</span>
+                    ${valueHTML}
+                </div>
             </div>
         `;
+    };
+    
+    if (firstVehicle.type === 'car') {
+        specsHTML = `
+            ${generateSpecItem('spec_range', 'range')}
+            ${generateSpecItem('spec_seats', 'seats')}
+            ${generateSpecItem('spec_power', 'power')}
+            ${generateSpecItem('spec_acceleration', 'acceleration')}
+            ${generateSpecItem('spec_warranty', null, 'spec_warranty_val')}
+            ${generateSpecItem('spec_airbags', null, 'spec_airbags_val')}
+        `;
     } else {
-            specsHTML = `
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_range')}</span>
-                <span class="spec-value" data-spec="range"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_max_speed')}</span>
-                <span class="spec-value" data-spec="speed"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_charge')}</span>
-                <span class="spec-value" data-spec="charge"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_waterproof')}</span>
-                <span class="spec-value" data-spec="waterproof"></span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_engine')}</span>
-                <span class="spec-value">${t('spec_engine_val')}</span>
-            </div>
-            <div class="spec-item">
-                <span class="spec-label">${t('spec_trunk')}</span>
-                <span class="spec-value">${t('spec_trunk_val')}</span>
-            </div>
+        specsHTML = `
+            ${generateSpecItem('spec_range', 'range')}
+            ${generateSpecItem('spec_max_speed', 'speed')}
+            ${generateSpecItem('spec_charge', 'charge')}
+            ${generateSpecItem('spec_waterproof', 'waterproof')}
+            ${generateSpecItem('spec_engine', null, 'spec_engine_val')}
+            ${generateSpecItem('spec_trunk', null, 'spec_trunk_val')}
         `;
     }
 
     infoBox.innerHTML = `
-        <div class="d-flex align-items-center mb-3">
+        <div class="d-flex align-items-center mb-2">
             <div style="position: relative; display: inline-block;">
                 <span class="badge bg-primary text-white px-3 py-2 text-uppercase ls-1">${typeLabel}</span>
                 <span class="badge bg-danger text-white px-2 py-1 text-uppercase shadow-sm" id="${infoId}-new-badge" style="display: none; position: absolute; top: -12px; right: -15px; font-size: 0.7rem; z-index: 1;">${t('badge_new')}</span>
             </div>
         </div>
-        <h2 class="display-3 fw-bold text-dark mb-3" id="${infoId}-name"></h2>
-        <div class="mb-4">
-            <span class="spec-label">${t('spec_price_from')}</span>
-            <p class="lead text-primary fw-bold" style="font-size: 2rem; margin-bottom: 0;" id="${infoId}-price"></p>
-            <div class="d-flex align-items-center flex-wrap">
-                <div class="me-3">
-                    <p class="text-muted text-decoration-line-through" style="font-size: 1.2rem; margin-bottom: 0;" id="${infoId}-price-old"></p>
+        <h2 class="display-4 fw-bolder text-dark mb-3" id="${infoId}-name"></h2>
+        
+        <div class="bg-light p-3 rounded-3 mb-4">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <span class="spec-label d-block mb-1">${t('spec_price_from')}</span>
+                    <p class="lead text-primary fw-bold" style="font-size: 2.2rem; margin-bottom: 0; line-height: 1;" id="${infoId}-price"></p>
+                    <p class="text-muted text-decoration-line-through" style="font-size: 1.1rem; margin-bottom: 5px;" id="${infoId}-price-old"></p>
                     <span class="badge bg-danger" id="${infoId}-discount"></span>
                 </div>
-                <div id="${infoId}-colors" class="d-flex align-items-center gap-2 mt-2 mt-sm-0"></div>
             </div>
         </div>
         
-        <div class="specs-grid mb-5">
+        <div class="specs-grid-optimized mb-4">
             ${specsHTML}
         </div>
 
-        <div class="d-flex gap-3">
-            <a href="#" class="btn btn-primary rounded-pill px-5 fw-bold shadow-lg">${t('btn_order')}</a>
-            <a href="#" class="btn btn-outline-primary rounded-pill px-5 fw-bold" id="${infoId}-link">${t('btn_detail')}</a>
+        <div class="d-flex flex-column flex-sm-row gap-3">
+            <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-lg flex-grow-1">${t('btn_order')}</a>
+            <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold flex-grow-1" id="${infoId}-link">${t('btn_detail')}</a>
         </div>
     `;
 
@@ -157,43 +178,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
         const discountText = vehicle.type === 'car' ? t('spec_discount_10') : t('spec_discount_8');
         discountEl.textContent = discountText;
 
-        // Handle Colors
-        if (colorsEl) {
-            colorsEl.innerHTML = '';
-            if (vehicle.colors && vehicle.colors.length > 0) {
-                vehicle.colors.forEach(color => {
-                    const swatch = document.createElement('div');
-                    swatch.className = 'color-swatch';
-                    swatch.title = color.name;
-                    swatch.style.backgroundColor = color.code;
-                    swatch.setAttribute('data-img', color.img);
-                    
-                    if (color.code.toUpperCase() === '#FFFFFF') {
-                        swatch.innerHTML = '<div class="swatch-border"></div>';
-                    }
-
-                    // Check if this color matches current image
-                    if (imgElement.src.includes(color.img.split('/').pop())) {
-                        swatch.classList.add('active');
-                    }
-
-                    swatch.addEventListener('click', function() {
-                        // Update Image
-                        imgElement.style.opacity = '0.5';
-                        setTimeout(() => {
-                            imgElement.src = this.getAttribute('data-img');
-                            imgElement.style.opacity = '1';
-                        }, 150);
-
-                        // Update Active State
-                        colorsEl.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
-                        this.classList.add('active');
-                    });
-
-                    colorsEl.appendChild(swatch);
-                });
-            }
-        }
+        // The color swatch element has been removed from the template, so this logic is no longer needed.
 
         linkEl.href = '#'; // Prevent default navigation
         linkEl.onclick = (e) => {
@@ -234,11 +219,13 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId) {
     prevBtn.addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? data.length - 1 : currentIndex - 1;
         updateDisplay(currentIndex);
+        updateBullets();
     });
 
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex === data.length - 1) ? 0 : currentIndex + 1;
         updateDisplay(currentIndex);
+        updateBullets();
     });
 }
 
