@@ -277,14 +277,17 @@ function createAccessoryCard(item) {
     const formattedPrice = formatPrice(item.price);
     const formattedOldPrice = formatPrice(item.price_old);
 
-    // Thêm nhãn HOT nếu giảm giá > 20%
-    const badgeHtml = item.discount > 20 ? `<span class="accessories-item-badge">HOT</span>` : '';
+    // Badges logic
+    const hotBadge = item.discount > 20 ? `<span class="accessories-item-badge">HOT</span>` : '';
+    const newBadge = item.isNew ? `<span class="accessories-item-new">NEW</span>` : '';
+    const discountBadge = item.discount > 0 ? `<span class="accessories-item-discount">-${item.discount}%</span>` : '';
 
     return `
         <div class="accessories-item" data-id="${item.id}">
-            <span class="accessories-item-discount">-${item.discount}%</span>
-            ${badgeHtml}
             <div class="accessories-item-img-wrapper">
+                ${discountBadge}
+                ${hotBadge}
+                ${newBadge}
                 <img src="${item.img}" alt="${item.name}" class="accessories-item-img" loading="lazy">
             </div>
             <div class="accessories-item-info">

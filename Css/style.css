@@ -1962,7 +1962,7 @@ footer.section-loaded {
 
 /* Sidebar */
 .accessories-sidebar {
-    width: 240px;
+    width: 280px;
     flex-shrink: 0;
     background: #fff;
     border-radius: 12px;
@@ -2206,17 +2206,35 @@ footer.section-loaded {
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
     position: relative;
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
 
+.accessories-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
 
+.accessories-item-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f8f8f8;
+}
 
 .accessories-item-img {
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
     object-fit: cover;
-    background: #f8f8f8;
+    transition: transform 0.5s ease;
+}
+
+.accessories-item:hover .accessories-item-img {
+    transform: scale(1.05);
 }
 
 .accessories-item-info {
@@ -2261,33 +2279,50 @@ footer.section-loaded {
     text-decoration: line-through;
 }
 
+/* Badges Styles */
 .accessories-item-discount {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background: #ff3838;
+    top: 0;
+    right: 0;
+    background: #ff424e;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    padding: 2px 6px;
-    border-radius: 2px;
-    z-index: 5;
+    padding: 3px 8px;
+    border-radius: 0 0 0 8px;
+    z-index: 10;
 }
 
-.accessories-item-badge {
+.accessories-item-badge,
+.accessories-item-new {
     position: absolute;
-    top: 5px;
-    left: 5px;
-    background: #ff8c00;
-    /* Orange for HOT */
+    left: 8px;
     color: white;
     font-size: 0.65rem;
     font-weight: 800;
     padding: 2px 6px;
     border-radius: 2px;
-    z-index: 5;
+    z-index: 10;
     text-transform: uppercase;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accessories-item-badge {
+    top: 8px;
+    background: #ff8c00;
+    /* HOT orange */
+}
+
+/* If item is both HOT and NEW, NEW stacks below */
+.accessories-item-new {
+    top: 8px;
+    background: #10b981;
+    /* NEW green */
+}
+
+.accessories-item-badge~.accessories-item-new {
+    top: 32px;
+    /* Offset if both exist */
 }
 
 .accessories-item-actions {
