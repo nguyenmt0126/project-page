@@ -14,7 +14,6 @@ let currentAccessoriesPage = 1;
 
 /**
  * Smooth scroll viewport về đầu khu vực Accessories
- * (trừ đi chiều cao navbar để không bị che)
  */
 function scrollToAccessoriesTop() {
     const section = document.getElementById('accessory');
@@ -45,6 +44,18 @@ function initAccessories() {
 }
 
 /**
+ * Update the active state of vehicle tabs
+ */
+function updateVehicleTabsUI() {
+    const carTab = document.getElementById('accessories-tab-car');
+    const scooterTab = document.getElementById('accessories-tab-scooter');
+    if (!carTab || !scooterTab) return;
+
+    carTab.classList.toggle('active', currentVehicleType === 'car');
+    scooterTab.classList.toggle('active', currentVehicleType === 'scooter');
+}
+
+/**
  * Initialize vehicle type tabs (Car / Scooter) for accessories
  */
 function setupVehicleTypeTabs() {
@@ -52,51 +63,42 @@ function setupVehicleTypeTabs() {
     const scooterTab = document.getElementById('accessories-tab-scooter');
     if (!carTab || !scooterTab) return;
 
-    function updateActiveTab() {
-        carTab.classList.toggle('active', currentVehicleType === 'car');
-        scooterTab.classList.toggle('active', currentVehicleType === 'scooter');
-    }
-
-    carTab.addEventListener('click', function() {
+    carTab.addEventListener('click', function () {
         currentVehicleType = 'car';
-        updateActiveTab();
+        currentCategory = 'all';
+        currentAccessoriesPage = 1;
+        updateVehicleTabsUI();
         renderCategories();
         renderAccessories();
         scrollToAccessoriesTop();
     });
 
-    scooterTab.addEventListener('click', function() {
+    scooterTab.addEventListener('click', function () {
         currentVehicleType = 'scooter';
-        updateActiveTab();
+        currentCategory = 'all';
+        currentAccessoriesPage = 1;
+        updateVehicleTabsUI();
         renderCategories();
         renderAccessories();
         scrollToAccessoriesTop();
     });
 
-    updateActiveTab();
+    updateVehicleTabsUI();
 }
 
-/**
- * Render category sidebar
- */
 function renderCategories() {
     const categoriesContainer = document.getElementById('accessories-categories');
     if (!categoriesContainer) return;
 
-    // Filter by vehicle type first
-    let baseList = accessoriesData;
-    if (currentVehicleType === 'car') {
-        baseList = baseList.filter(item => item.vehicleType === 'car' || item.vehicleType === 'all');
-    } else if (currentVehicleType === 'scooter') {
-        baseList = baseList.filter(item => item.vehicleType === 'scooter' || item.vehicleType === 'all');
-    }
-
-    // Count items per category
+    // Count items per category (GLOBAL counts for better visibility)
     const categoryCount = {};
-    baseList.forEach(item => {
+    accessoriesData.forEach(item => {
         categoryCount[item.category] = (categoryCount[item.category] || 0) + 1;
+        if (item.isNew) {
+            categoryCount['new'] = (categoryCount['new'] || 0) + 1;
+        }
     });
-    categoryCount['all'] = baseList.length;
+    categoryCount['all'] = accessoriesData.length;
 
     let html = '';
     accessoriesCategories.forEach(cat => {
@@ -116,17 +118,27 @@ function renderCategories() {
 
     // Add click handlers
     categoriesContainer.querySelectorAll('.accessories-category-item').forEach(item => {
-        item.addEventListener('click', function() {
-            currentCategory = this.dataset.category;
+        item.addEventListener('click', function () {
+            const newCat = this.dataset.category;
+            currentCategory = newCat;
+            currentAccessoriesPage = 1;
 
-            // Update active state
+            // Tự động chuyển tab nếu chọn danh mục đặc thù
+            if (newCat === 'scooter_acc' && currentVehicleType !== 'scooter') {
+                currentVehicleType = 'scooter';
+                updateVehicleTabsUI();
+                renderCategories(); // Cập nhật lại UI Sidebar
+            } else if (newCat === 'car_acc' && currentVehicleType !== 'car') {
+                currentVehicleType = 'car';
+                updateVehicleTabsUI();
+                renderCategories();
+            }
+
+            // Update active state in UI
             categoriesContainer.querySelectorAll('.accessories-category-item').forEach(i => i.classList.remove('active'));
             this.classList.add('active');
 
-            // Re-render accessories
             renderAccessories();
-
-            // Scroll lên đầu khu vực Accessories
             scrollToAccessoriesTop();
         });
     });
@@ -140,38 +152,80 @@ function renderAccessories() {
     const countWrapper = document.querySelector('.accessories-results-count');
     const emptyContainer = document.getElementById('accessories-empty');
     const loadMoreBtn = document.getElementById('accessories-load-more-btn');
-    
+
     if (!gridContainer) return;
 
     // Filter accessories
     let filtered = accessoriesData;
 
     // Filter by vehicle type
-    if (currentVehicleType === 'car') {
-        filtered = filtered.filter(item => item.vehicleType === 'car' || item.vehicleType === 'all');
-    } else if (currentVehicleType === 'scooter') {
-        filtered = filtered.filter(item => item.vehicleType === 'scooter' || item.vehicleType === 'all');
+    // Nếu chọn các danh mục chung (Tất cả, Mới, Phong cách sống) -> Hiện toàn bộ để khớp con số Sidebar
+    // Nếu chọn danh mục đặc thù (Ô tô/Xe máy) -> Đã có logic tự chuyển Tab và lọc đúng loại xe
+    const isGeneralCategory = ['all', 'new', 'lifestyle'].includes(currentCategory);
+
+    if (!isGeneralCategory) {
+        if (currentVehicleType === 'car') {
+            filtered = filtered.filter(item => item.vehicleType === 'car' || item.vehicleType === 'all');
+        } else if (currentVehicleType === 'scooter') {
+            filtered = filtered.filter(item => item.vehicleType === 'scooter' || item.vehicleType === 'all');
+        }
     }
 
     // Filter by category
-    if (currentCategory !== 'all') {
+    if (currentCategory === 'new') {
+        filtered = filtered.filter(item => item.isNew);
+    } else if (currentCategory !== 'all') {
         filtered = filtered.filter(item => item.category === currentCategory);
     }
 
     // Filter by search query
     if (searchQuery.trim()) {
+        currentAccessoriesPage = 1; // Reset page when searching
         const query = searchQuery.toLowerCase().trim();
-        filtered = filtered.filter(item => 
+        filtered = filtered.filter(item =>
             item.name.toLowerCase().includes(query) ||
             item.categoryName.toLowerCase().includes(query) ||
             item.vehicleName.toLowerCase().includes(query)
         );
     }
 
+    // Sort priority or Randomize
+    if (currentCategory === 'all' && !searchQuery.trim()) {
+        // Trộn ngẫu nhiên nếu là mục "Tất cả sản phẩm" để giao diện sinh động hơn
+        for (let i = filtered.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+        }
+    } else {
+        // Sắp xếp ưu tiên nếu chọn danh mục cụ thể hoặc đang tìm kiếm
+        filtered.sort((a, b) => {
+            // Ưu tiên dòng xe đang chọn
+            if (a.vehicleType === currentVehicleType && b.vehicleType !== currentVehicleType) return -1;
+            if (a.vehicleType !== currentVehicleType && b.vehicleType === currentVehicleType) return 1;
+
+            // Ưu tiên các ID mới (sct, lfs, bat...)
+            const getPriority = (id) => {
+                if (id.startsWith('sct-')) return 1;
+                if (id.startsWith('mod-')) return 2;
+                if (id.startsWith('bat-')) return 3;
+                if (id.startsWith('chg-')) return 4;
+                if (id.startsWith('lfs-')) return 5;
+                return 10;
+            };
+            return getPriority(a.id) - getPriority(b.id);
+        });
+    }
+
     // Update count text with translation
     if (countWrapper) {
         const total = filtered.length;
-        countWrapper.innerHTML = `${t('accessories_results_prefix')} <strong id="accessories-count">${total}</strong> ${t('accessories_results_suffix')}`;
+        if (total > 0) {
+            countWrapper.parentElement.style.display = 'block';
+            countWrapper.innerHTML = `${t('accessories_results_prefix')} <strong id="accessories-count">${total}</strong> ${t('accessories_results_suffix')}`;
+        } else {
+            // Hide count info when empty state is shown (it's redundant)
+            countWrapper.parentElement.style.display = 'none';
+        }
     }
 
     // Show/hide empty state
@@ -223,10 +277,16 @@ function createAccessoryCard(item) {
     const formattedPrice = formatPrice(item.price);
     const formattedOldPrice = formatPrice(item.price_old);
 
+    // Thêm nhãn HOT nếu giảm giá > 20%
+    const badgeHtml = item.discount > 20 ? `<span class="accessories-item-badge">HOT</span>` : '';
+
     return `
         <div class="accessories-item" data-id="${item.id}">
             <span class="accessories-item-discount">-${item.discount}%</span>
-            <img src="${item.img}" alt="${item.name}" class="accessories-item-img" loading="lazy">
+            ${badgeHtml}
+            <div class="accessories-item-img-wrapper">
+                <img src="${item.img}" alt="${item.name}" class="accessories-item-img" loading="lazy">
+            </div>
             <div class="accessories-item-info">
                 <h4 class="accessories-item-name">${item.name}</h4>
                 <p class="accessories-item-vehicle">${t('accessories_fit_for')} ${item.vehicleName}</p>
@@ -254,7 +314,7 @@ function setupSearch() {
     if (searchInput) {
         // Search on input change (with debounce)
         let debounceTimer;
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(() => {
                 searchQuery = this.value;
@@ -264,7 +324,7 @@ function setupSearch() {
         });
 
         // Search on Enter key
-        searchInput.addEventListener('keypress', function(e) {
+        searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 clearTimeout(debounceTimer);
                 searchQuery = this.value;
@@ -275,7 +335,7 @@ function setupSearch() {
     }
 
     if (searchBtn) {
-        searchBtn.addEventListener('click', function() {
+        searchBtn.addEventListener('click', function () {
             const input = document.getElementById('accessories-search-input');
             if (input) {
                 searchQuery = input.value;
@@ -293,7 +353,7 @@ function setupLoadMore() {
     const loadMoreBtn = document.getElementById('accessories-load-more-btn');
     if (!loadMoreBtn) return;
 
-    loadMoreBtn.addEventListener('click', function() {
+    loadMoreBtn.addEventListener('click', function () {
         currentAccessoriesPage += 1;
         renderAccessories();
 
@@ -315,4 +375,3 @@ function addToCart(itemId) {
 // Export functions
 window.initAccessories = initAccessories;
 window.addToCart = addToCart;
-

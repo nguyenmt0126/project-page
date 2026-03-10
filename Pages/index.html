@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../Css/style.css">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg bg-light fixed-top" id="mainNavbar" data-bs-theme="light">
@@ -30,19 +33,22 @@
                         <a class="nav-link" href="#" data-i18n="nav_home"></a>
                     </li>
                     <li class="nav-item dropdown mega-menu">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-i18n="nav_vehicles"></a>
-                        <div class="dropdown-menu mega-menu-content">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            data-bs-display="static" data-i18n="nav_vehicles"></a>
+                        <div class="dropdown-menu mega-menu-content p-0 m-0">
                             <div class="container">
                                 <!-- Cars -->
                                 <div class="row">
                                     <div class="col-12">
                                         <h6 class="mega-menu-title" data-i18n="cars_title"></h6>
                                         <div class="carousel-wrapper">
-                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <button class="carousel-btn prev"><i
+                                                    class="fas fa-chevron-left"></i></button>
                                             <div class="carousel-view">
                                                 <div class="carousel-track" id="cars-track"></div>
                                             </div>
-                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                            <button class="carousel-btn next"><i
+                                                    class="fas fa-chevron-right"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -52,11 +58,13 @@
                                     <div class="col-12">
                                         <h6 class="mega-menu-title" data-i18n="scooters_title"></h6>
                                         <div class="carousel-wrapper">
-                                            <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                            <button class="carousel-btn prev"><i
+                                                    class="fas fa-chevron-left"></i></button>
                                             <div class="carousel-view">
                                                 <div class="carousel-track" id="scooters-track"></div>
                                             </div>
-                                            <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                                            <button class="carousel-btn next"><i
+                                                    class="fas fa-chevron-right"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -66,36 +74,42 @@
                     <li class="nav-item"><a class="nav-link" href="#accessory" data-i18n="nav_accessory"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#about-us" data-i18n="nav_about"></a></li>
                     <li class="nav-item"><a class="nav-link" href="#charging" data-i18n="nav_charging"></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news" data-i18n="nav_news"></a></li>
+
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact"></a></li>
                 </ul>
 
-    <div class="d-flex align-items-center navbar-actions">
-                    <a href="#" class="btn btn-outline-dark btn-sm me-2 btn-icon" id="lang-toggle" style="border-radius: 20px; font-weight: bold; min-width: 40px;">VI</a>
+                <div class="d-flex align-items-center navbar-actions">
+                    <a href="#"
+                        class="btn btn-outline-dark btn-sm me-2 btn-icon overflow-hidden d-flex align-items-center justify-content-center p-0"
+                        id="lang-toggle" style="border-radius: 4px; border-width: 1px;">
+                        <img src="https://flagcdn.com/w40/vn.png" id="lang-flag" alt="VI"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section">
-        <video autoplay muted loop playsinline class="hero-video" poster="https://static-cms-prod.vinfastauto.com/ve-chung-toi-video-poster_1664352279.jpg">
-            <source src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4" type="video/mp4">
+    <section class="hero-section" id="hero">
+        <video autoplay muted loop playsinline class="hero-video"
+            poster="https://static-cms-prod.vinfastauto.com/ve-chung-toi-video-poster_1664352279.jpg">
+            <source
+                src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4"
+                type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
-        <div class="container-fluid">
-            <div class="row align-items-center" style="min-height: 100vh;">
-                <div class="col-12 text-center">
-                    <h1 class="display-2 fw-bolder text-uppercase hero-main-title" data-i18n="hero_title"></h1>
-                    <p class="lead hero-subtitle mt-4" data-i18n="hero_subtitle"></p>
-                    <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="#featured-cars" class="btn btn-primary btn-lg hero-btn-primary" data-i18n="hero_btn_order"></a>
-                        <a href="#about-us" class="btn btn-outline-light btn-lg hero-btn-secondary" data-i18n="hero_btn_about"></a>
-                    </div>
-                    <div class="hero-scroll-indicator mt-5">
-                        <div class="scroll-icon"></div>
-                    </div>
-                </div>
+        <div class="hero-top-content">
+            <h1 class="hero-main-title" data-i18n="hero_title"></h1>
+            <p class="hero-tagline" data-i18n="hero_subtitle"></p>
+        </div>
+        <div class="hero-bottom-content">
+            <div class="hero-cta-group">
+                <a href="#featured-cars" class="hero-btn-primary" data-i18n="hero_btn_order"></a>
+                <a href="#about-us" class="hero-btn-secondary" data-i18n="hero_btn_about"></a>
             </div>
+        </div>
+        <div class="hero-scroll-indicator" id="heroScrollBtn">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
@@ -104,7 +118,7 @@
         <div class="container-fluid p-0 m-0">
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="car-prev-btn"><i class="fas fa-chevron-left"></i></button>
-                
+
                 <div class="featured-vehicle-content flex-grow-1 px-3">
                     <div class="row align-items-center">
                         <div class="col-lg-7 mb-4 mb-lg-0">
@@ -130,7 +144,7 @@
         <div class="container-fluid p-0 m-0">
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="scooter-prev-btn"><i class="fas fa-chevron-left"></i></button>
-                
+
                 <div class="featured-vehicle-content flex-grow-1 px-3">
                     <div class="row align-items-center">
                         <div class="col-lg-7 mb-4 mb-lg-0">
@@ -151,25 +165,17 @@
         </div>
     </section>
 
-<!-- Accessories Section -->
+    <!-- Accessories Section -->
     <section class="accessories-section" id="accessory">
         <div class="accessories-wrapper">
             <!-- Vehicle Type Tabs -->
             <div class="accessories-vehicle-tabs">
-                <button
-                    id="accessories-tab-car"
-                    class="accessories-vehicle-tab active"
-                    type="button"
-                    data-i18n="accessories_tab_car"
-                >
+                <button id="accessories-tab-car" class="accessories-vehicle-tab active" type="button"
+                    data-i18n="accessories_tab_car">
                     Phụ kiện ô tô
                 </button>
-                <button
-                    id="accessories-tab-scooter"
-                    class="accessories-vehicle-tab"
-                    type="button"
-                    data-i18n="accessories_tab_scooter"
-                >
+                <button id="accessories-tab-scooter" class="accessories-vehicle-tab" type="button"
+                    data-i18n="accessories_tab_scooter">
                     Phụ kiện xe máy điện
                 </button>
             </div>
@@ -181,14 +187,10 @@
                 <div class="accessories-sidebar-search">
                     <div class="accessories-search-wrapper">
                         <i class="fas fa-search"></i>
-                        <input
-                            type="text"
-                            class="accessories-search-input"
-                            id="accessories-search-input"
-                            placeholder="Tìm kiếm phụ kiện..."
-                            data-i18n-placeholder="accessories_search_placeholder"
-                        >
-                        <button class="accessories-search-btn" id="accessories-search-btn" data-i18n="accessories_search_button">Tìm</button>
+                        <input type="text" class="accessories-search-input" id="accessories-search-input"
+                            placeholder="Tìm kiếm phụ kiện..." data-i18n-placeholder="accessories_search_placeholder">
+                        <button class="accessories-search-btn" id="accessories-search-btn"
+                            data-i18n="accessories_search_button">Tìm</button>
                     </div>
                 </div>
 
@@ -213,11 +215,8 @@
 
                 <!-- Load More Button -->
                 <div class="accessories-load-more-wrapper">
-                    <button
-                        class="accessories-load-more-btn"
-                        id="accessories-load-more-btn"
-                        data-i18n="accessories_load_more"
-                    >
+                    <button class="accessories-load-more-btn" id="accessories-load-more-btn"
+                        data-i18n="accessories_load_more">
                         Xem thêm phụ kiện
                     </button>
                 </div>
@@ -232,12 +231,21 @@
         </div>
     </section>
 
+    <!-- Charging Section Placeholder -->
+    <section class="charging-section py-5" id="charging">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4" data-i18n="nav_charging">Trạm sạc</h2>
+            <p class="text-muted" data-i18n="charging_coming_soon">Hệ thống trạm sạc đang được cập nhật...</p>
+        </div>
+    </section>
+
     <!-- Vehicle Specs Modal -->
     <div class="modal fade" id="vehicleSpecModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
                 <div class="modal-header bg-light border-0">
-                    <h5 class="modal-title fw-bold text-uppercase ls-1" id="vehicleSpecModalLabel" data-i18n="modal_title"></h5>
+                    <h5 class="modal-title fw-bold text-uppercase ls-1" id="vehicleSpecModalLabel"
+                        data-i18n="modal_title"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4 p-lg-5">
@@ -246,8 +254,10 @@
                     </div>
                 </div>
                 <div class="modal-footer border-0 bg-light">
-                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal" data-i18n="modal_close"></button>
-                    <a href="#" class="btn btn-dark rounded-pill px-5 py-2 fw-bold shadow-sm" id="modalPreOrderBtn" data-i18n="modal_deposit" data-bs-dismiss="modal"></a>
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal"
+                        data-i18n="modal_close"></button>
+                    <a href="#" class="btn btn-dark rounded-pill px-5 py-2 fw-bold shadow-sm" id="modalPreOrderBtn"
+                        data-i18n="modal_deposit" data-bs-dismiss="modal"></a>
                 </div>
             </div>
         </div>
@@ -265,35 +275,37 @@
                     <p class="text-uppercase fw-bold text-primary mb-2" data-i18n="about_tagline"></p>
                     <h2 class="mb-3 fw-bold" data-i18n="about_title"></h2>
                     <p class="lead text-light mb-3" data-i18n="about_subtitle"></p>
-                    
+
                     <div class="about-content">
-                        <p class="mb-3 text-light" data-i18n="about_p1"></p>
-                        
-                        <div class="about-more-content collapse" id="aboutMoreContent">
-                            <p class="mb-3 text-light" data-i18n="about_p2"></p>
-                            <p class="mb-3 text-light" data-i18n="about_p3"></p>
+                        <div class="about-text-card">
+                            <p class="mb-3 text-light" data-i18n-html="about_p1"></p>
+
+                            <div class="about-more-content collapse" id="aboutMoreContent">
+                                <p class="mb-3 text-light" data-i18n-html="about_p2"></p>
+                                <p class="mb-3 text-light" data-i18n-html="about_p3"></p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <button class="btn btn-link text-light p-0 mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#aboutMoreContent" aria-expanded="false" id="aboutReadMoreBtn">
+
+                    <button class="btn btn-link text-light p-0 mt-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#aboutMoreContent" aria-expanded="false" id="aboutReadMoreBtn">
                         <span data-i18n="about_read_more"></span>
                         <i class="fas fa-chevron-down ms-2"></i>
                     </button>
-                    
+
                     <div class="d-flex gap-3 mt-4">
                         <a href="#" class="btn btn-primary btn-lg rounded-pill px-4" data-i18n="about_learn_more"></a>
-                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-4" data-i18n="about_contact_us"></a>
+                        <a href="#" class="btn btn-outline-light btn-lg rounded-pill px-4"
+                            data-i18n="about_contact_us"></a>
                     </div>
                 </div>
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <!-- Empty column for spacing -->
-                </div>
+
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-3">
+    <footer class="bg-dark text-white pt-5 pb-3" id="contact">
         <div class="container">
             <div class="row mb-4">
                 <!-- Company Info -->
@@ -304,10 +316,14 @@
                     </div>
                     <p class="text-secondary mb-3" data-i18n="footer_tagline"></p>
                     <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn btn-sm btn-outline-light rounded-circle"><i
+                                class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -315,10 +331,14 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3" data-i18n="footer_products"></h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_electric_cars"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_e_scooters"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_accessories"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_chargers"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_electric_cars"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_e_scooters"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_accessories"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_chargers"></a></li>
                     </ul>
                 </div>
 
@@ -326,19 +346,26 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3" data-i18n="footer_support"></h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_help_center"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_warranty"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_shipping"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_returns"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_help_center"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_warranty"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_shipping"></a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                                data-i18n="footer_returns"></a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3" data-i18n="footer_contact"></h6>
-                    <p class="text-secondary mb-2"><i class="fas fa-phone me-2"></i> <span data-i18n="footer_phone"></span></p>
-                    <p class="text-secondary mb-2"><i class="fas fa-envelope me-2"></i> <span data-i18n="footer_email"></span></p>
-                    <p class="text-secondary"><i class="fas fa-map-marker-alt me-2"></i> <span data-i18n="footer_address"></span></p>
+                    <p class="text-secondary mb-2"><i class="fas fa-phone me-2"></i> <span
+                            data-i18n="footer_phone"></span></p>
+                    <p class="text-secondary mb-2"><i class="fas fa-envelope me-2"></i> <span
+                            data-i18n="footer_email"></span></p>
+                    <p class="text-secondary"><i class="fas fa-map-marker-alt me-2"></i> <span
+                            data-i18n="footer_address"></span></p>
                 </div>
             </div>
 
@@ -350,15 +377,17 @@
                     <p class="text-secondary mb-0"><span data-i18n="footer_copyright"></span></p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="text-secondary text-decoration-none footer-link me-3" data-i18n="footer_privacy"></a>
-                    <a href="#" class="text-secondary text-decoration-none footer-link me-3" data-i18n="footer_terms"></a>
+                    <a href="#" class="text-secondary text-decoration-none footer-link me-3"
+                        data-i18n="footer_privacy"></a>
+                    <a href="#" class="text-secondary text-decoration-none footer-link me-3"
+                        data-i18n="footer_terms"></a>
                     <a href="#" class="text-secondary text-decoration-none footer-link" data-i18n="footer_cookies"></a>
                 </div>
             </div>
         </div>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JavaScript/section-loader.js"></script>
     <script src="../JavaScript/car-data.js"></script>
     <script src="../JavaScript/scooter-data.js"></script>
@@ -368,6 +397,11 @@
     <script src="../JavaScript/mega-menu.js"></script>
     <script src="../JavaScript/featured-carousel.js"></script>
     <script src="../JavaScript/accessories-render.js"></script>
+    <script src="../JavaScript/hero-banner.js"></script>
     <script src="../JavaScript/main.js"></script>
+
+
+
 </body>
+
 </html>

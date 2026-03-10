@@ -47,7 +47,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     const firstVehicle = data[0];
     const typeLabel = firstVehicle.type === 'car' ? t('badge_car') : t('badge_scooter');
     let specsHTML = '';
-    
+
     const specIconMap = {
         'spec_range': 'fas fa-road',
         'spec_seats': 'fas fa-users',
@@ -64,10 +64,10 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
 
     const generateSpecItem = (specKey, dataKey, staticValue = null) => {
         const iconClass = specIconMap[specKey] || 'fas fa-info-circle';
-        const valueHTML = staticValue 
+        const valueHTML = staticValue
             ? `<span class="spec-value">${t(staticValue)}</span>`
             : `<span class="spec-value" data-spec="${dataKey}"></span>`;
-        
+
         return `
             <div class="spec-item-optimized">
                 <i class="${iconClass}"></i>
@@ -78,7 +78,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
             </div>
         `;
     };
-    
+
     if (firstVehicle.type === 'car') {
         specsHTML = `
             ${generateSpecItem('spec_range', 'range')}
@@ -140,7 +140,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
 
     function updateDisplay(index) {
         const vehicle = data[index];
-        
+
         imgElement.src = vehicle.img;
         imgElement.classList.remove('slide-in-img');
         void imgElement.offsetWidth;
@@ -216,13 +216,19 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
 
     updateDisplay(currentIndex);
 
-    prevBtn.addEventListener('click', () => {
+    // Clone buttons to remove any previously attached event listeners (prevents double-firing on re-init)
+    const freshPrev = prevBtn.cloneNode(true);
+    const freshNext = nextBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(freshPrev, prevBtn);
+    nextBtn.parentNode.replaceChild(freshNext, nextBtn);
+
+    freshPrev.addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? data.length - 1 : currentIndex - 1;
         updateDisplay(currentIndex);
         updateBullets();
     });
 
-    nextBtn.addEventListener('click', () => {
+    freshNext.addEventListener('click', () => {
         currentIndex = (currentIndex === data.length - 1) ? 0 : currentIndex + 1;
         updateDisplay(currentIndex);
         updateBullets();
@@ -232,15 +238,15 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
 /**
  * Global function to navigate to a specific vehicle from Mega Menu
  */
-window.navigateToVehicle = function(type, id) {
+window.navigateToVehicle = function (type, id) {
     // 1. Scroll to section
     const sectionId = type === 'car' ? 'featured-cars' : 'featured-scooters';
     const section = document.getElementById(sectionId);
-    
+
     if (section) {
         const navbarHeight = document.getElementById('mainNavbar')?.offsetHeight || 0;
         const targetPosition = section.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-        
+
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'

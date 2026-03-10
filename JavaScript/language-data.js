@@ -12,11 +12,12 @@ const translations = {
         "nav_news": "News",
         "nav_about": "About",
         "nav_contact": "Contact",
-        "nav_register": "Register",
-        
+        "mbn_cars": "Cars",
+        "mbn_scooters": "Scooters",
+
         // Mega Menu
-        "cars_title": "Cars",
-        "scooters_title": "Scooters",
+        "cars_title": "Featured Cars",
+        "scooters_title": "Featured Scooters",
 
         "btn_detail": "Detail",
 
@@ -30,6 +31,9 @@ const translations = {
         "hero_btn_about": "About Us",
         "hero_badge_eco": "🌿 100% Eco-Friendly",
         "hero_badge_warranty": "🛡️ 10-Year Warranty",
+        "hero_stat_vehicles": "Vehicles Delivered",
+        "hero_stat_stations": "Charging Stations",
+        "hero_stat_countries": "Countries",
 
         // Carousel / Specs
         "spec_range": "Range",
@@ -66,10 +70,11 @@ const translations = {
         "accessories_load_more": "Load more accessories",
         "accessories_fit_for": "Suitable for:",
         "accessories_cart_button": "Add to cart",
-        "accessories_cat_all": "All",
-        "accessories_cat_exterior": "Exterior",
-        "accessories_cat_interior": "Interior",
-        "accessories_cat_safety": "Safety",
+        "accessories_cat_all": "All Products",
+        "accessories_cat_new": "New Arrivals",
+        "accessories_cat_lifestyle": "Lifestyle",
+        "accessories_cat_car": "Car Accessories",
+        "accessories_cat_scooter": "Scooter Acc",
         "accessories_cat_charging": "Charging & Battery",
         "accessories_cat_maintenance": "Maintenance",
         "accessories_tab_car": "Car accessories",
@@ -79,14 +84,14 @@ const translations = {
         "about_tagline": "Our Vision",
         "about_title": "About L-Corparation",
         "about_subtitle": "Pioneering the Future of Green Mobility.",
-        "about_p1": "L-Corparation was founded with a revolutionary vision: to create a sustainable future through intelligent and eco-friendly transportation. We believe in the power of innovation to challenge the status quo and build a cleaner, greener world for generations to come. Our commitment to excellence drives us to continuously push the boundaries of electric vehicle technology, ensuring that every product we create not only meets but exceeds the expectations of our customers.",
-        "about_p2": "Our team of passionate engineers, designers, and visionaries work tirelessly to craft electric vehicles that are not only technologically advanced but also aesthetically stunning and a joy to drive. With decades of combined experience in automotive engineering and sustainable technology, we have developed a range of electric cars and scooters that combine performance, style, and environmental responsibility. Each vehicle is meticulously designed and tested to provide the ultimate driving experience while minimizing our carbon footprint.",
-        "about_p3": "At L-Corparation, we are more than just an automotive company - we are pioneers in the green revolution. Our state-of-the-art manufacturing facilities utilize renewable energy sources and sustainable practices throughout the production process. We are committed to reducing waste, minimizing emissions, and creating a circular economy that benefits both our customers and the planet. Join us in our mission to transform the way the world moves, one electric vehicle at a time.",
+        "about_p1": "L-Corparation was founded with a <i>revolutionary vision</i>: to create a <b>sustainable future</b> through <b>intelligent</b> and <b>eco-friendly transportation</b>. We believe in the power of <i>innovation</i> to challenge the status quo and build a cleaner, greener world for generations to come.",
+        "about_p2": "Our team of <b>passionate engineers</b> works tirelessly to craft electric vehicles that are not only <i>technologically advanced</i> but also <b>aesthetically stunning</b>. With decades of combined experience, we have developed a range of electric cars and scooters that combine <b>performance, style, and environmental responsibility</b>.",
+        "about_p3": "At L-Corparation, we are more than just an automotive company - we are <b>pioneers in the green revolution</b>. Join us in our mission to <i>transform the way the world moves</i>, one electric vehicle at a time.",
         "about_read_more": "Read More",
         "about_read_less": "Read Less",
         "about_learn_more": "Learn More",
         "about_contact_us": "Contact Us",
-        
+
         // Modal
         "modal_title": "Technical Specifications",
         "modal_close": "Close",
@@ -108,11 +113,12 @@ const translations = {
         "footer_returns": "Returns",
         "footer_phone": "+1 (800) 123-4567",
         "footer_email": "support@lcorp.com",
-        "footer_address": "123 Green Street, Tech City, TC 12345",
-        "footer_copyright": "&copy; 2024 L-Corparation. All rights reserved.",
+        "footer_address": "390 Hoang Van Thu, Cao Đẳng Lý Tự Trọng, TC 12345",
+        "footer_copyright": "🄯 2026 L-Corparation. No rights reserved.",
         "footer_privacy": "Privacy Policy",
         "footer_terms": "Terms of Service",
         "footer_cookies": "Cookie Settings",
+        "charging_coming_soon": "Charging station system is being updated...",
 
         // Data Labels (Mapping from data.js)
         "Range": "Range",
@@ -154,11 +160,12 @@ const translations = {
         "nav_news": "Tin tức",
         "nav_about": "Về chúng tôi",
         "nav_contact": "Liên hệ",
-        "nav_register": "Đăng ký",
+        "mbn_cars": "Tô điện",
+        "mbn_scooters": "Xe máy",
 
         // Mega Menu
-        "cars_title": "Ô tô",
-        "scooters_title": "Xe máy điện",
+        "cars_title": "Các mẫu xe điện",
+        "scooters_title": "Các mẫu xe máy điện",
 
         "btn_detail": "Chi tiết",
 
@@ -172,6 +179,9 @@ const translations = {
         "hero_btn_about": "Về chúng tôi",
         "hero_badge_eco": "🌿 100% Thân thiện môi trường",
         "hero_badge_warranty": "🛡️ Bảo hành 10 năm",
+        "hero_stat_vehicles": "Xe đã bàn giao",
+        "hero_stat_stations": "Trạm sạc",
+        "hero_stat_countries": "Quốc gia",
 
         // Carousel / Specs
         "spec_range": "Quãng đường",
@@ -208,10 +218,11 @@ const translations = {
         "accessories_load_more": "Xem thêm phụ kiện",
         "accessories_fit_for": "Phù hợp:",
         "accessories_cart_button": "Giỏ hàng",
-        "accessories_cat_all": "Tất cả",
-        "accessories_cat_exterior": "Ngoại thất",
-        "accessories_cat_interior": "Nội thất",
-        "accessories_cat_safety": "Bảo hộ",
+        "accessories_cat_all": "Tất cả sản phẩm",
+        "accessories_cat_new": "Sản phẩm mới",
+        "accessories_cat_lifestyle": "Phong cách sống",
+        "accessories_cat_car": "Phụ kiện Ô tô điện",
+        "accessories_cat_scooter": "Phụ kiện Xe máy",
         "accessories_cat_charging": "Sạc & Pin",
         "accessories_cat_maintenance": "Bảo dưỡng",
         "accessories_tab_car": "Phụ kiện ô tô",
@@ -221,9 +232,9 @@ const translations = {
         "about_tagline": "Tầm nhìn của chúng tôi",
         "about_title": "Về L-Corparation",
         "about_subtitle": "Tiên phong cho Tương lai Di chuyển Xanh.",
-        "about_p1": "L-Corparation được thành lập với một tầm nhìn đột phá: tạo ra một tương lai bền vững thông qua các phương tiện giao thông thông minh và thân thiện với môi trường. Chúng tôi tin vào sức mạnh của sự đổi mới để thách thức hiện trạng và xây dựng một thế giới sạch hơn, xanh hơn cho các thế hệ mai sau. Cam kết của chúng tôi về sự xuất sắc thúc đẩy chúng tôi liên tục đẩy xa ranh giới của công nghệ xe điện, đảm bảo rằng mọi sản phẩm chúng tôi tạo ra không chỉ đáp ứng mà còn vượt quá kỳ vọng của khách hàng.",
-        "about_p2": "Đội ngũ kỹ sư, nhà thiết kế và những người có tầm nhìn đầy nhiệt huyết của chúng tôi làm việc không mệt mỏi để tạo ra những chiếc xe điện không chỉ có công nghệ tiên tiến mà còn có tính thẩm mỹ cao và mang lại niềm vui khi lái. Với hàng thập kỷ kinh nghiệm kết hợp trong kỹ thuật ô tô và công nghệ bền vững, chúng tôi đã phát triển một loạt xe ô tô và xe máy điện kết hợp hiệu suất, phong cách và trách nhiệm với môi trường. Mỗi chiếc xe được thiết kế và kiểm tra cẩn thận để mang lại trải nghiệm lái xe tốt nhất trong khi giảm thiểu dấu chân carbon của chúng tôi.",
-        "about_p3": "Tại L-Corparation, chúng tôi không chỉ là một công ty ô tô - chúng tôi là những người tiên phong trong cuộc cách mạng xanh. Cơ sở sản xuất hiện đại của chúng tôi sử dụng các nguồn năng lượng tái tạo và thực hành bền vững trong toàn bộ quy trình sản xuất. Chúng tôi cam kết giảm thiểu chất thải, giảm khí thải và tạo ra một nền kinh tế tuần hoàn mang lại lợi ích cho cả khách hàng và hành tinh. Hãy tham gia cùng chúng tôi trong sứ mệnh biến đổi cách thế giới di chuyển, một chiếc xe điện tại một thời điểm.",
+        "about_p1": "L-Corparation được thành lập với một <i>tầm nhìn đột phá</i>: tạo ra một <b>tương lai bền vững</b> thông qua các phương tiện giao thông <b>thông minh</b> và <b>thân thiện với môi trường</b>. Chúng tôi tin vào sức mạnh của sự <i>đổi mới</i> để thách thức hiện trạng và xây dựng một thế giới sạch hơn, xanh hơn.",
+        "about_p2": "Đội ngũ <b>kỹ sư đầy tâm huyết</b> của chúng tôi làm việc không mệt mỏi để tạo ra những phương tiện chạy điện không chỉ <i>tiên tiến về công nghệ</i> mà còn <b>ấn tượng về thẩm mỹ</b>. Chúng tôi kết hợp giữa <b>hiệu suất, phong cách và trách nhiệm với môi trường</b>.",
+        "about_p3": "Tại L-Corparation, chúng tôi không chỉ là một công ty ô tô - chúng tôi là những <b>người tiên phong trong cuộc cách mạng xanh</b>. Hãy cùng chúng tôi thực hiện sứ mệnh <i>thay đổi cách thế giới vận hành</i>, từng chiếc xe điện một.",
         "about_read_more": "Xem thêm",
         "about_read_less": "Thu gọn",
         "about_learn_more": "Tìm hiểu thêm",
@@ -251,10 +262,11 @@ const translations = {
         "footer_phone": "+1 (800) 123-4567",
         "footer_email": "support@lcorp.com",
         "footer_address": "123 Green Street, Tech City, TC 12345",
-        "footer_copyright": "&copy; 2024 L-Corparation. Bản quyền được bảo lưu.",
+        "footer_copyright": "🄯 2024 L-Corparation. Không bảo lưu quyền.",
         "footer_privacy": "Chính sách bảo mật",
         "footer_terms": "Điều khoản dịch vụ",
         "footer_cookies": "Cài đặt cookie",
+        "charging_coming_soon": "Hệ thống trạm sạc đang được cập nhật...",
 
         // Data Labels
         "Range": "Quãng đường",
@@ -298,12 +310,20 @@ function t(key) {
 function setLanguage(lang) {
     if (!translations[lang]) return;
     currentLang = lang;
-    
+
     // Update static elements (textContent)
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         if (translations[lang][key]) {
             element.textContent = translations[lang][key];
+        }
+    });
+
+    // Update HTML elements (innerHTML)
+    document.querySelectorAll('[data-i18n-html]').forEach(element => {
+        const key = element.getAttribute('data-i18n-html');
+        if (translations[lang][key]) {
+            element.innerHTML = translations[lang][key];
         }
     });
 
@@ -315,9 +335,17 @@ function setLanguage(lang) {
         }
     });
 
-    // Update button text
-    const langBtn = document.getElementById('lang-toggle');
-    if(langBtn) langBtn.textContent = lang === 'en' ? 'VI' : 'EN';
+    // Update button icon
+    const langFlag = document.getElementById('lang-flag');
+    if (langFlag) {
+        // If current is 'en', show VN flag to click to switch to VI. 
+        // If current is 'vi', show UK flag to click to switch to EN.
+        langFlag.src = lang === 'en' ? 'https://flagcdn.com/w40/vn.png' : 'https://flagcdn.com/w40/gb.png';
+        langFlag.alt = lang === 'en' ? 'Tiếng Việt' : 'English';
+    } else {
+        const langBtn = document.getElementById('lang-toggle');
+        if (langBtn) langBtn.textContent = lang === 'en' ? 'VI' : 'EN';
+    }
 
     // Re-render dynamic components
     if (typeof initVehicleSpecCarousel === 'function') initVehicleSpecCarousel();
@@ -329,10 +357,10 @@ function setLanguage(lang) {
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize default language on page load
-    setLanguage('en');
-    
+    setLanguage('vi');
+
     const langBtn = document.getElementById('lang-toggle');
-    if(langBtn) {
+    if (langBtn) {
         langBtn.addEventListener('click', (e) => {
             e.preventDefault();
             const newLang = currentLang === 'en' ? 'vi' : 'en';
