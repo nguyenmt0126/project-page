@@ -231,11 +231,120 @@
         </div>
     </section>
 
-    <!-- Charging Section Placeholder -->
-    <section class="charging-section py-5" id="charging">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-4" data-i18n="nav_charging">Trạm sạc</h2>
-            <p class="text-muted" data-i18n="charging_coming_soon">Hệ thống trạm sạc đang được cập nhật...</p>
+    <!-- Charging Section (Redesigned with Google Map style) -->
+    <section class="charging-section-v2" id="charging">
+        <div class="container-fluid p-0">
+            <div class="charging-map-container">
+                <!-- Sidebar with Station List -->
+                <div class="charging-sidebar">
+                    <div class="charging-sidebar-header p-4 pb-0">
+                        <h2 class="sidebar-title-premium mb-2" data-i18n="nav_charging"></h2>
+                        <p class="sidebar-subtitle-premium text-muted mb-0" style="font-size: 0.85rem;"
+                            data-i18n="charging_subtitle"></p>
+                    </div>
+
+                    <div class="charging-search p-4 pb-0">
+                        <div class="input-group">
+                            <span class="input-group-text bg-transparent border-end-0"><i
+                                    class="fas fa-search text-muted"></i></span>
+                            <input type="text" class="form-control border-start-0 shadow-none ps-0"
+                                data-i18n-placeholder="charging_search_placeholder">
+                        </div>
+                    </div>
+
+                    <div class="charging-filter-pills">
+                        <button class="charging-pill active" data-filter="all" data-i18n="charging_label_all"></button>
+                        <button class="charging-pill" data-filter="fast" data-i18n="charging_label_fast"></button>
+                        <button class="charging-pill" data-filter="normal" data-i18n="charging_label_normal"></button>
+                    </div>
+
+                    <div class="charging-list-scroll">
+                        <!-- Station Card 1 -->
+                        <div class="charging-station-card active" data-type="fast">
+                            <div class="card-status active" data-i18n="charging_status_active"></div>
+                            <h5 class="station-name">VinFast - Vincom Center Đồng Khởi</h5>
+                            <p class="station-address">45A Lý Tự Trọng, Bến Nghé, Quận 1, TP. Hồ Chí Minh</p>
+                            <div class="station-info-row">
+                                <span><i class="fas fa-bolt text-warning"></i> 8/8 Trụ</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 0.5 km</span>
+                            </div>
+                            <div class="card-actions mt-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Vincom+Center+Dong+Khoi+VinFast"
+                                    target="_blank" class="text-decoration-none">
+                                    <button class="btn btn-sm btn-dark w-100"
+                                        data-i18n="charging_btn_direction"></button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Station Card 2 -->
+                        <div class="charging-station-card" data-type="fast">
+                            <div class="card-status active" data-i18n="charging_status_active"></div>
+                            <h5 class="station-name">VinFast - Landmark 81</h5>
+                            <p class="station-address">Vinhomes Central Park, 208 Nguyễn Hữu Cảnh, Bình Thạnh, TP. HCM
+                            </p>
+                            <div class="station-info-row">
+                                <span><i class="fas fa-bolt text-warning"></i> 12/12 Trụ</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 2.8 km</span>
+                            </div>
+                            <div class="card-actions mt-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=VinFast+Landmark+81"
+                                    target="_blank" class="text-decoration-none">
+                                    <button class="btn btn-sm btn-dark w-100"
+                                        data-i18n="charging_btn_direction"></button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Station Card 3 -->
+                        <div class="charging-station-card" data-type="fast">
+                            <div class="card-status active" data-i18n="charging_status_active"></div>
+                            <h5 class="station-name">VinFast - Vincom Mega Mall Thảo Điền</h5>
+                            <p class="station-address">161 Xa lộ Hà Nội, Thảo Điền, Quận 2, TP. Hồ Chí Minh</p>
+                            <div class="station-info-row">
+                                <span><i class="fas fa-bolt text-warning"></i> 6/6 Trụ</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 4.5 km</span>
+                            </div>
+                            <div class="card-actions mt-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Vincom+Mega+Mall+Thao+Dien+VinFast"
+                                    target="_blank" class="text-decoration-none">
+                                    <button class="btn btn-sm btn-dark w-100"
+                                        data-i18n="charging_btn_direction"></button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Station Card 4 -->
+                        <div class="charging-station-card" data-type="normal">
+                            <div class="card-status busy" data-i18n="charging_status_busy"></div>
+                            <h5 class="station-name">Trạm sạc VinFast - Petrolimex Quận 7</h5>
+                            <p class="station-address">Huỳnh Tấn Phát, Phú Mỹ, Quận 7, TP. Hồ Chí Minh</p>
+                            <div class="station-info-row">
+                                <span><i class="fas fa-bolt text-muted"></i> 0/4 Trụ</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 7.2 km</span>
+                            </div>
+                            <div class="card-actions mt-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Tram+sac+VinFast+Petrolimex+Quan+7"
+                                    target="_blank" class="text-decoration-none">
+                                    <button class="btn btn-sm btn-dark w-100"
+                                        data-i18n="charging_btn_direction"></button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Map Iframe Display -->
+                <div class="charging-map-display">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d125412.3!2d106.6!3d10.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1zVHLhuqFtIHPhuqFjIFZpbiNGYXN0IFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    <div class="map-overlay-badge">
+                        <i class="fas fa-charging-station me-2"></i> 200+ Charging Stations In HCMC
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -431,6 +540,7 @@
     <script src="../JavaScript/mega-menu.js"></script>
     <script src="../JavaScript/featured-carousel.js"></script>
     <script src="../JavaScript/accessories-render.js"></script>
+    <script src="../JavaScript/charging.js"></script>
     <script src="../JavaScript/hero-banner.js"></script>
     <script src="../JavaScript/main.js"></script>
 

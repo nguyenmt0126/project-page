@@ -18,6 +18,18 @@ const translations = {
         "mbn_accessory": "Accessories",
         "mbn_charging": "Charging",
 
+        // Charging Section
+        "charging_title": "Nationwide Charging Network",
+        "charging_subtitle": "Find the nearest VinFast charging stations to stay powered on every journey.",
+        "charging_search_placeholder": "Enter address or city name...",
+        "charging_label_all": "All",
+        "charging_label_fast": "Ultra Fast",
+        "charging_label_normal": "Normal",
+        "charging_status_active": "Active",
+        "charging_status_busy": "Busy",
+        "charging_btn_direction": "Directions",
+        "charging_btn_list": "Station list",
+
         // Mega Menu
         "cars_title": "Featured Cars",
         "scooters_title": "Featured Scooters",
@@ -168,6 +180,18 @@ const translations = {
         "mbn_scooters": "Xe máy điện",
         "mbn_accessory": "Phụ kiện",
         "mbn_charging": "Trạm sạc",
+
+        // Charging Section
+        "charging_title": "Mạng lưới trạm sạc toàn quốc",
+        "charging_subtitle": "Tìm kiếm các trạm sạc VinFast gần bạn nhất để nạp đầy năng lượng cho mọi hành trình.",
+        "charging_search_placeholder": "Nhập địa chỉ hoặc tên thành phố...",
+        "charging_label_all": "Tất cả",
+        "charging_label_fast": "Sạc siêu nhanh",
+        "charging_label_normal": "Sạc thường",
+        "charging_status_active": "Đang hoạt động",
+        "charging_status_busy": "Đang bận",
+        "charging_btn_direction": "Chỉ đường",
+        "charging_btn_list": "Danh sách trạm",
 
         // Mega Menu
         "cars_title": "Các mẫu xe điện",
