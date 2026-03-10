@@ -391,16 +391,17 @@ function setLanguage(lang) {
         }
     });
 
-    // Update button icon
+    // Update button icon & label
     const langFlag = document.getElementById('lang-flag');
+    const langLabel = document.getElementById('lang-label');
     if (langFlag) {
         // If current is 'en', show VN flag to click to switch to VI. 
         // If current is 'vi', show UK flag to click to switch to EN.
         langFlag.src = lang === 'en' ? 'https://flagcdn.com/w40/vn.png' : 'https://flagcdn.com/w40/gb.png';
         langFlag.alt = lang === 'en' ? 'Tiếng Việt' : 'English';
-    } else {
-        const langBtn = document.getElementById('lang-toggle');
-        if (langBtn) langBtn.textContent = lang === 'en' ? 'VI' : 'EN';
+    }
+    if (langLabel) {
+        langLabel.textContent = lang === 'en' ? 'Tiếng Việt' : 'English';
     }
 
     // Re-render dynamic components
