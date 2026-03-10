@@ -12,8 +12,11 @@ const translations = {
         "nav_news": "News",
         "nav_about": "About",
         "nav_contact": "Contact",
+        "mbn_home": "Home",
         "mbn_cars": "Cars",
         "mbn_scooters": "Scooters",
+        "mbn_accessory": "Accessories",
+        "mbn_charging": "Charging",
 
         // Mega Menu
         "cars_title": "Featured Cars",
@@ -160,8 +163,11 @@ const translations = {
         "nav_news": "Tin tức",
         "nav_about": "Về chúng tôi",
         "nav_contact": "Liên hệ",
-        "mbn_cars": "Tô điện",
-        "mbn_scooters": "Xe máy",
+        "mbn_home": "Trang chủ",
+        "mbn_cars": "Ô tô điện",
+        "mbn_scooters": "Xe máy điện",
+        "mbn_accessory": "Phụ kiện",
+        "mbn_charging": "Trạm sạc",
 
         // Mega Menu
         "cars_title": "Các mẫu xe điện",

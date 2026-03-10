@@ -336,7 +336,7 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
 }
 
 /* ============================================
-   MOBILE BOTTOM NAVIGATION BAR
+   MOBILE BOTTOM NAVIGATION (Redesigned)
    ============================================ */
 
 .mobile-bottom-nav {
@@ -344,18 +344,17 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1050;
-    display: flex;
+    z-index: 2000;
+    display: none;
+    /* Hidden by default, show on mobile */
     justify-content: space-around;
-    align-items: stretch;
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-top: 1px solid rgba(0, 0, 0, 0.07);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+    align-items: center;
+    background: #fdfcff;
+    /* Ultra clean background */
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.04);
     padding-bottom: env(safe-area-inset-bottom, 0px);
-    /* notch phones support */
-    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    height: calc(68px + env(safe-area-inset-bottom, 0px));
 }
 
 .mobile-nav-item {
@@ -364,57 +363,76 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    min-height: 100%;
     text-decoration: none;
-    color: var(--text-light);
+    color: #8e8e93;
+    /* Subtle grey like iOS/Premium apps */
     font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    padding: 8px 4px;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    transition: color 0.2s ease;
+    padding: 2px 0;
+}
+
+/* Pill container for the icon */
+.mobile-nav-icon-pill {
+    width: 64px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    margin-bottom: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
 }
 
 .mobile-nav-item i {
     font-size: 1.2rem;
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+    color: inherit;
+    transition: all 0.3s ease;
 }
 
 .mobile-nav-item span {
-    text-transform: capitalize;
+    font-size: 0.65rem;
+    letter-spacing: 0.1px;
+    opacity: 0.8;
 }
 
-/* Active state */
+/* Redesigned Active State: Pill Background around Icon */
 .mobile-nav-item.active {
-    color: var(--primary-color);
+    color: #1c1c1e;
+    /* Near black */
+}
+
+.mobile-nav-item.active .mobile-nav-icon-pill {
+    background-color: #e9e8f4;
+    /* Subtle lavender pill */
 }
 
 .mobile-nav-item.active i {
-    transform: translateY(-2px) scale(1.1);
-    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
-/* Active indicator bar */
-.mobile-nav-item.active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 25%;
-    right: 25%;
-    height: 2px;
-    background-color: var(--primary-color);
-    border-radius: 0 0 3px 3px;
+.mobile-nav-item.active span {
+    font-weight: 700;
+    opacity: 1;
 }
 
-/* Push body content above the bottom nav bar on mobile */
+/* Responsive show/hide */
 @media (max-width: 991px) {
+    .mobile-bottom-nav {
+        display: flex;
+    }
+
     body {
         padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
     }
 
-    /* Ensure footer doesn't get cut off */
-    footer {
-        margin-bottom: 0;
+    /* Hide desktop-only elements on mobile if needed */
+    .navbar .navbar-toggler {
+        display: none !important;
+        /* Hide hamburger as we have bottom nav */
     }
 }
 
@@ -512,7 +530,7 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
     animation-delay: 0.8s;
 }
 
-/* -- CTA Button group (side-by-side pills, Tesla style) -- */
+/* -- CTA Button group (side-by-side pills) -- */
 .hero-cta-group {
     display: flex;
     justify-content: center;
@@ -521,29 +539,8 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
     margin-bottom: 24px;
 }
 
-/* Primary button (filled — dark bg, white text like Tesla) */
-/* Primary button (filled — light bg, dark text like Tesla) */
-.hero-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 260px;
-    padding: 12px 48px;
-    font-family: 'Mulish', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: none;
-    text-decoration: none;
-    color: #171a20;
-    background: rgba(255, 255, 255, 0.92);
-    border: none;
-    border-radius: 4px;
-    backdrop-filter: blur(4px);
-    cursor: pointer;
-}
-
-/* Secondary button (outlined — transparent with white border) */
+/* Base button styles */
+.hero-btn-primary,
 .hero-btn-secondary {
     display: inline-flex;
     align-items: center;
@@ -556,14 +553,51 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
     letter-spacing: 0.5px;
     text-transform: none;
     text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    /* Fix for unequal borders */
+}
+
+.hero-btn-primary {
+    color: #171a20;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    backdrop-filter: blur(4px);
+}
+
+.hero-btn-secondary {
     color: #fff;
     background: rgba(255, 255, 255, 0.08);
-    /* Transparent subtle fill */
     border: 2px solid rgba(255, 255, 255, 0.55);
-    /* White outline */
-    border-radius: 4px;
     backdrop-filter: blur(6px);
-    cursor: pointer;
+}
+
+.hero-btn-primary:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 600px) {
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        width: 100%;
+        min-width: unset;
+        max-width: 320px;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+    }
 }
 
 /* ---- Scroll chevron indicator ---- */
