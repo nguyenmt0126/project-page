@@ -2492,6 +2492,164 @@ footer.section-loaded {
     color: #5c5e62;
 }
 
+/* ==========================================================================
+   DEPOSIT SECTION
+   ========================================================================== */
+.deposit-section {
+    background-color: #f8f9fb;
+    scroll-margin-top: 80px;
+}
+
+.bg-light-soft {
+    background: #fbfbfc;
+}
+
+.section-title-premium-v2 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    color: #171a20;
+}
+
+.title-underline {
+    width: 60px;
+    height: 4px;
+    background: #0066cc;
+    border-radius: 2px;
+}
+
+.deposit-card {
+    border: none;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08) !important;
+}
+
+.sidebar-title-v2 {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.deposit-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #5c5e62;
+    margin-bottom: 6px;
+    display: block;
+    padding-left: 2px;
+}
+
+.deposit-input-v2 {
+    border: 1px solid #e2e5e9;
+    padding: 12px 15px 12px 40px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #171a20;
+    transition: all 0.3s ease;
+    background-color: #fcfdfe;
+}
+
+.deposit-input-v2:focus {
+    border-color: #0066cc;
+    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.05);
+    background-color: #fff;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 38px;
+    color: #adb5bd;
+    font-size: 0.9rem;
+}
+
+.deposit-summary-glass {
+    background: rgba(0, 102, 204, 0.03);
+    border: 1px dashed rgba(0, 102, 204, 0.2);
+}
+
+.text-muted-soft {
+    color: #8e9196;
+}
+
+.btn-dark-premium {
+    background: #171a20;
+    border: none;
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-dark-premium:hover {
+    background: #111;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    color: #fff;
+}
+
+.bg-gradient-premium {
+    background: linear-gradient(135deg, #171a20 0%, #343a40 100%);
+    overflow: hidden;
+}
+
+.deposit-preview-layout {
+    width: 100%;
+    z-index: 2;
+}
+
+.preview-backdrop {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 1;
+}
+
+.deposit-preview-img-active {
+    max-height: 280px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+    animation: carFloat 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes carFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1.02);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.deposit-ready-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 991px) {
+    .bg-gradient-premium {
+        height: 350px;
+    }
+
+    .deposit-preview-img-active {
+        max-height: 200px;
+    }
+}
+
 .charging-map-container {
     display: flex;
     height: 70vh;

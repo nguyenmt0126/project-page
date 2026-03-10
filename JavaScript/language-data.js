@@ -18,6 +18,19 @@ const translations = {
         "mbn_accessory": "Accessories",
         "mbn_charging": "Charging",
 
+        // Deposit Section
+        "deposit_title": "Vehicle Deposit",
+        "deposit_subtitle": "Leave your information, we will contact you for advice and support you to deposit the car as quickly as possible.",
+        "deposit_customer_info": "CUSTOMER INFORMATION",
+        "deposit_name": "Full Name *",
+        "deposit_phone": "Phone Number *",
+        "deposit_email": "Email *",
+        "deposit_vehicle_choice": "VEHICLE SELECTION",
+        "deposit_vehicle_model": "Vehicle Model *",
+        "deposit_amount_label": "Expected Deposit Amount",
+        "deposit_btn": "DEPOSIT NOW",
+        "deposit_note": "Additional Note",
+
         // Charging Section
         "charging_title": "Nationwide Charging Network",
         "charging_subtitle": "Find the nearest VinFast charging stations to stay powered on every journey.",
@@ -180,6 +193,19 @@ const translations = {
         "mbn_scooters": "Xe máy điện",
         "mbn_accessory": "Phụ kiện",
         "mbn_charging": "Trạm sạc",
+
+        // Deposit Section
+        "deposit_title": "Đặt cọc xe",
+        "deposit_subtitle": "Hãy để lại thông tin, chúng tôi sẽ liên hệ tư vấn và hỗ trợ bạn đặt cọc xe nhanh nhất.",
+        "deposit_customer_info": "THÔNG TIN KHÁCH HÀNG",
+        "deposit_name": "Họ và tên Quý khách *",
+        "deposit_phone": "Số điện thoại *",
+        "deposit_email": "Email *",
+        "deposit_vehicle_choice": "LỰA CHỌN MẪU XE",
+        "deposit_vehicle_model": "Mẫu xe *",
+        "deposit_amount_label": "Số tiền đặt cọc dự kiến",
+        "deposit_btn": "ĐẶT CỌC NGAY",
+        "deposit_note": "Ghi chú thêm",
 
         // Charging Section
         "charging_title": "Mạng lưới trạm sạc toàn quốc",
