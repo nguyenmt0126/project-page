@@ -78,7 +78,10 @@
                     <li class="nav-item"><a class="nav-link" href="#contact" data-i18n="nav_contact"></a></li>
                 </ul>
 
-
+                <div class="d-flex align-items-center navbar-actions">
+                    <a href="#" class="btn btn-consultation" id="navConsultBtn" data-i18n="nav_consultation">Đăng ký tư
+                        vấn</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -492,6 +495,79 @@
         </div>
     </footer>
 
+    <!-- Popup 1: Promo Banner (auto-show on page load) -->
+    <div class="promo-popup-overlay" id="promoPopupOverlay">
+        <div class="promo-popup promo-popup--banner" id="promoPopup">
+            <button class="promo-popup-close" id="promoPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="../Data/ô tô PC.webp" alt="Khuyến mãi" class="promo-popup-img">
+        </div>
+    </div>
+
+    <!-- Popup 2: Consultation Form (opens from navbar button) -->
+    <div class="promo-popup-overlay" id="consultPopupOverlay">
+        <div class="promo-popup promo-popup--consult" id="consultPopup">
+            <button class="promo-popup-close" id="consultPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="promo-popup-inner">
+                <!-- Left: Form -->
+                <div class="promo-popup-form">
+                    <div class="popup-form-header">
+                        <i class="fas fa-leaf popup-brand-icon"></i>
+                        <span class="popup-brand-name">L-Corparation</span>
+                    </div>
+                    <h3 class="popup-form-title" data-i18n="popup_form_title">Đăng ký nhận tư vấn</h3>
+                    <p class="popup-form-desc" data-i18n="popup_form_desc">Quý khách vui lòng đăng ký để nhận tư vấn sản
+                        phẩm, ưu đãi mới nhất.</p>
+                    <form id="consultForm" class="popup-form">
+                        <div class="popup-form-group">
+                            <input type="text" id="consultName" placeholder=" " required>
+                            <label data-i18n="popup_name">Họ và tên *</label>
+                        </div>
+                        <div class="popup-form-group">
+                            <input type="tel" id="consultPhone" placeholder=" " required>
+                            <label data-i18n="popup_phone">Số điện thoại *</label>
+                        </div>
+                        <div class="popup-form-group">
+                            <input type="email" id="consultEmail" placeholder=" " required>
+                            <label data-i18n="popup_email">Email *</label>
+                        </div>
+                        <div class="popup-form-group">
+                            <input type="time" id="consultTime" placeholder=" " required>
+                            <label data-i18n="popup_time">Giờ tư vấn *</label>
+                        </div>
+
+                        <!-- Vehicle Selection -->
+                        <div class="popup-vehicle-section">
+                            <p class="popup-vehicle-label" data-i18n="popup_vehicle_label">Dòng xe quan tâm</p>
+                            <div class="popup-segment-tabs">
+                                <button type="button" class="popup-seg-tab active" data-segment="popular"
+                                    data-i18n="popup_seg_popular">Phổ biến</button>
+                                <button type="button" class="popup-seg-tab" data-segment="premium"
+                                    data-i18n="popup_seg_premium">Cao cấp</button>
+                                <button type="button" class="popup-seg-tab" data-segment="economy"
+                                    data-i18n="popup_seg_economy">Phổ thông</button>
+                                <button type="button" class="popup-seg-tab" data-segment="scooter"
+                                    data-i18n="popup_seg_scooter">Xe máy điện</button>
+                            </div>
+                            <div class="popup-vehicle-list" id="popupVehicleList">
+                                <!-- Vehicle radio buttons rendered by JS -->
+                            </div>
+                        </div>
+
+                        <button type="submit" class="popup-submit-btn" data-i18n="popup_submit">Đăng ký</button>
+                    </form>
+                </div>
+                <!-- Right: Vehicle Image Preview -->
+                <div class="promo-popup-banner" id="consultBanner">
+                    <img src="../Data/ô tô PC.webp" alt="Xe" class="promo-popup-img" id="consultVehicleImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Bottom Navigation (Visible only on Mobile) -->
     <nav class="mobile-bottom-nav">
         <a href="#hero" class="mobile-nav-item active" data-nav="home">
@@ -538,6 +614,7 @@
     <script src="../JavaScript/accessories-render.js"></script>
     <script src="../JavaScript/charging.js"></script>
     <script src="../JavaScript/hero-banner.js"></script>
+    <script src="../JavaScript/popup.js"></script>
     <script src="../JavaScript/main.js"></script>
 
 

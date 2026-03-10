@@ -148,6 +148,27 @@ const translations = {
         "footer_cookies": "Cookie Settings",
         "charging_coming_soon": "Charging station system is being updated...",
 
+        // Popup
+        "popup_badge": "HOT",
+        "popup_title": "Spring Kickoff — Super Deals",
+        "popup_desc": "Free charging for up to 3 years when you deposit an electric vehicle today. Limited time offer!",
+        "popup_cta": "Order Now",
+        "popup_dismiss": "Don't show again",
+        "popup_form_title": "Register for Consultation",
+        "popup_form_desc": "Please register to receive product consultation and the latest offers.",
+        "popup_name": "Full Name *",
+        "popup_phone": "Phone Number *",
+        "popup_email": "Email *",
+        "popup_time": "Consultation Time *",
+        "popup_vehicle_label": "Vehicle of Interest",
+        "popup_seg_popular": "Popular",
+        "popup_seg_premium": "Premium",
+        "popup_seg_economy": "Economy",
+        "popup_seg_scooter": "E-Scooters",
+        "popup_submit": "Register",
+        "popup_success": "Registration successful! We will contact you soon.",
+        "nav_consultation": "Consultation",
+
         // Data Labels (Mapping from data.js)
         "Range": "Range",
         "Max Speed": "Max Speed",
@@ -227,7 +248,7 @@ const translations = {
 
         // Hero
         "hero_title": "Chào mừng đến với L-Corparation",
-        "hero_subtitle": "Trải nghiệm tương lai của giao thông xanh",
+        "hero_subtitle": "Nơi sự đổi mới hòa quyện cùng sự thoải mái, mang đến cho bạn chất lượng vượt trội, thiết kế tinh tế và những trải nghiệm truyền cảm hứng cho hành trình mỗi ngày.",
         "hero_slogan": "Đổi mới vì một Tương lai Xanh hơn",
         "hero_btn_explore": "Khám phá xe",
         "hero_btn_learn_more": "Tìm hiểu thêm",
@@ -323,6 +344,27 @@ const translations = {
         "footer_terms": "Điều khoản dịch vụ",
         "footer_cookies": "Cài đặt cookie",
         "charging_coming_soon": "Hệ thống trạm sạc đang được cập nhật...",
+
+        // Popup
+        "popup_badge": "HOT",
+        "popup_title": "Khai Xuân Mã Đáo — Siêu Lộc Ưu Đãi",
+        "popup_desc": "Miễn phí sạc pin lên tới 3 năm khi đặt cọc xe điện ngay hôm nay. Chương trình có hạn!",
+        "popup_cta": "Đặt hàng ngay",
+        "popup_dismiss": "Không hiển thị lại",
+        "popup_form_title": "Đăng ký nhận tư vấn",
+        "popup_form_desc": "Quý khách vui lòng đăng ký để nhận tư vấn sản phẩm, ưu đãi mới nhất.",
+        "popup_name": "Họ và tên *",
+        "popup_phone": "Số điện thoại *",
+        "popup_email": "Email *",
+        "popup_time": "Giờ tư vấn *",
+        "popup_vehicle_label": "Dòng xe quan tâm",
+        "popup_seg_popular": "Phổ biến",
+        "popup_seg_premium": "Cao cấp",
+        "popup_seg_economy": "Phổ thông",
+        "popup_seg_scooter": "Xe máy điện",
+        "popup_submit": "Đăng ký",
+        "popup_success": "Đăng ký thành công! Chúng tôi sẽ liên hệ bạn sớm.",
+        "nav_consultation": "Đăng ký tư vấn",
 
         // Data Labels
         "Range": "Quãng đường",
