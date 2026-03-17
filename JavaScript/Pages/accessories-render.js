@@ -5,7 +5,7 @@
 
 // Current state
 let currentCategory = 'all';
-let currentVehicleType = 'car'; // 'car' | 'scooter' | 'all'
+let currentVehicleType = 'all'; // 'car' | 'scooter' | 'all'
 let searchQuery = '';
 
 // Pagination state for "Load more" behavior
@@ -258,17 +258,33 @@ function renderAccessories() {
         html += createAccessoryCard(item);
     });
 
+    // If there are more items, add the circular arrow "Load More" card
+    if (filtered.length > visibleItems.length) {
+        html += `
+            <div class="accessories-load-more-card" onclick="loadMoreAccessories()">
+                <div class="load-more-circle">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <span class="load-more-text" data-i18n="accessories_load_more">${t('accessories_load_more')}</span>
+            </div>
+        `;
+    }
+
     gridContainer.innerHTML = html;
 
-    // Toggle Load more button visibility
-    if (loadMoreBtn) {
-        if (filtered.length > visibleItems.length) {
-            loadMoreBtn.style.display = 'inline-flex';
-        } else {
-            loadMoreBtn.style.display = 'none';
-        }
-    }
+    // Hide the separate load more wrapper if it exists (backup)
+    const loadMoreWrapper = document.querySelector('.accessories-load-more-wrapper');
+    if (loadMoreWrapper) loadMoreWrapper.style.display = 'none';
 }
+
+/**
+ * Global function to load more accessories
+ */
+window.loadMoreAccessories = function() {
+    currentAccessoriesPage += 1;
+    renderAccessories();
+    // No need to scroll here since it's an inline update
+};
 
 /**
  * Create HTML for a single accessory card
@@ -288,7 +304,7 @@ function createAccessoryCard(item) {
                 ${discountBadge}
                 ${hotBadge}
                 ${newBadge}
-                <img src="${item.img}" alt="${item.name}" class="accessories-item-img" loading="lazy">
+                <img src="" data-src="${item.img}" alt="${item.name}" class="accessories-item-img lazy-load">
             </div>
             <div class="accessories-item-info">
                 <h4 class="accessories-item-name">${item.name}</h4>

@@ -21,15 +21,21 @@
     function openPopup(overlay) {
         if (!overlay) return;
         overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
+        
+        // Pre-load images inside the popup when it opens
+        const lazyImages = overlay.querySelectorAll('.lazy-load');
+        if (typeof loadImage === 'function') {
+            lazyImages.forEach(img => loadImage(img));
+        }
     }
 
     function closePopup(overlay) {
         if (!overlay) return;
         overlay.classList.remove('active');
         overlay.classList.add('closing');
-        document.body.style.overflow = '';
-        setTimeout(() => overlay.classList.remove('closing'), 400);
+        document.body.classList.remove('modal-open');
+        setTimeout(() => overlay.classList.remove('closing'), 400); // Matched with CSS transition
     }
 
     function setupPopupClose(overlay, closeBtn) {
@@ -49,79 +55,81 @@
         });
     }
 
-    // === Vehicle Selector Logic ===
+    // === Vehicle Selector Logic (Unified Select) ===
     function getAllVehicles() {
         const cars = typeof carData !== 'undefined' ? carData : [];
         const scooters = typeof scooterData !== 'undefined' ? scooterData : [];
         return [...cars, ...scooters];
     }
 
-    function renderVehicleList(segment) {
-        const listEl = document.getElementById('popupVehicleList');
-        if (!listEl) return;
+    function initVehicleSelect() {
+        const selectEl = document.getElementById('consultVehicleSelect');
+        const consultPopup = document.getElementById('consultPopup');
+        if (!selectEl || !consultPopup) return;
 
-        const allVehicles = getAllVehicles();
-        const segmentIds = vehicleSegments[segment] || [];
+        const cars = typeof carData !== 'undefined' ? carData : [];
+        const scooters = typeof scooterData !== 'undefined' ? scooterData : [];
+        
+        // Clear existing
+        selectEl.innerHTML = '<option value="" disabled selected data-i18n="popup_select_placeholder">Chọn mẫu xe...</option>';
 
-        // Filter vehicles by segment IDs
-        const vehicles = segmentIds
-            .map(id => allVehicles.find(v => v.id === id))
-            .filter(Boolean);
+        // Reset to compact state
+        if (consultPopup) consultPopup.classList.remove('has-vehicle');
 
-        listEl.innerHTML = '';
-
-        vehicles.forEach((v, idx) => {
-            const option = document.createElement('label');
-            option.className = 'popup-vehicle-option' + (idx === 0 ? ' selected' : '');
-
-            option.innerHTML = `
-                <input type="radio" name="consultVehicle" value="${v.id}" ${idx === 0 ? 'checked' : ''}>
-                <div class="popup-vehicle-option-info">
-                    <span class="popup-vehicle-option-name">${v.name}</span>
-                    <span class="popup-vehicle-option-price">${v.price}</span>
-                </div>
-            `;
-
-            option.addEventListener('click', () => {
-                // Update selected state
-                listEl.querySelectorAll('.popup-vehicle-option').forEach(el => el.classList.remove('selected'));
-                option.classList.add('selected');
-
-                // Update image on the right
-                updateConsultImage(v.img);
+        // Helper to add group
+        const addGroup = (label, vehicles) => {
+            if (vehicles.length === 0) return;
+            const group = document.createElement('optgroup');
+            group.label = label;
+            vehicles.forEach(v => {
+                const option = document.createElement('option');
+                option.value = v.id;
+                option.textContent = v.name;
+                group.appendChild(option);
             });
+            selectEl.appendChild(group);
+        };
 
-            listEl.appendChild(option);
+        addGroup('Xe Ô tô (Cars)', cars);
+        addGroup('Xe máy điện (Scooters)', scooters);
+
+        // Start compact: No vehicle selected initially
+        selectEl.value = "";
+        consultPopup.classList.remove('has-vehicle');
+
+        // Change listener
+        selectEl.addEventListener('change', (e) => {
+            const allVehicles = [...cars, ...scooters];
+            if (e.target.value === "") {
+                consultPopup.classList.remove('has-vehicle');
+            } else {
+                const vehicle = allVehicles.find(v => v.id === e.target.value);
+                if (vehicle) {
+                    consultPopup.classList.add('has-vehicle');
+                    updateConsultImage(vehicle.img);
+                }
+            }
         });
-
-        // Show first vehicle image
-        if (vehicles.length > 0) {
-            updateConsultImage(vehicles[0].img);
-        }
     }
 
     function updateConsultImage(imgSrc) {
         const img = document.getElementById('consultVehicleImg');
         if (!img) return;
 
+        // Stage 1: Fade out and slide slightly to the side
         img.style.opacity = '0';
-        img.style.transform = 'scale(0.95)';
+        img.style.transform = 'scale(0.96) translateX(15px)';
+        
         setTimeout(() => {
+            // Stage 2: Change Source
             img.src = imgSrc;
-            img.style.opacity = '1';
-            img.style.transform = 'scale(1)';
-        }, 150);
-    }
-
-    function initSegmentTabs() {
-        const tabs = document.querySelectorAll('.popup-seg-tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                renderVehicleList(tab.dataset.segment);
-            });
-        });
+            
+            // Stage 3: Fade in and slide back from the other side
+            setTimeout(() => {
+                img.style.transform = 'scale(1) translateX(0)';
+                img.style.opacity = '1';
+            }, 50);
+        }, 300);
     }
 
     // === Init ===
@@ -132,20 +140,20 @@
 
         if (promoOverlay) {
             setupPopupClose(promoOverlay, promoClose);
-            setTimeout(() => openPopup(promoOverlay), PROMO_DELAY_MS);
+            // setTimeout(() => openPopup(promoOverlay), PROMO_DELAY_MS);
         }
 
         // --- Popup 2: Consultation Form (navbar button) ---
         const consultOverlay = document.getElementById('consultPopupOverlay');
+        const consultPopup = document.getElementById('consultPopup');
         const consultClose = document.getElementById('consultPopupClose');
         const navConsultBtn = document.getElementById('navConsultBtn');
 
         if (consultOverlay) {
             setupPopupClose(consultOverlay, consultClose);
 
-            // Initialize vehicle selector
-            initSegmentTabs();
-            renderVehicleList('popular');
+            // Initialize unified select
+            initVehicleSelect();
 
             // Open from navbar button
             if (navConsultBtn) {
@@ -160,15 +168,19 @@
             if (form) {
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    const selectedVehicle = form.querySelector('input[name="consultVehicle"]:checked');
-                    const vehicleName = selectedVehicle
-                        ? getAllVehicles().find(v => v.id === selectedVehicle.value)?.name || ''
-                        : '';
+                    const selectEl = document.getElementById('consultVehicleSelect');
+                    const vehicleName = selectEl ? selectEl.options[selectEl.selectedIndex].text : '';
+                    
                     const msg = typeof t === 'function'
                         ? (t('popup_success') || 'Đăng ký thành công!')
                         : 'Đăng ký thành công! Chúng tôi sẽ liên hệ bạn sớm.';
-                    alert(msg + (vehicleName ? `\nMẫu xe: ${vehicleName}` : ''));
+                    
+                    alert(`${msg}${vehicleName ? `\nMẫu xe: ${vehicleName}` : ''}`);
                     form.reset();
+                    
+                    // Reset to compact state
+                    if (consultPopup) consultPopup.classList.remove('has-vehicle');
+                    
                     closePopup(consultOverlay);
                 });
             }

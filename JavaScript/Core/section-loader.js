@@ -8,6 +8,8 @@
 const SECTION_ANIMATIONS = {
     'featured-cars': 'animation-slide-up',
     'featured-scooters': 'animation-slide-left',
+    'accessory': 'animation-slide-up',
+    'charging': 'animation-fade-in',
     'about-us': 'animation-slide-right',
     'footer': 'animation-fade-in'
 };
@@ -55,6 +57,8 @@ function setupSectionLoading() {
     const lazyLoadedSections = [
         document.getElementById('featured-cars'),
         document.getElementById('featured-scooters'),
+        document.getElementById('accessory'),
+        document.getElementById('charging'),
         document.getElementById('about-us'),
         document.querySelector('footer')
     ];
@@ -76,21 +80,10 @@ function setupSectionLoading() {
 function initializeSection(section) {
     const sectionId = section.id;
     
-    if (sectionId === 'featured-cars') {
-        // Trigger featured cars carousel initialization if needed
-        if (window.initFeaturedCars) {
-            window.initFeaturedCars();
-        }
-    } else if (sectionId === 'featured-scooters') {
-        // Trigger featured scooters carousel initialization if needed
-        if (window.initFeaturedScooters) {
-            window.initFeaturedScooters();
-        }
-    } else if (sectionId === 'about-us') {
-        // Trigger about section initialization
-        if (window.initAboutSection) {
-            window.initAboutSection();
-        }
+    if (sectionId === 'featured-cars' || sectionId === 'featured-scooters') {
+        if (window.initVehicleSpecCarousel) window.initVehicleSpecCarousel();
+    } else if (sectionId === 'accessory') {
+        if (window.initAccessories) window.initAccessories();
     }
 }
 

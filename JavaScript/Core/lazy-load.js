@@ -34,16 +34,38 @@ function setupLazyLoading() {
     }, options);
 
     // Observe all lazy-loadable elements
-    // Images with lazy-load class
-    document.querySelectorAll('img.lazy-load').forEach(img => {
-        observer.observe(img);
+    const observeElements = () => {
+        // Images with lazy-load class
+        document.querySelectorAll('img.lazy-load').forEach(img => {
+            observer.observe(img);
+        });
+
+        // Hero video
+        const heroVideo = document.querySelector('.hero-video');
+        if (heroVideo) {
+            observer.observe(heroVideo);
+        }
+    };
+
+    observeElements();
+
+    // Use MutationObserver to watch for new lazy-load elements added dynamically
+    const mutationObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) { // Element node
+                    if (node.classList.contains('lazy-load')) {
+                        observer.observe(node);
+                    }
+                    node.querySelectorAll('.lazy-load').forEach(child => {
+                        observer.observe(child);
+                    });
+                }
+            });
+        });
     });
 
-    // Hero video
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        observer.observe(heroVideo);
-    }
+    mutationObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 /**
@@ -64,16 +86,32 @@ function loadResource(element) {
  */
 function loadImage(img) {
     if (img.dataset.src) {
-        img.src = img.dataset.src;
+        const src = img.dataset.src;
         img.removeAttribute('data-src');
-        img.classList.remove('lazy-load');
         
-        // Add fade-in animation
-        img.style.opacity = '0';
-        img.onload = function() {
-            img.style.transition = 'opacity 0.3s ease-in';
+        // Ensure image is invisible before Sharp content loads if not from cache
+        if (!img.complete) {
+            img.style.opacity = '0';
+        }
+
+        const onImageLoad = () => {
+            img.style.transition = 'opacity 0.3s ease-in, filter 0.3s ease-in';
             img.style.opacity = '1';
+            img.style.filter = 'blur(0)';
+            img.classList.remove('lazy-load');
         };
+
+        if (img.complete) {
+            onImageLoad();
+        } else {
+            img.onload = onImageLoad;
+            img.onerror = () => {
+                img.classList.remove('lazy-load');
+                img.style.opacity = '1';
+            };
+        }
+        
+        img.src = src;
     }
 }
 

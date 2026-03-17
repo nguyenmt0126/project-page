@@ -37,9 +37,10 @@ const translations = {
         "charging_search_placeholder": "Enter address or city name...",
         "charging_label_all": "All",
         "charging_label_fast": "Ultra Fast",
-        "charging_label_normal": "Normal",
+        "charging_label_normal": "Service Center",
         "charging_status_active": "Active",
         "charging_status_busy": "Busy",
+        "charging_status_maintenance": "Maintaining",
         "charging_btn_direction": "Directions",
         "charging_btn_list": "Station list",
 
@@ -50,13 +51,14 @@ const translations = {
         "btn_detail": "Detail",
 
         // Hero
-        "hero_title": "Welcome L-Corparation",
-        "hero_subtitle": "A place where innovation meets comfort, bringing you exceptional quality, thoughtful design, and experiences that inspire your everyday journey.",
+        "hero_title": "L-CORPORATION",
+        "hero_subtitle": "Where innovation meets comfort, bringing you exceptional quality, exquisite design, and experiences that inspire your everyday journey.",
         "hero_slogan": "Driving Innovation for a Greener Tomorrow",
         "hero_btn_explore": "Explore Vehicles",
         "hero_btn_learn_more": "Learn More",
         "hero_btn_order": "Order Now",
         "hero_btn_about": "About Us",
+        
         "hero_badge_eco": "🌿 100% Eco-Friendly",
         "hero_badge_warranty": "🛡️ 10-Year Warranty",
         "hero_stat_vehicles": "Vehicles Delivered",
@@ -234,9 +236,10 @@ const translations = {
         "charging_search_placeholder": "Nhập địa chỉ hoặc tên thành phố...",
         "charging_label_all": "Tất cả",
         "charging_label_fast": "Sạc siêu nhanh",
-        "charging_label_normal": "Sạc thường",
+        "charging_label_normal": "Trung tâm bảo trì",
         "charging_status_active": "Đang hoạt động",
         "charging_status_busy": "Đang bận",
+        "charging_status_maintenance": "Đang bảo trì",
         "charging_btn_direction": "Chỉ đường",
         "charging_btn_list": "Danh sách trạm",
 
@@ -247,13 +250,14 @@ const translations = {
         "btn_detail": "Chi tiết",
 
         // Hero
-        "hero_title": "Chào mừng đến với L-Corparation",
+        "hero_title": "L-CORPORATION",
         "hero_subtitle": "Nơi sự đổi mới hòa quyện cùng sự thoải mái, mang đến cho bạn chất lượng vượt trội, thiết kế tinh tế và những trải nghiệm truyền cảm hứng cho hành trình mỗi ngày.",
         "hero_slogan": "Đổi mới vì một Tương lai Xanh hơn",
         "hero_btn_explore": "Khám phá xe",
         "hero_btn_learn_more": "Tìm hiểu thêm",
         "hero_btn_order": "Đặt hàng",
         "hero_btn_about": "Về chúng tôi",
+        
         "hero_badge_eco": "🌿 100% Thân thiện môi trường",
         "hero_badge_warranty": "🛡️ Bảo hành 10 năm",
         "hero_stat_vehicles": "Xe đã bàn giao",
@@ -292,7 +296,7 @@ const translations = {
         "accessories_results_suffix": "sản phẩm",
         "accessories_empty_title": "Không tìm thấy sản phẩm",
         "accessories_empty_text": "Vui lòng thử từ khóa khác hoặc chọn danh mục khác",
-        "accessories_load_more": "Xem thêm phụ kiện",
+        "accessories_load_more": "Xem thêm",
         "accessories_fit_for": "Phù hợp:",
         "accessories_cart_button": "Giỏ hàng",
         "accessories_cat_all": "Tất cả sản phẩm",

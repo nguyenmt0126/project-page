@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Syne:wght@400..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../Css/style.css">
 </head>
@@ -87,30 +87,35 @@
     </nav>
 
     <section class="hero-section" id="hero">
-        <video autoplay muted loop playsinline class="hero-video"
-            poster="https://static-cms-prod.vinfastauto.com/ve-chung-toi-video-poster_1664352279.jpg">
+        <video autoplay muted loop playsinline class="hero-video lazy-load"
+            poster="https://static-cms-prod.vinfastauto.com/ve-chung-toi-video-poster_1664352279.jpg"
+            data-src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4">
             <source
-                src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4"
+                data-src="https://storage.googleapis.com/vinfast-data-01/The%20company%20behind%20VinFast%20electric%20cars.mp4"
                 type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
-        <div class="hero-top-content">
-            <h1 class="hero-main-title" data-i18n="hero_title"></h1>
-            <p class="hero-tagline" data-i18n="hero_subtitle"></p>
-        </div>
-        <div class="hero-bottom-content">
-            <div class="hero-cta-group">
-                <a href="#featured-cars" class="hero-btn-primary" data-i18n="hero_btn_order"></a>
-                <a href="#about-us" class="hero-btn-secondary" data-i18n="hero_btn_about"></a>
+        <div class="container hero-container">
+            <div class="hero-content-wrapper">
+                <h1 class="hero-main-title" data-i18n="hero_title"></h1>
+                <p class="hero-tagline" data-i18n="hero_subtitle"></p>
+                <div class="hero-cta-group">
+                    <a href="#featured-cars" class="hero-btn-primary" data-i18n="hero_btn_order"></a>
+                    <a href="#about-us" class="hero-btn-secondary" data-i18n="hero_btn_about"></a>
+                </div>
             </div>
         </div>
-        <div class="hero-scroll-indicator" id="heroScrollBtn">
+        <a href="#featured-cars" class="section-scroll-indicator light">
             <i class="fas fa-chevron-down"></i>
-        </div>
+        </a>
     </section>
+
 
     <!-- Featured Cars Section -->
     <section class="featured-vehicle-section bg-light" id="featured-cars">
+        <a href="#featured-scooters" class="section-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
         <div class="container-fluid p-0 m-0">
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="car-prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -133,10 +138,14 @@
                 <button class="spec-nav-btn next" id="car-next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- Featured Scooters Section -->
     <section class="featured-vehicle-section bg-light" id="featured-scooters">
+        <a href="#accessory" class="section-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
         <div class="container-fluid p-0 m-0">
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="scooter-prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -159,22 +168,16 @@
                 <button class="spec-nav-btn next" id="scooter-next-btn"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- Accessories Section -->
     <section class="accessories-section" id="accessory">
+        <a href="#charging" class="section-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
         <div class="accessories-wrapper">
-            <!-- Vehicle Type Tabs -->
-            <div class="accessories-vehicle-tabs">
-                <button id="accessories-tab-car" class="accessories-vehicle-tab active" type="button"
-                    data-i18n="accessories_tab_car">
-                    Phụ kiện ô tô
-                </button>
-                <button id="accessories-tab-scooter" class="accessories-vehicle-tab" type="button"
-                    data-i18n="accessories_tab_scooter">
-                    Phụ kiện xe máy điện
-                </button>
-            </div>
+
 
             <!-- Sidebar -->
             <aside class="accessories-sidebar">
@@ -228,6 +231,9 @@
     </section>
     <!-- Charging Section (Redesigned with Google Map style) -->
     <section class="charging-section-v2" id="charging">
+        <a href="#about-us" class="section-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
         <div class="container-fluid p-0">
             <div class="charging-map-container">
                 <!-- Sidebar with Station List -->
@@ -250,7 +256,7 @@
                     <div class="charging-filter-pills">
                         <button class="charging-pill active" data-filter="all" data-i18n="charging_label_all"></button>
                         <button class="charging-pill" data-filter="fast" data-i18n="charging_label_fast"></button>
-                        <button class="charging-pill" data-filter="normal" data-i18n="charging_label_normal"></button>
+                        <button class="charging-pill" data-filter="maintenance" data-i18n="charging_label_normal"></button>
                     </div>
 
                     <div class="charging-list-scroll">
@@ -309,17 +315,35 @@
                             </div>
                         </div>
 
-                        <!-- Station Card 4 -->
-                        <div class="charging-station-card" data-type="normal">
-                            <div class="card-status busy" data-i18n="charging_status_busy"></div>
-                            <h5 class="station-name">Trạm sạc VinFast - Petrolimex Quận 7</h5>
-                            <p class="station-address">Huỳnh Tấn Phát, Phú Mỹ, Quận 7, TP. Hồ Chí Minh</p>
+                        <!-- Station Card 4 (Maintenance) -->
+                        <div class="charging-station-card" data-type="maintenance">
+                            <div class="card-status active" data-i18n="charging_status_active"></div>
+                            <h5 class="station-name">VinFast Service - 3S Phan Văn Trị</h5>
+                            <p class="station-address">464 Phan Văn Trị, Phường 7, Quận Gò Vấp, TP. Hồ Chí Minh</p>
                             <div class="station-info-row">
-                                <span><i class="fas fa-bolt text-muted"></i> 0/4 Trụ</span>
-                                <span><i class="fas fa-map-marker-alt text-danger"></i> 7.2 km</span>
+                                <span><i class="fas fa-wrench text-primary"></i> 24/7 Support</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 3.2 km</span>
                             </div>
                             <div class="card-actions mt-2">
-                                <a href="https://www.google.com/maps/dir/?api=1&destination=Tram+sac+VinFast+Petrolimex+Quan+7"
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=VinFast+Service+Phan+Van+Tri"
+                                    target="_blank" class="text-decoration-none">
+                                    <button class="btn btn-sm btn-dark w-100"
+                                        data-i18n="charging_btn_direction"></button>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Station Card 5 (Maintenance) -->
+                        <div class="charging-station-card" data-type="maintenance">
+                            <div class="card-status active" data-i18n="charging_status_active"></div>
+                            <h5 class="station-name">VinFast Service - 3S Trần Hưng Đạo</h5>
+                            <p class="station-address">3-5 Trần Hưng Đạo, P. Nguyễn Thái Bình, Quận 1, TP. HCM</p>
+                            <div class="station-info-row">
+                                <span><i class="fas fa-wrench text-primary"></i> Leading Tech</span>
+                                <span><i class="fas fa-map-marker-alt text-danger"></i> 1.2 km</span>
+                            </div>
+                            <div class="card-actions mt-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=VinFast+Service+Tran+Hung+Dao"
                                     target="_blank" class="text-decoration-none">
                                     <button class="btn btn-sm btn-dark w-100"
                                         data-i18n="charging_btn_direction"></button>
@@ -369,8 +393,11 @@
 
     <!-- About Us Section -->
     <section id="about-us" class="py-5 position-relative">
+        <a href="#contact" class="section-scroll-indicator light">
+            <i class="fas fa-chevron-down"></i>
+        </a>
         <div class="about-us-bg-container">
-            <img src="../Data/Aboutus.webp" alt="About Us Background" class="about-us-bg-img">
+            <img src="" data-src="../Data/Aboutus.webp" alt="About Us Background" class="about-us-bg-img lazy-load">
             <div class="about-us-overlay"></div>
         </div>
         <div class="container position-relative z-2">
@@ -501,7 +528,7 @@
             <button class="promo-popup-close" id="promoPopupClose" aria-label="Close">
                 <i class="fas fa-times"></i>
             </button>
-            <img src="../Data/ô tô PC.webp" alt="Khuyến mãi" class="promo-popup-img">
+            <img src="" data-src="../Data/ô tô PC.webp" alt="Khuyến mãi" class="promo-popup-img lazy-load">
         </div>
     </div>
 
@@ -534,26 +561,17 @@
                             <input type="email" id="consultEmail" placeholder=" " required>
                             <label data-i18n="popup_email">Email *</label>
                         </div>
-                        <div class="popup-form-group">
-                            <input type="time" id="consultTime" placeholder=" " required>
-                            <label data-i18n="popup_time">Giờ tư vấn *</label>
-                        </div>
 
                         <!-- Vehicle Selection -->
-                        <div class="popup-vehicle-section">
-                            <p class="popup-vehicle-label" data-i18n="popup_vehicle_label">Dòng xe quan tâm</p>
-                            <div class="popup-segment-tabs">
-                                <button type="button" class="popup-seg-tab active" data-segment="popular"
-                                    data-i18n="popup_seg_popular">Phổ biến</button>
-                                <button type="button" class="popup-seg-tab" data-segment="premium"
-                                    data-i18n="popup_seg_premium">Cao cấp</button>
-                                <button type="button" class="popup-seg-tab" data-segment="economy"
-                                    data-i18n="popup_seg_economy">Phổ thông</button>
-                                <button type="button" class="popup-seg-tab" data-segment="scooter"
-                                    data-i18n="popup_seg_scooter">Xe máy điện</button>
-                            </div>
-                            <div class="popup-vehicle-list" id="popupVehicleList">
-                                <!-- Vehicle radio buttons rendered by JS -->
+                        <div class="popup-vehicle-group">
+                            <label class="popup-select-label" data-i18n="popup_vehicle_label">Dòng xe quan tâm</label>
+                            <div class="popup-select-wrapper">
+                                <select id="consultVehicleSelect" class="popup-select-input" required>
+                                    <option value="" disabled selected data-i18n="popup_select_placeholder">Chọn mẫu
+                                        xe...</option>
+                                    <!-- Options rendered by JS -->
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
                             </div>
                         </div>
 
@@ -562,7 +580,8 @@
                 </div>
                 <!-- Right: Vehicle Image Preview -->
                 <div class="promo-popup-banner" id="consultBanner">
-                    <img src="../Data/ô tô PC.webp" alt="Xe" class="promo-popup-img" id="consultVehicleImg">
+                    <img src="" data-src="../Data/ô tô PC.webp" alt="Xe" class="promo-popup-img lazy-load"
+                        id="consultVehicleImg">
                 </div>
             </div>
         </div>
@@ -603,19 +622,20 @@
     </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../JavaScript/section-loader.js"></script>
-    <script src="../JavaScript/car-data.js"></script>
-    <script src="../JavaScript/scooter-data.js"></script>
-    <script src="../JavaScript/accessories-data.js"></script>
-    <script src="../JavaScript/language-data.js"></script>
-    <script src="../JavaScript/navbar.js"></script>
-    <script src="../JavaScript/mega-menu.js"></script>
-    <script src="../JavaScript/featured-carousel.js"></script>
-    <script src="../JavaScript/accessories-render.js"></script>
-    <script src="../JavaScript/charging.js"></script>
-    <script src="../JavaScript/hero-banner.js"></script>
-    <script src="../JavaScript/popup.js"></script>
-    <script src="../JavaScript/main.js"></script>
+    <script src="../JavaScript/Core/section-loader.js"></script>
+    <script src="../JavaScript/Core/lazy-load.js"></script>
+    <script src="../JavaScript/Data/car-data.js"></script>
+    <script src="../JavaScript/Data/scooter-data.js"></script>
+    <script src="../JavaScript/Data/accessories-data.js"></script>
+    <script src="../JavaScript/Data/language-data.js"></script>
+    <script src="../JavaScript/Components/navbar.js"></script>
+    <script src="../JavaScript/Components/mega-menu.js"></script>
+    <script src="../JavaScript/Pages/featured-carousel.js"></script>
+    <script src="../JavaScript/Pages/accessories-render.js"></script>
+    <script src="../JavaScript/Pages/charging.js"></script>
+    <script src="../JavaScript/Components/hero-banner.js"></script>
+    <script src="../JavaScript/Components/popup.js"></script>
+    <script src="../JavaScript/Core/main.js"></script>
 
 
 
