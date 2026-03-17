@@ -79,8 +79,13 @@
                 </ul>
 
                 <div class="d-flex align-items-center navbar-actions">
-                    <a href="#" class="btn btn-consultation" id="navConsultBtn" data-i18n="nav_consultation">Đăng ký tư
-                        vấn</a>
+                    <div class="navbar-cart-wrapper me-2">
+                        <button class="btn btn-cart-toggle" id="cartToggleBtn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </button>
+                    </div>
+                    <a href="#" class="btn btn-consultation" id="navConsultBtn" data-i18n="nav_consultation">Đăng ký tư vấn</a>
                 </div>
             </div>
         </div>
@@ -525,10 +530,14 @@
     <!-- Popup 1: Promo Banner (auto-show on page load) -->
     <div class="promo-popup-overlay" id="promoPopupOverlay">
         <div class="promo-popup promo-popup--banner" id="promoPopup">
-            <button class="promo-popup-close" id="promoPopupClose" aria-label="Close">
-                <i class="fas fa-times"></i>
-            </button>
-            <img src="" data-src="../Data/ô tô PC.webp" alt="Khuyến mãi" class="promo-popup-img lazy-load">
+            <div class="promo-banner-container">
+                <button class="promo-popup-close" id="promoPopupClose" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#featured-cars" class="promo-banner-link">
+                    <img src="" data-src="../Data/ô tô PC.webp" alt="Ưu đãi độc quyền" class="promo-popup-img lazy-load">
+                </a>
+            </div>
         </div>
     </div>
 
@@ -587,6 +596,89 @@
         </div>
     </div>
 
+    <!-- Popup 3: Order Form/Deposit -->
+    <div class="promo-popup-overlay" id="orderPopupOverlay">
+        <div class="promo-popup promo-popup--order" id="orderPopup">
+            <button class="promo-popup-close" id="orderPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="promo-popup-inner">
+                <div class="promo-popup-form">
+                    <div class="popup-form-header">
+                        <i class="fas fa-shopping-bag popup-brand-icon"></i>
+                        <span class="popup-brand-name" data-i18n="deposit_customer_info">Thông tin đơn hàng</span>
+                    </div>
+                    <h3 class="popup-form-title" data-i18n="deposit_title">Đặt cọc mẫu xe yêu thích</h3>
+                    <p class="popup-form-desc" data-i18n="deposit_subtitle">Hoàn tất biểu mẫu dưới đây để chúng tôi giữ chỗ ưu đãi tốt nhất cho bạn.</p>
+                    
+                    <form id="orderForm" class="popup-form">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="popup-form-group">
+                                    <input type="text" id="orderName" placeholder=" " required>
+                                    <label data-i18n="deposit_name">Họ và tên *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="popup-form-group">
+                                    <input type="tel" id="orderPhone" placeholder=" " required>
+                                    <label data-i18n="deposit_phone">Số điện thoại *</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popup-form-group mt-3">
+                            <input type="email" id="orderEmail" placeholder=" " required>
+                            <label data-i18n="deposit_email">Email *</label>
+                        </div>
+
+                        <div class="popup-vehicle-group mt-3">
+                            <label class="popup-select-label" data-i18n="deposit_vehicle_model">Lựa chọn mẫu xe</label>
+                            <div class="popup-select-wrapper">
+                                <select id="orderVehicleSelect" class="popup-select-input" required>
+                                    <option value="" disabled selected data-i18n="popup_select_placeholder">Chọn mẫu xe...</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
+                            </div>
+                        </div>
+
+                        <div class="popup-payment-group mt-3">
+                            <label class="popup-select-label">Phương thức đặt cọc</label>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="bank" checked>
+                                    <div class="payment-box">
+                                        <i class="fas fa-university"></i>
+                                        <span>Chuyển khoản</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="card">
+                                    <div class="payment-box">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Thẻ tín dụng</span>
+                                    </div>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="store">
+                                    <div class="payment-box">
+                                        <i class="fas fa-store"></i>
+                                        <span>Tại showroom</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="popup-submit-btn mt-4" data-i18n="deposit_btn">Hoàn tất đặt cọc</button>
+                    </form>
+                </div>
+                <div class="promo-popup-banner d-none d-lg-flex" id="orderBanner">
+                    <img src="" data-src="../Data/ô tô PC.webp" alt="Order Preview" class="promo-popup-img lazy-load" id="orderVehicleImg">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Bottom Navigation (Visible only on Mobile) -->
     <nav class="mobile-bottom-nav">
         <a href="#hero" class="mobile-nav-item active" data-nav="home">
@@ -621,6 +713,136 @@
         </a>
     </nav>
 
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar-overlay" id="cartSidebarOverlay">
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-sidebar-header">
+                <h3 class="cart-sidebar-title">
+                    <i class="fas fa-shopping-cart me-2"></i>Giỏ hàng
+                </h3>
+                <button class="cart-sidebar-close" id="cartSidebarClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="cart-sidebar-content">
+                <div class="cart-items-container" id="cartItemsContainer">
+                    <!-- Cart items will be rendered by JS -->
+                    <div class="cart-empty-state">
+                        <i class="fas fa-shopping-basket mb-3"></i>
+                        <p>Giỏ hàng của bạn đang trống</p>
+                        <a href="#accessory" class="btn btn-outline-dark btn-sm rounded-pill mt-2">Mua sắm ngay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-sidebar-footer" id="cartFooter" style="display: none;">
+                <div class="cart-summary">
+                    <div class="cart-summary-row">
+                        <span>Tạm tính:</span>
+                        <span class="cart-subtotal" id="cartSubtotal">0đ</span>
+                    </div>
+                    <div class="cart-summary-row">
+                        <span>Phí vận chuyển:</span>
+                        <span class="text-success">Miễn phí</span>
+                    </div>
+                    <hr>
+                    <div class="cart-summary-row total">
+                        <span>Tổng cộng:</span>
+                        <span class="cart-total-price" id="cartTotalPrice">0đ</span>
+                    </div>
+                </div>
+                <button class="btn btn-dark w-100 rounded-pill py-3 fw-bold mt-3" id="cartCheckoutBtn">
+                    THANH TOÁN NGAY
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup 4: Full Checkout Modal -->
+    <div class="promo-popup-overlay" id="checkoutPopupOverlay">
+        <div class="promo-popup promo-popup--checkout" id="checkoutPopup">
+            <button class="promo-popup-close" id="checkoutPopupClose" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="checkout-modal-container">
+                <div class="checkout-header">
+                    <h2><i class="fas fa-file-invoice-dollar me-2" style="color: var(--primary-color);"></i>Thanh toán đơn hàng</h2>
+                </div>
+                
+                <div class="checkout-body">
+                    <div class="row g-4">
+                        <!-- Left: Order Review -->
+                        <div class="col-lg-7">
+                            <div class="checkout-card">
+                                <h4 class="checkout-card-title">Sản phẩm đã chọn</h4>
+                                <div class="checkout-items-list" id="checkoutItemsList">
+                                    <!-- Items rendered by JS -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Summary & Payment -->
+                        <div class="col-lg-5">
+                            <div class="checkout-card mb-4">
+                                <h4 class="checkout-card-title">Tóm tắt đơn hàng</h4>
+                                <div class="checkout-summary">
+                                    <div class="summary-line">
+                                        <span>Tổng tiền hàng:</span>
+                                        <span id="checkoutSubtotal">0đ</span>
+                                    </div>
+                                    <div class="summary-line">
+                                        <span>Phí vận chuyển:</span>
+                                        <span id="checkoutShipping">0đ</span>
+                                    </div>
+                                    <div class="summary-line free-shipping-note" id="freeShippingNote">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        <span>Mua thêm sản phẩm để được Freeship (>5 món)</span>
+                                    </div>
+                                    <hr>
+                                    <div class="summary-line total">
+                                        <span>Tổng thanh toán:</span>
+                                        <span id="checkoutTotal">0đ</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkout-card">
+                                <h4 class="checkout-card-title">Phương thức thanh toán</h4>
+                                <div class="payment-methods-grid">
+                                    <label class="checkout-payment-option">
+                                        <input type="radio" name="checkoutPayment" value="visa" checked>
+                                        <div class="method-box">
+                                            <i class="fab fa-cc-visa"></i>
+                                            <span>Visa</span>
+                                        </div>
+                                    </label>
+                                    <label class="checkout-payment-option">
+                                        <input type="radio" name="checkoutPayment" value="mastercard">
+                                        <div class="method-box">
+                                            <i class="fab fa-cc-mastercard"></i>
+                                            <span>MasterCard</span>
+                                        </div>
+                                    </label>
+                                    <label class="checkout-payment-option">
+                                        <input type="radio" name="checkoutPayment" value="momo">
+                                        <div class="method-box">
+                                            <img src="https://upload.wikimedia.org/wikipedia/vi/f/fe/MoMo_Logo.png" alt="Momo" style="width: 24px; height: 24px; object-fit: contain;">
+                                            <span>Ví MoMo</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <button class="btn btn-dark w-100 rounded-pill py-3 fw-bold mt-4" id="confirmOrderBtn">
+                                    XÁC NHẬN ĐẶT HÀNG
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../JavaScript/Core/section-loader.js"></script>
     <script src="../JavaScript/Core/lazy-load.js"></script>
@@ -632,6 +854,7 @@
     <script src="../JavaScript/Components/mega-menu.js"></script>
     <script src="../JavaScript/Pages/featured-carousel.js"></script>
     <script src="../JavaScript/Pages/accessories-render.js"></script>
+    <script src="../JavaScript/Components/cart.js"></script>
     <script src="../JavaScript/Pages/charging.js"></script>
     <script src="../JavaScript/Components/hero-banner.js"></script>
     <script src="../JavaScript/Components/popup.js"></script>
