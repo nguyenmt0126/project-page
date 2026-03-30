@@ -31,52 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // 4. Warranty Highlights Slider Dots
-    const slider = document.querySelector('.warranty-v3-slider');
-    const dots = document.querySelectorAll('.slider-dots span');
-    if (slider && dots.length > 0) {
-        slider.addEventListener('scroll', () => {
-            const scrollPercent = slider.scrollLeft / (slider.scrollWidth - slider.clientWidth || 1);
-            const activeIndex = Math.round(scrollPercent * (dots.length - 1));
-            
-            dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.style.background = 'var(--primary-color, #2e7d32)';
-                    dot.style.width = '15px';
-                    dot.style.borderRadius = '10px';
-                } else {
-                    dot.style.background = '#ddd';
-                    dot.style.width = '6px';
-                    dot.style.borderRadius = '50%';
-                }
-            });
-        });
-    }
-    // 5. Warranty Read More Toggle
-    const wrantBtn = document.getElementById('warrantyReadMoreBtn');
-    const wrantContent = document.getElementById('warrantyExpandContent');
-    const wrantOverlay = document.getElementById('warrantyOverlay');
-    
-    if (wrantBtn && wrantContent) {
-        wrantBtn.addEventListener('click', () => {
-            const isExpanded = wrantContent.classList.toggle('expanded');
-            const icon = wrantBtn.querySelector('i');
-            const span = wrantBtn.querySelector('span');
-            
-            if (isExpanded) {
-                if (span) span.textContent = currentLang === 'vi' ? 'Thu gọn' : 'Read less';
-                if (icon) icon.className = 'fas fa-chevron-up ms-2';
-                if (wrantOverlay) wrantOverlay.style.display = 'none';
-            } else {
-                if (span) span.textContent = currentLang === 'vi' ? 'Xem thêm' : 'Read more';
-                if (icon) icon.className = 'fas fa-chevron-down ms-2';
-                if (wrantOverlay) wrantOverlay.style.display = 'block';
-                
-                // Scroll back to the top of the warranty section after collapsing
-                document.getElementById('warranty').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
 });
 
 /**
