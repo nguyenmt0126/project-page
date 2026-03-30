@@ -403,6 +403,235 @@
         </div>
     </div>
 
+    <!-- WARRANTY SECTION — Chính sách bảo hành VinFast (Premium Redesign) -->
+    <section id="warranty" class="warranty-section-v3 position-relative overflow-hidden">
+        <div class="container py-5 position-relative z-1">
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <span class="warranty-v3-badge mb-3" data-i18n="warranty_badge"></span>
+                <h2 class="warranty-v3-title h1 fw-black mb-3" data-i18n-html="warranty_title"></h2>
+                <p class="warranty-v3-subtitle text-muted mx-auto" style="max-width: 650px;" data-i18n="warranty_subtitle"></p>
+            </div>
+
+            <!-- Warranty Highlights Slider (Compact) -->
+            <div class="warranty-v3-highlights-wrapper mb-5">
+                <div class="warranty-v3-slider">
+                    <div class="warranty-v3-slide">
+                        <div class="warranty-v3-card shadow-sm border rounded-4 p-3 bg-white">
+                            <div class="card-icon mb-2 fs-4 text-success"><i class="fas fa-car-battery"></i></div>
+                            <h4 class="h6 fw-bold mb-1" data-i18n="warranty_card_battery"></h4>
+                            <p class="x-small text-muted mb-0" data-i18n="warranty_card_battery_desc"></p>
+                        </div>
+                    </div>
+                    <div class="warranty-v3-slide">
+                        <div class="warranty-v3-card shadow-sm border rounded-4 p-3 bg-white">
+                            <div class="card-icon mb-2 fs-4 text-primary"><i class="fas fa-tools"></i></div>
+                            <h4 class="h6 fw-bold mb-1" data-i18n="warranty_card_mobile"></h4>
+                            <p class="x-small text-muted mb-0" data-i18n="warranty_card_mobile_desc"></p>
+                        </div>
+                    </div>
+                    <div class="warranty-v3-slide">
+                        <div class="warranty-v3-card shadow-sm border rounded-4 p-3 bg-white">
+                            <div class="card-icon mb-2 fs-4 text-danger"><i class="fas fa-truck-pickup"></i></div>
+                            <h4 class="h6 fw-bold mb-1" data-i18n="warranty_card_rescue"></h4>
+                            <p class="x-small text-muted mb-0" data-i18n="warranty_card_rescue_desc"></p>
+                        </div>
+                    </div>
+                    <div class="warranty-v3-slide">
+                        <div class="warranty-v3-card shadow-sm border rounded-4 p-3 bg-white">
+                            <div class="card-icon mb-2 fs-4 text-warning"><i class="fas fa-bolt"></i></div>
+                            <h4 class="h6 fw-bold mb-1" data-i18n="warranty_card_charging"></h4>
+                            <p class="x-small text-muted mb-0" data-i18n="warranty_card_charging_desc"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Dots (Mobile) -->
+                <div class="slider-dots d-lg-none">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <!-- Detailed Tabs (With Read More) -->
+            <div class="warranty-v3-content-wrapper position-relative">
+                <div class="warranty-v3-tabs-container p-3 p-lg-5 rounded-4 shadow-lg bg-white" id="warrantyExpandContent">
+                    <ul class="nav nav-pills justify-content-center mb-5" id="warrantyDetailedTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active rounded-pill px-4 py-2 mx-1 shadow-sm border" id="car-tab" data-bs-toggle="pill" data-bs-target="#pills-car" type="button" role="tab"><i class="fas fa-car me-2"></i><span data-i18n="warranty_tab_car"></span></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4 py-2 mx-1 shadow-sm border" id="scooter-tab" data-bs-toggle="pill" data-bs-target="#pills-scooter" type="button" role="tab"><i class="fas fa-motorcycle me-2"></i><span data-i18n="warranty_tab_scooter"></span></button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link rounded-pill px-4 py-2 mx-1 shadow-sm border" id="spare-tab" data-bs-toggle="pill" data-bs-target="#pills-spare" type="button" role="tab"><i class="fas fa-cog me-2"></i><span data-i18n="warranty_tab_spare"></span></button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <!-- Ô tô -->
+                        <div class="tab-pane fade show active" id="pills-car" role="tabpanel">
+                            <div class="row align-items-center g-5">
+                                <div class="col-lg-7">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="border-0" data-i18n="warranty_car_segment"></th>
+                                                    <th class="border-0" data-i18n="warranty_car_vehicle"></th>
+                                                    <th class="border-0" data-i18n="warranty_car_battery"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="fw-medium">
+                                                    <td><span class="fs-5 fw-bold text-dark" data-i18n="warranty_car_v89"></span></td>
+                                                    <td data-i18n="warranty_car_v89_vehicle"></td>
+                                                    <td data-i18n="warranty_car_v89_battery"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="fw-bold text-dark" data-i18n="warranty_car_v356"></span></td>
+                                                    <td data-i18n="warranty_car_v356_vehicle"></td>
+                                                    <td data-i18n="warranty_car_v356_battery"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><span class="fw-bold text-dark" data-i18n="warranty_car_v3"></span></td>
+                                                    <td data-i18n="warranty_car_v3_vehicle"></td>
+                                                    <td data-i18n="warranty_car_v3_battery"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="p-4 border-start border-3 border-success bg-light rounded-2">
+                                        <h5 class="fw-bold mb-3" data-i18n="warranty_benefit_title"></h5>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-3 d-flex align-items-start"><i class="fas fa-check-circle text-success me-3 mt-1"></i><span data-i18n="warranty_benefit_1"></span></li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fas fa-check-circle text-success me-3 mt-1"></i><span data-i18n="warranty_benefit_2"></span></li>
+                                            <li class="mb-3 d-flex align-items-start"><i class="fas fa-check-circle text-success me-3 mt-1"></i><span data-i18n="warranty_benefit_3"></span></li>
+                                            <li class="d-flex align-items-start"><i class="fas fa-check-circle text-success me-3 mt-1"></i><span data-i18n="warranty_benefit_4"></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Xe máy -->
+                        <div class="tab-pane fade" id="pills-scooter" role="tabpanel">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="p-4 border shadow-sm rounded-4 h-100">
+                                        <h5 class="fw-bold mb-4 text-primary"><i class="fas fa-motorcycle me-2"></i><span data-i18n="warranty_scooter_general"></span></h5>
+                                        <p class="mb-2" data-i18n="warranty_scooter_time"></p>
+                                        <hr>
+                                        <p class="mb-0 text-muted small">VinFast Service 24/7</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-4 border shadow-sm rounded-4 h-100">
+                                        <h5 class="fw-bold mb-4 text-success"><i class="fas fa-battery-half me-2"></i><span data-i18n="warranty_scooter_lfp"></span></h5>
+                                        <p class="mb-2" data-i18n="warranty_scooter_lfp_desc"></p>
+                                        <hr>
+                                        <p class="mb-0 text-danger fw-bold"><i class="fas fa-exclamation-triangle me-2"></i>VinFast Official</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Phụ tùng -->
+                        <div class="tab-pane fade" id="pills-spare" role="tabpanel">
+                            <div class="text-center p-4">
+                                <i class="fas fa-cog fa-4x text-muted mb-4 opacity-25"></i>
+                                <h4 class="fw-bold" data-i18n="warranty_spare_title"></h4>
+                                <p class="text-muted mb-5" data-i18n="warranty_spare_desc"></p>
+                                <div class="row g-4 justify-content-center">
+                                    <div class="col-md-3">
+                                        <div class="p-3 border rounded-pill bg-light fw-bold" data-i18n="warranty_spare_1"></div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="p-3 border rounded-pill bg-light fw-bold" data-i18n="warranty_spare_2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truncation Overlay -->
+                    <div class="warranty-v3-overlay" id="warrantyOverlay"></div>
+                </div>
+
+                <!-- Toggle Buttons -->
+                <div class="text-center mt-4">
+                    <button class="btn btn-outline-dark rounded-pill px-5 fw-bold" id="warrantyReadMoreBtn">
+                        <span data-i18n="about_read_more">Xem thêm</span> <i class="fas fa-chevron-down ms-2"></i>
+                    </button>
+                    <button class="btn btn-dark rounded-pill px-5 fw-bold ms-2" data-bs-toggle="modal" data-bs-target="#warrantyFullModal">
+                        <span data-i18n="nav_warranty">Xem Full</span> <i class="fas fa-external-link-alt ms-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL WARRANTY MODAL -->
+    <div class="modal fade" id="warrantyFullModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+                <div class="modal-header bg-dark text-white border-0 py-3 px-4">
+                    <h5 class="modal-title fw-bold" data-i18n="warranty_title"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <!-- Premium Banner inside Modal -->
+                    <div class="p-5 text-center bg-light border-bottom">
+                        <i class="fas fa-shield-alt text-success fa-3x mb-3"></i>
+                        <h2 class="fw-black mb-1" data-i18n="warranty_title"></h2>
+                        <p class="text-muted" data-i18n="warranty_subtitle"></p>
+                    </div>
+                    
+                    <div class="p-4 p-md-5">
+                        <div class="row g-5">
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-4 border-bottom pb-2">1. Quy định chung</h4>
+                                <p class="small text-muted mb-3">VinFast cam kết bảo hành cho những lỗi của nhà sản xuất trong điều kiện vận hành bình thường. Mọi hư hỏng do lỗi lắp ráp hoặc linh kiện sẽ được sửa chữa hoặc thay thế miễn phí tại các Xưởng dịch vụ ủy quyền của VinFast trên toàn quốc.</p>
+                                <ul class="small text-muted">
+                                    <li class="mb-2">Bảo hành phụ thuộc vào việc tuân thủ lịch bảo dưỡng định kỳ.</li>
+                                    <li class="mb-2">Sổ bảo trì điện tử được quản lý qua ứng dụng VinFast.</li>
+                                    <li class="mb-2">Không bảo hành cho các hư hỏng do thiên tai, hỏa hoạn hoặc tai nạn.</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-4 border-bottom pb-2">2. Bảo hành Pin</h4>
+                                <p class="small text-muted mb-3">Đây là chính sách độc quyền giúp khách hàng xóa tan nỗi lo về Pin. VinFast sẽ thay thế hoặc sửa chữa MIỄN PHÍ nếu Pin gặp bất kỳ lỗi kỹ thuật nào từ nhà sản xuất hoặc khi dung lượng tối đa (SOH) xuống dưới 70%.</p>
+                                <div class="bg-light p-3 rounded-3 border-start border-4 border-primary">
+                                    <p class="small fw-bold mb-0 text-dark">Lưu ý: Pin thuê được bảo hành trọn đời theo hợp đồng thuê pin.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-4 border-bottom pb-2">3. Điều khoản loại trừ</h4>
+                                <ul class="small text-muted">
+                                    <li class="mb-2">Tự ý thay đổi kết cấu xe hoặc phần mềm quản lý (Tuning).</li>
+                                    <li class="mb-2">Lắp đặt phụ kiện không chính hãng gây ảnh hưởng hệ thống điện.</li>
+                                    <li class="mb-2">Hư hỏng do sử dụng không đúng mục đích (Đua xe, chở quá tải...).</li>
+                                    <li class="mb-2">Sử dụng sạc không tương thích gây cháy nổ pin.</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6">
+                                <h4 class="fw-bold mb-4 border-bottom pb-2">4. Cứu hộ & Dịch vụ lưu động</h4>
+                                <p class="small text-muted">Hệ thống Cứu hộ 1900 23 23 89 hoạt động 24/7. Hỗ trợ sạc pin lưu động khi xe hết điện giữa đường (Mobile Charging) và sửa chữa tận nhà cho các lỗi đơn giản (Mobile Service).</p>
+                                <div class="mt-4 d-flex gap-3">
+                                    <div class="flex-grow-1 p-3 border rounded text-center"><i class="fas fa-phone-alt text-danger mb-2"></i><div class="fw-bold">1900 232389</div></div>
+                                    <div class="flex-grow-1 p-3 border rounded text-center"><i class="fas fa-map-marker-alt text-primary mb-2"></i><div class="fw-bold">Hệ thống 3S</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-4">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal" data-i18n="modal_close">Đóng</button>
+                    <a href="#" class="btn btn-primary rounded-pill px-4" data-i18n="nav_contact">Liên hệ hỗ trợ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
     <!-- About Us Section -->
     <section id="about-us" class="py-5 position-relative">
         <a href="#contact" class="section-scroll-indicator light">
@@ -597,7 +826,7 @@
                 </div>
                 <!-- Right: Vehicle Image Preview -->
                 <div class="promo-popup-banner" id="consultBanner">
-                    <img src="" data-src="../Data/ô tô PC.webp" alt="Xe" class="promo-popup-img lazy-load"
+                    <img src="" data-src="" alt="Xe" class="promo-popup-img lazy-load"
                         id="consultVehicleImg">
                 </div>
             </div>
@@ -622,13 +851,13 @@
 
                     <form id="orderForm" class="popup-form">
                         <div class="row g-3">
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <div class="popup-form-group">
                                     <input type="text" id="orderName" placeholder=" " required>
                                     <label data-i18n="deposit_name">Họ và tên *</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <div class="popup-form-group">
                                     <input type="tel" id="orderPhone" placeholder=" " required>
                                     <label data-i18n="deposit_phone">Số điện thoại *</label>
@@ -683,8 +912,8 @@
                             cọc</button>
                     </form>
                 </div>
-                <div class="promo-popup-banner d-none d-lg-flex" id="orderBanner">
-                    <img src="" data-src="../Data/ô tô PC.webp" alt="Order Preview" class="promo-popup-img lazy-load"
+                <div class="promo-popup-banner" id="orderBanner">
+                    <img src="" data-src="" alt="Order Preview" class="promo-popup-img lazy-load"
                         id="orderVehicleImg">
                 </div>
             </div>

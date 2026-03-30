@@ -124,7 +124,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
         </div>
 
         <div class="d-flex flex-column flex-sm-row gap-3">
-            <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-lg flex-grow-1">${t('btn_order')}</a>
+            <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-lg flex-grow-1" id="${infoId}-order-btn">${t('btn_order')}</a>
             <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold flex-grow-1" id="${infoId}-link">${t('btn_detail')}</a>
         </div>
     `;
@@ -136,6 +136,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     const discountEl = document.getElementById(`${infoId}-discount`);
     const colorsEl = document.getElementById(`${infoId}-colors`);
     const linkEl = document.getElementById(`${infoId}-link`);
+    const orderEl = document.getElementById(`${infoId}-order-btn`);
     const specValueEls = infoBox.querySelectorAll('.spec-value[data-spec]');
 
     function updateDisplay(index) {
@@ -185,6 +186,16 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
             e.preventDefault();
             openSpecsModal(vehicle.id);
         };
+
+        if (orderEl) {
+            orderEl.href = '#';
+            orderEl.onclick = (e) => {
+                e.preventDefault();
+                if (typeof window.openOrderWithVehicle === 'function') {
+                    window.openOrderWithVehicle(vehicle.id);
+                }
+            };
+        }
 
         specValueEls.forEach(el => {
             const key = el.getAttribute('data-spec');

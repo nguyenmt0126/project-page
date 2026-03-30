@@ -157,6 +157,18 @@
             if (navConsultBtn) {
                 navConsultBtn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    // Start compact
+                    if (consultPopup) consultPopup.classList.remove('has-vehicle');
+                    const consultSelect = document.getElementById('consultVehicleSelect');
+                    if (consultSelect) consultSelect.value = "";
+                    // Reset preview image so old car image doesn't linger
+                    const consultImg = document.getElementById('consultVehicleImg');
+                    if (consultImg) {
+                        consultImg.src = '';
+                        consultImg.style.opacity = '0';
+                        consultImg.style.transform = 'scale(0.96) translateX(15px)';
+                    }
+                    
                     openPopup(consultOverlay);
                 });
             }
@@ -174,11 +186,33 @@
 
                 const openOrder = (e) => {
                     e.preventDefault();
+                    // Ensure it starts compact
+                    if (orderPopup) orderPopup.classList.remove('has-vehicle');
+                    const orderSelect = document.getElementById('orderVehicleSelect');
+                    if (orderSelect) orderSelect.value = "";
+                    // Reset preview image so old car image doesn't linger
+                    const orderImg = document.getElementById('orderVehicleImg');
+                    if (orderImg) {
+                        orderImg.src = '';
+                        orderImg.style.opacity = '0';
+                        orderImg.style.transform = 'scale(0.96) translateX(15px)';
+                    }
+                    
                     openPopup(orderOverlay);
                 };
 
                 if (orderBtn) orderBtn.addEventListener('click', openOrder);
-                if (preOrderBtn) preOrderBtn.addEventListener('click', openOrder);
+                if (preOrderBtn) {
+                    preOrderBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const vehicleId = preOrderBtn.getAttribute('data-vehicle-id');
+                        if (vehicleId && typeof window.openOrderWithVehicle === 'function') {
+                            window.openOrderWithVehicle(vehicleId);
+                        } else {
+                            openOrder(e);
+                        }
+                    });
+                }
 
                 const orderForm = document.getElementById('orderForm');
                 if (orderForm) {
@@ -504,4 +538,31 @@
             if (initialUser) updateNavbarUser(initialUser);
         }
     });
+
+    // --- Global Helper for external triggers (Accessible anywhere after popup.js loads) ---
+    window.openOrderWithVehicle = (vehicleId) => {
+        const orderOverlay = document.getElementById('orderPopupOverlay');
+        const orderPopup = document.getElementById('orderPopup');
+        const orderSelect = document.getElementById('orderVehicleSelect');
+        const orderImgId = 'orderVehicleImg';
+
+        if (!orderOverlay || !orderSelect) return;
+
+        // 1. Set the select value (Must happen AFTER initVehicleSelect has been called in DOMContentLoaded)
+        orderSelect.value = vehicleId;
+
+        // 2. Trigger the change event logic (to show banner and update image)
+        const allVehicles = getAllVehicles();
+        const vehicle = allVehicles.find(v => v.id === vehicleId);
+        
+        if (vehicle) {
+            if (orderPopup) orderPopup.classList.add('has-vehicle');
+            updatePreviewImage(orderImgId, vehicle.img);
+        } else {
+            if (orderPopup) orderPopup.classList.remove('has-vehicle');
+        }
+
+        // 3. Open the popup
+        openPopup(orderOverlay);
+    };
 })();
