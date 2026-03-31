@@ -64,7 +64,7 @@ const translations = {
         "hero_btn_learn_more": "Learn More",
         "hero_btn_order": "Order Now",
         "hero_btn_about": "About Us",
-        
+
         "hero_badge_eco": "🌿 100% Eco-Friendly",
         "hero_badge_warranty": "🛡️ 10-Year Warranty",
         "hero_stat_vehicles": "Vehicles Delivered",
@@ -309,7 +309,7 @@ const translations = {
         "hero_btn_learn_more": "Tìm hiểu thêm",
         "hero_btn_order": "Đặt hàng",
         "hero_btn_about": "Về chúng tôi",
-        
+
         "hero_badge_eco": "🌿 100% Thân thiện môi trường",
         "hero_badge_warranty": "🛡️ Bảo hành 10 năm",
         "hero_stat_vehicles": "Xe đã bàn giao",
@@ -384,7 +384,7 @@ const translations = {
         "footer_products": "Sản phẩm",
         "footer_support": "Hỗ trợ",
         "footer_contact": "Liên hệ",
-        "footer_electric_cars": "Xe điện",
+        "footer_electric_cars": "Xe Ô tô điện",
         "footer_e_scooters": "Xe máy điện",
         "footer_accessories": "Phụ kiện",
         "footer_chargers": "Trạm sạc",

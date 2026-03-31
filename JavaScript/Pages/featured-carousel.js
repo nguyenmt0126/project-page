@@ -63,18 +63,14 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     };
 
     const generateSpecItem = (specKey, dataKey, staticValue = null) => {
-        const iconClass = specIconMap[specKey] || 'fas fa-info-circle';
         const valueHTML = staticValue
-            ? `<span class="spec-value">${t(staticValue)}</span>`
-            : `<span class="spec-value" data-spec="${dataKey}"></span>`;
+            ? `<span class="spec-value-minimal mt-1">${t(staticValue)}</span>`
+            : `<span class="spec-value-minimal mt-1" data-spec="${dataKey}"></span>`;
 
         return `
-            <div class="spec-item-optimized">
-                <i class="${iconClass}"></i>
-                <div>
-                    <span class="spec-label">${t(specKey)}</span>
-                    ${valueHTML}
-                </div>
+            <div class="col-6 col-md spec-block-minimal mb-4">
+                <span class="spec-label-minimal">${t(specKey)}</span>
+                ${valueHTML}
             </div>
         `;
     };
@@ -84,49 +80,41 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
             ${generateSpecItem('spec_range', 'range')}
             ${generateSpecItem('spec_seats', 'seats')}
             ${generateSpecItem('spec_power', 'power')}
-            ${generateSpecItem('spec_acceleration', 'acceleration')}
-            ${generateSpecItem('spec_warranty', null, 'spec_warranty_val')}
-            ${generateSpecItem('spec_airbags', null, 'spec_airbags_val')}
         `;
     } else {
         specsHTML = `
             ${generateSpecItem('spec_range', 'range')}
-            ${generateSpecItem('spec_max_speed', 'speed')}
-            ${generateSpecItem('spec_charge', 'charge')}
-            ${generateSpecItem('spec_waterproof', 'waterproof')}
-            ${generateSpecItem('spec_engine', null, 'spec_engine_val')}
             ${generateSpecItem('spec_trunk', null, 'spec_trunk_val')}
+            ${generateSpecItem('spec_max_speed', 'speed')}
         `;
     }
 
     infoBox.innerHTML = `
-        <div class="d-flex align-items-center mb-2">
-            <div style="position: relative; display: inline-block;">
-                <span class="badge bg-primary text-white px-3 py-2 text-uppercase ls-1">${typeLabel}</span>
-                <span class="badge bg-danger text-white px-2 py-1 text-uppercase shadow-sm" id="${infoId}-new-badge" style="display: none; position: absolute; top: -12px; right: -15px; font-size: 0.7rem; z-index: 1;">${t('badge_new')}</span>
-            </div>
-        </div>
-        <h2 class="display-4 fw-bolder text-dark mb-3" id="${infoId}-name"></h2>
+        <hr class="vehicle-divider mb-4 mt-0">
         
-        <div class="bg-light p-3 rounded-3 mb-4">
-            <div class="row align-items-center">
-                <div class="col-12">
-                    <span class="spec-label d-block mb-1">${t('spec_price_from')}</span>
-                    <p class="lead text-primary fw-bold" style="font-size: 2.2rem; margin-bottom: 0; line-height: 1;" id="${infoId}-price"></p>
-                    <p class="text-muted text-decoration-line-through" style="font-size: 1.1rem; margin-bottom: 5px;" id="${infoId}-price-old"></p>
-                    <span class="badge bg-danger" id="${infoId}-discount"></span>
-                </div>
+        <div class="row text-center mb-2 justify-content-center w-100 mx-auto">
+            <div class="col-6 col-md spec-block-minimal mb-4">
+                <span class="spec-label-minimal">${t('Vehicle Type')}</span>
+                <span class="spec-value-minimal mt-1" id="${infoId}-name"></span>
             </div>
-        </div>
-        
-        <div class="specs-grid-optimized mb-4">
+            
             ${specsHTML}
+            
+            <div class="col-6 col-md spec-block-minimal mb-4 d-flex flex-column align-items-center">
+                <span class="spec-label-minimal">${t('spec_price_from')}</span>
+                <span class="spec-value-minimal lh-1 mt-1" id="${infoId}-price"></span>
+                <span class="text-decoration-line-through text-muted fw-normal mt-1" style="font-size: 0.85rem; display: none;" id="${infoId}-price-old"></span>
+            </div>
         </div>
-
-        <div class="d-flex flex-column flex-sm-row gap-3">
-            <a href="#" class="btn btn-primary btn-lg rounded-pill px-5 fw-bold shadow-lg flex-grow-1" id="${infoId}-order-btn">${t('btn_order')}</a>
-            <a href="#" class="btn btn-outline-dark btn-lg rounded-pill px-5 fw-bold flex-grow-1" id="${infoId}-link">${t('btn_detail')}</a>
+        
+        <div class="d-flex justify-content-center gap-3 mb-4 mt-2">
+            <a href="#" class="btn btn-primary rounded-1 px-5 py-2 fw-bold tesla-btn-primary" id="${infoId}-order-btn">${t('btn_order')}</a>
+            <a href="#" class="btn btn-outline-primary rounded-1 px-5 py-2 fw-bold tesla-btn-outline" id="${infoId}-link">${t('btn_detail')}</a>
         </div>
+        
+        <!-- Hidden elements to preserve updateDisplay logic -->
+        <span id="${infoId}-new-badge" style="display: none;"></span>
+        <span id="${infoId}-discount" style="display: none;"></span>
     `;
 
     const nameEl = document.getElementById(`${infoId}-name`);
@@ -137,7 +125,15 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     const colorsEl = document.getElementById(`${infoId}-colors`);
     const linkEl = document.getElementById(`${infoId}-link`);
     const orderEl = document.getElementById(`${infoId}-order-btn`);
-    const specValueEls = infoBox.querySelectorAll('.spec-value[data-spec]');
+    const specValueEls = infoBox.querySelectorAll('.spec-value-minimal[data-spec]');
+
+    // Extract the bullets container and insert it immediately before the buttons wrapper
+    const buttonsWrapper = infoBox.querySelector('.d-flex.justify-content-center.gap-3');
+    if (bulletsContainer && buttonsWrapper) {
+        bulletsContainer.classList.replace('mt-4', 'mt-1');
+        bulletsContainer.classList.replace('pb-2', 'mb-3');
+        infoBox.insertBefore(bulletsContainer, buttonsWrapper);
+    }
 
     function updateDisplay(index) {
         const vehicle = data[index];
@@ -226,6 +222,7 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
     }
 
     updateDisplay(currentIndex);
+    updateBullets();
 
     // Clone buttons to remove any previously attached event listeners (prevents double-firing on re-init)
     const freshPrev = prevBtn.cloneNode(true);

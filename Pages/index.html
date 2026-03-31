@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../Css/style.css">
 </head>
 
@@ -35,7 +35,8 @@
                     </button>
                 </div>
                 <!-- Desktop only consultation button -->
-                <a href="#" class="btn btn-consultation d-none d-lg-flex" id="navConsultBtn" data-i18n="nav_consultation">Đăng ký tư vấn</a>
+                <a href="#" class="btn btn-consultation d-none d-lg-flex" id="navConsultBtn"
+                    data-i18n="nav_consultation">Đăng ký tư vấn</a>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -123,7 +124,7 @@
 
 
     <!-- Featured Cars Section -->
-    <section class="featured-vehicle-section bg-light" id="featured-cars">
+    <section class="featured-vehicle-section" id="featured-cars">
         <a href="#featured-scooters" class="section-scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </a>
@@ -131,19 +132,15 @@
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="car-prev-btn"><i class="fas fa-chevron-left"></i></button>
 
-                <div class="featured-vehicle-content flex-grow-1 px-3">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 mb-4 mb-lg-0">
-                            <div class="featured-img-container">
-                                <img src="" alt="Car Image" id="car-main-img" class="img-fluid">
-                            </div>
-                            <div class="bullet-navigation text-center mt-4" id="car-bullets"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="featured-info-container" id="car-info-box">
-                            </div>
-                        </div>
+                <div class="featured-vehicle-content flex-grow-1 px-3 d-flex flex-column align-items-center w-100">
+                    <div class="featured-img-container mx-auto position-relative w-100 mb-2">
+                        <img src="" alt="Car Image" id="car-main-img" class="img-fluid mx-auto d-block" style="position: relative; z-index: 1;">
                     </div>
+                    
+                    <div class="featured-info-container w-100 mt-2" id="car-info-box" style="max-width: 1000px;">
+                    </div>
+
+                    <div class="bullet-navigation text-center mt-4 pb-2" id="car-bullets"></div>
                 </div>
 
                 <button class="spec-nav-btn next" id="car-next-btn"><i class="fas fa-chevron-right"></i></button>
@@ -153,7 +150,7 @@
     </section>
 
     <!-- Featured Scooters Section -->
-    <section class="featured-vehicle-section bg-light" id="featured-scooters">
+    <section class="featured-vehicle-section" id="featured-scooters">
         <a href="#accessory" class="section-scroll-indicator">
             <i class="fas fa-chevron-down"></i>
         </a>
@@ -161,19 +158,15 @@
             <div class="featured-vehicle-wrapper">
                 <button class="spec-nav-btn prev" id="scooter-prev-btn"><i class="fas fa-chevron-left"></i></button>
 
-                <div class="featured-vehicle-content flex-grow-1 px-3">
-                    <div class="row align-items-center">
-                        <div class="col-lg-7 mb-4 mb-lg-0">
-                            <div class="featured-img-container">
-                                <img src="" alt="Scooter Image" id="scooter-main-img" class="img-fluid">
-                            </div>
-                            <div class="bullet-navigation text-center mt-4" id="scooter-bullets"></div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="featured-info-container" id="scooter-info-box">
-                            </div>
-                        </div>
+                <div class="featured-vehicle-content flex-grow-1 px-3 d-flex flex-column align-items-center w-100">
+                    <div class="featured-img-container mx-auto position-relative w-100 mb-2">
+                        <img src="" alt="Scooter Image" id="scooter-main-img" class="img-fluid mx-auto d-block" style="position: relative; z-index: 1;">
                     </div>
+                    
+                    <div class="featured-info-container w-100 mt-2" id="scooter-info-box" style="max-width: 1000px;">
+                    </div>
+
+                    <div class="bullet-navigation text-center mt-4 pb-2" id="scooter-bullets"></div>
                 </div>
 
                 <button class="spec-nav-btn next" id="scooter-next-btn"><i class="fas fa-chevron-right"></i></button>
@@ -404,6 +397,110 @@
     </div>
 
 
+    <!-- Warranty Flipbook Section -->
+    <section class="warranty-section-v2 bg-light py-5" id="warranty">
+        <a href="#about-us" class="section-scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="container overflow-hidden">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-2">Chính Sách Bảo Hành</h2>
+                <p class="text-muted">L-Corparation mang đến sự an tâm tuyệt đối</p>
+            </div>
+            
+            <div class="book-container mx-auto">
+                <div class="book" id="book">
+                    <!-- Paper 1 -->
+                    <div id="p1" class="paper">
+                        <div class="front">
+                            <div id="f1" class="front-content d-flex flex-column justify-content-center align-items-center text-center h-100 p-4">
+                                <i class="fas fa-shield-alt text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h3 class="fw-bold fs-4">Sổ Bảo Hành Tự Nguyện</h3>
+                                <p class="text-muted mt-2">Dành cho Khách hàng L-Corparation</p>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div id="b1" class="back-content p-4 d-flex flex-column h-100">
+                                <h4 class="border-bottom pb-2 mb-4 mt-2 text-primary text-center" style="font-size: 1.3rem;">1. Điều kiện bảo hành</h4>
+                                <ul class="text-muted flex-grow-1 ps-4" style="line-height: 1.8; font-size: 0.95rem;">
+                                    <li class="mb-3">Sản phẩm thuộc danh mục được bảo hành từ Nhà sản xuất.</li>
+                                    <li class="mb-3">Sản phẩm bị lỗi kỹ thuật do Nhà sản xuất, không phải do người dùng.</li>
+                                    <li class="mb-3">Thời hạn bảo hành vẫn còn hiệu lực theo ngày mua trên hợp đồng.</li>
+                                    <li class="mb-3">Phiếu bảo hành hoặc mã bảo hành điện tử còn nguyên vẹn, không bị tẩy xóa.</li>
+                                    <li>Tem bảo hành (nếu có) trên sản phẩm không bị rách, vỡ.</li>
+                                </ul>
+                                <div class="page-number text-center text-muted small border-top pt-2 mt-auto">Trang 1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Paper 2 -->
+                    <div id="p2" class="paper">
+                        <div class="front">
+                            <div id="f2" class="front-content p-4 d-flex flex-column h-100">
+                                <h4 class="border-bottom pb-2 mb-4 mt-2 text-primary text-center" style="font-size: 1.3rem;">2. Thời hạn bảo hành</h4>
+                                <p class="text-dark fw-bold mb-2" style="font-size: 1rem;">Đối với dòng xe Ô tô:</p>
+                                <p class="text-muted mb-4" style="font-size: 0.95rem;">Bảo hành chính hãng lên đến 10 năm hoặc 200.000 km (tùy điều kiện nào đến trước).</p>
+                                
+                                <p class="text-dark fw-bold mb-2" style="font-size: 1rem;">Đối với xe máy điện:</p>
+                                <p class="text-muted mb-4" style="font-size: 0.95rem;">Bảo hành 5 năm hoặc 50.000 km.</p>
+                                
+                                <p class="text-dark fw-bold mb-2" style="font-size: 1rem;">Chính sách Pin:</p>
+                                <p class="text-muted mb-0" style="font-size: 0.95rem;">Thay thế miễn phí khi dung lượng pin tối đa giảm dưới 70% trong suốt thời gian bảo hành pin.</p>
+                                
+                                <div class="page-number text-center text-muted small border-top pt-2 mt-auto">Trang 2</div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div id="b2" class="back-content p-4 d-flex flex-column h-100">
+                                <h4 class="border-bottom pb-2 mb-4 mt-2 text-primary text-center" style="font-size: 1.3rem;">3. Từ chối bảo hành</h4>
+                                <ul class="text-muted flex-grow-1 ps-4" style="line-height: 1.8; font-size: 0.95rem;">
+                                    <li class="mb-3">Sản phẩm bị hư hỏng do thiên tai, hỏa hoạn, lũ lụt, sét đánh...</li>
+                                    <li class="mb-3">Sản phẩm bị hư hỏng do lỗi cố ý hay vô ý của người sử dụng.</li>
+                                    <li class="mb-3">Bị biến dạng, trầy xước, móp méo trong quá trình sử dụng.</li>
+                                    <li>Do tự ý tháo dỡ, sửa chữa bởi các cá nhân hoặc kỹ thuật viên không được sự ủy quyền của L-Corparation.</li>
+                                </ul>
+                                <div class="page-number text-center text-muted small border-top pt-2 mt-auto">Trang 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Paper 3 -->
+                    <div id="p3" class="paper">
+                        <div class="front">
+                            <div id="f3" class="front-content p-4 d-flex flex-column h-100">
+                                <h4 class="border-bottom pb-2 mb-4 mt-2 text-primary text-center" style="font-size: 1.3rem;">4. Quy trình bảo hành</h4>
+                                <ol class="text-muted flex-grow-1 ps-4" style="line-height: 1.8; font-size: 0.95rem;">
+                                    <li class="mb-3">Liên hệ Hotline hoặc Website để yêu cầu dịch vụ.</li>
+                                    <li class="mb-3">Cung cấp thông tin khách hàng, số khung, số máy.</li>
+                                    <li class="mb-3">Mang xe đến Showroom/Xưởng dịch vụ gần nhất.</li>
+                                    <li class="mb-3">Nhận phiếu tiếp nhận và chờ kỹ thuật viên kiểm tra.</li>
+                                    <li>Nhận lại xe sau khi hoàn tất sửa chữa và ký nghiệm thu.</li>
+                                </ol>
+                                <div class="page-number text-center text-muted small border-top pt-2 mt-auto">Trang 4</div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <div id="b3" class="back-content d-flex flex-column justify-content-center align-items-center text-center h-100 p-4">
+                                <i class="fas fa-check-circle text-success mb-3" style="font-size: 3rem;"></i>
+                                <h3 class="fw-bold fs-5">Cảm ơn Quý Khách</h3>
+                                <p class="text-muted mt-2 small">Đã tin tưởng và đồng hành cùng dịch vụ của chúng tôi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next/Prev Buttons -->
+                <div class="d-flex justify-content-center mt-4 pb-2 gap-3" style="z-index: 100; position: absolute; bottom: 10px; left: 0; right: 0;">
+                    <button class="btn btn-outline-primary rounded-circle bg-white" id="prevBookBtn" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button class="btn btn-outline-primary rounded-circle bg-white" id="nextBookBtn" style="width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Us Section -->
     <section id="about-us" class="py-5 position-relative">
         <a href="#contact" class="section-scroll-indicator light">
@@ -475,13 +572,13 @@
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3" data-i18n="footer_products"></h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                        <li><a href="#featured-cars" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_electric_cars"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                        <li><a href="#featured-scooters" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_e_scooters"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                        <li><a href="#accessory" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_accessories"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                        <li><a href="#charging" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_chargers"></a></li>
                     </ul>
                 </div>
@@ -492,7 +589,7 @@
                     <ul class="list-unstyled">
                         <li><a href="#" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_help_center"></a></li>
-                        <li><a href="#" class="text-secondary text-decoration-none footer-link"
+                        <li><a href="#warranty" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_warranty"></a></li>
                         <li><a href="#" class="text-secondary text-decoration-none footer-link"
                                 data-i18n="footer_shipping"></a></li>
@@ -598,8 +695,7 @@
                 </div>
                 <!-- Right: Vehicle Image Preview -->
                 <div class="promo-popup-banner" id="consultBanner">
-                    <img src="" data-src="" alt="Xe" class="promo-popup-img lazy-load"
-                        id="consultVehicleImg">
+                    <img src="" data-src="" alt="Xe" class="promo-popup-img lazy-load" id="consultVehicleImg">
                 </div>
             </div>
         </div>
@@ -685,8 +781,7 @@
                     </form>
                 </div>
                 <div class="promo-popup-banner" id="orderBanner">
-                    <img src="" data-src="" alt="Order Preview" class="promo-popup-img lazy-load"
-                        id="orderVehicleImg">
+                    <img src="" data-src="" alt="Order Preview" class="promo-popup-img lazy-load" id="orderVehicleImg">
                 </div>
             </div>
         </div>
@@ -705,8 +800,10 @@
                     <div id="loginSuccessState" style="display: none;">
                         <div class="profile-header text-center mb-4">
                             <div class="profile-avatar-wrapper mb-3">
-                                <img id="profileAvatar" src="../Data/Images/Users/default-avatar.png" alt="Avatar" class="profile-avatar shadow-sm">
-                                <label for="changeAvatar" class="avatar-edit-badge"><i class="fas fa-camera"></i></label>
+                                <img id="profileAvatar" src="../Data/Images/Users/default-avatar.png" alt="Avatar"
+                                    class="profile-avatar shadow-sm">
+                                <label for="changeAvatar" class="avatar-edit-badge"><i
+                                        class="fas fa-camera"></i></label>
                                 <input type="file" id="changeAvatar" hidden accept="image/*">
                             </div>
                             <h4 class="fw-bold mb-1" id="profileNameDisplay"></h4>
@@ -724,7 +821,8 @@
                             <form id="profileInfoForm" class="row g-2">
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Họ và tên</label>
-                                    <input type="text" class="form-control" id="profName" placeholder="Họ và tên" required>
+                                    <input type="text" class="form-control" id="profName" placeholder="Họ và tên"
+                                        required>
                                 </div>
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Ngày sinh</label>
@@ -732,14 +830,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Số CCCD / CMND</label>
-                                    <input type="text" class="form-control" id="profCCCD" placeholder="Số chứng minh nhân dân">
+                                    <input type="text" class="form-control" id="profCCCD"
+                                        placeholder="Số chứng minh nhân dân">
                                 </div>
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Địa chỉ thường trú</label>
-                                    <textarea class="form-control" id="profAddress" rows="2" placeholder="Địa chỉ liên hệ"></textarea>
+                                    <textarea class="form-control" id="profAddress" rows="2"
+                                        placeholder="Địa chỉ liên hệ"></textarea>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="btn btn-primary w-100 py-2.5 fw-bold">Cập nhật thông tin</button>
+                                    <button type="submit" class="btn btn-primary w-100 py-2.5 fw-bold">Cập nhật thông
+                                        tin</button>
                                 </div>
                             </form>
                         </div>
@@ -749,34 +850,40 @@
                             <form id="profileSecurityForm" class="row g-2">
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Địa chỉ Email</label>
-                                    <input type="email" class="form-control" id="profEmail" readonly style="background-color: #f8f9fa;">
+                                    <input type="email" class="form-control" id="profEmail" readonly
+                                        style="background-color: #f8f9fa;">
                                 </div>
                                 <div class="col-12">
                                     <label class="x-small text-muted mb-1">Mật khẩu mới</label>
-                                    <input type="password" class="form-control" id="profNewPass" placeholder="Để trống nếu không đổi">
+                                    <input type="password" class="form-control" id="profNewPass"
+                                        placeholder="Để trống nếu không đổi">
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <button type="submit" class="btn btn-primary w-100 py-2.5 fw-bold">Đổi mật khẩu</button>
+                                    <button type="submit" class="btn btn-primary w-100 py-2.5 fw-bold">Đổi mật
+                                        khẩu</button>
                                 </div>
                             </form>
                         </div>
 
                         <div class="mt-4 pt-3 border-top text-center">
-                            <button type="button" class="btn btn-outline-danger btn-sm w-100 rounded-pill py-2" id="logoutBtn">Đăng xuất tài khoản</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm w-100 rounded-pill py-2"
+                                id="logoutBtn">Đăng xuất tài khoản</button>
                         </div>
                     </div>
 
                     <!-- State 1: Login Form -->
                     <div id="loginFormState">
                         <h2 class="popup-form-title text-center mb-3">Đăng nhập</h2>
-                        
+
                         <form id="loginForm">
                             <div class="form-group mb-2">
                                 <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
                             </div>
                             <div class="form-group mb-2 position-relative">
-                                <input type="password" class="form-control" id="loginPassword" placeholder="Mật khẩu" required>
-                                <i class="fas fa-eye position-absolute top-50 end-0 translate-middle-y me-3 text-muted" id="togglePassword" style="cursor: pointer;"></i>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Mật khẩu"
+                                    required>
+                                <i class="fas fa-eye position-absolute top-50 end-0 translate-middle-y me-3 text-muted"
+                                    id="togglePassword" style="cursor: pointer;"></i>
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -795,28 +902,32 @@
                         <div class="text-center mb-2">
                             <span class="small text-muted">Chưa có tài khoản?</span>
                         </div>
-                        <button type="button" id="showRegisterBtn" class="btn btn-register-secondary w-100 py-2.5">Đăng ký tài khoản</button>
+                        <button type="button" id="showRegisterBtn" class="btn btn-register-secondary w-100 py-2.5">Đăng
+                            ký tài khoản</button>
                     </div>
 
                     <!-- State 2: Registration Form (Hidden) -->
                     <div id="registerFormState" style="display: none;">
                         <h2 class="popup-form-title text-center mb-3">Đăng ký</h2>
-                        
+
                         <form id="registerForm">
                             <div class="form-group mb-2">
-                                <input type="text" class="form-control" id="regUsername" placeholder="Họ và tên" required>
+                                <input type="text" class="form-control" id="regUsername" placeholder="Họ và tên"
+                                    required>
                             </div>
                             <div class="form-group mb-2">
                                 <input type="email" class="form-control" id="regEmail" placeholder="Email" required>
                             </div>
                             <div class="form-group mb-2">
-                                <input type="password" class="form-control" id="regPassword" placeholder="Mật khẩu" required>
+                                <input type="password" class="form-control" id="regPassword" placeholder="Mật khẩu"
+                                    required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100 py-2.5 mb-3">Đăng ký</button>
                         </form>
 
                         <div class="text-center">
-                            <button type="button" id="showLoginBtn" class="btn btn-link text-decoration-none text-muted small">Quay lại đăng nhập</button>
+                            <button type="button" id="showLoginBtn"
+                                class="btn btn-link text-decoration-none text-muted small">Quay lại đăng nhập</button>
                         </div>
                     </div>
                 </div>
@@ -1013,8 +1124,7 @@
     <script src="../JavaScript/Components/hero-banner.js"></script>
     <script src="../JavaScript/Components/popup.js"></script>
     <script src="../JavaScript/Core/main.js"></script>
-
-
+    <script src="../JavaScript/Pages/warranty-flipbook.js"></script>
 
 </body>
 
