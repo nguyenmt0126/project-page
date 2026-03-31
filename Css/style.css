@@ -1399,8 +1399,8 @@ body.modal-open .navbar.fixed-top .navbar-nav.mx-auto {
 }
 
 .bullet-navigation .bullet-btn {
-    width: 8px;
-    height: 8px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     border: 1px solid #6c757d;
     background: transparent;
@@ -2264,7 +2264,8 @@ footer.section-loaded {
 }
 
 .accessories-section .section-scroll-indicator {
-    bottom: 25px; /* Push it down into the empty padding area */
+    bottom: 25px;
+    /* Push it down into the empty padding area */
 }
 
 .accessories-wrapper {
