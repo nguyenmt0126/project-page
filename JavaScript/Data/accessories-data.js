@@ -4,7 +4,8 @@
  */
 
 const accessoriesData = [
-    // Phụ kiện dành riêng cho Xe máy điện (E-Scooter Specific Accessories) - CHUYỂN LÊN ĐẦU ĐỂ DỄ THẤY
+    // Phụ kiện dành riêng cho Xe máy điện (E-Scooter Specific Accessories) 
+    //- CHUYỂN LÊN ĐẦU ĐỂ DỄ THẤY
     {
         id: 'sct-001',
         name: 'Mũ Bảo Hiểm Siêu Nhẹ An Toàn',
@@ -47,7 +48,7 @@ const accessoriesData = [
     },
     {
         id: 'sct-004',
-        name: 'Bộ sạc xe điện đảm bảo cung cấp năng lượng cho hoạt động ',
+        name: 'Bộ Sạc Xe Máy Điện Chính Hãng',
         category: 'scooter_acc',
         categoryName: 'Phụ kiện Xe máy điện',
         img: 'https://static-cms-prod.vinfastauto.com/cuc-sac-xe-dap-dien-bi-hu_1721190272.jpg',
@@ -60,7 +61,7 @@ const accessoriesData = [
     },
     {
         id: 'sct-005',
-        name: 'Bộ Phụ Kiện Danh cho Xe Điện VinFast Vero X',
+        name: 'Bộ Phụ Kiện Dành Cho VinFast Viper',
         category: 'scooter_acc',
         categoryName: 'Phụ kiện Xe máy điện',
         img: 'https://cf.shopee.vn/file/vn-11134207-820l4-mgysh58rvevd66',
@@ -68,9 +69,9 @@ const accessoriesData = [
         price_old: 380000,
         discount: 26,
         isNew: true,
-        vehicle: 'all',
+        vehicle: 'viper',
         vehicleType: 'scooter',
-        vehicleName: 'Tất cả xe máy điện'
+        vehicleName: 'VinFast Viper'
     },
 
     // Phụ kiện bảo hộ (Safety Accessories)
@@ -87,7 +88,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'vf3',
         vehicleType: 'car',
-        vehicleName: 'VF 3'
+        vehicleName: 'VinFast VF 3'
     },
     {
         id: 'mod-002',
@@ -100,7 +101,7 @@ const accessoriesData = [
         discount: 16,
         vehicle: 'vf3',
         vehicleType: 'car',
-        vehicleName: 'VF 3'
+        vehicleName: 'VinFast VF 3'
     },
     {
         id: 'mod-003',
@@ -113,11 +114,11 @@ const accessoriesData = [
         discount: 17,
         vehicle: 'vf3',
         vehicleType: 'car',
-        vehicleName: 'VF 3'
+        vehicleName: 'VinFast VF 3'
     },
     {
         id: 'mod-004',
-        name: 'VF 5 Tấm Che Pin Cao Áp',
+        name: 'VF 5 — Tấm Che Pin Cao Áp',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw3a4f3add/images/Accessory/EEP73111000AA/1.png',
@@ -126,7 +127,7 @@ const accessoriesData = [
         discount: 19,
         vehicle: 'vf5',
         vehicleType: 'car',
-        vehicleName: 'VF 5'
+        vehicleName: 'VinFast VF 5'
     },
     {
         id: 'mod-005',
@@ -139,7 +140,7 @@ const accessoriesData = [
         discount: 19,
         vehicle: 'vf5',
         vehicleType: 'car',
-        vehicleName: 'VF 5'
+        vehicleName: 'VinFast VF 5'
     },
     {
         id: 'mod-006',
@@ -152,11 +153,11 @@ const accessoriesData = [
         discount: 21,
         vehicle: 'vf6',
         vehicleType: 'car',
-        vehicleName: 'VF 6'
+        vehicleName: 'VinFast VF 6'
     },
     {
         id: 'mod-007',
-        name: 'VF 9 Tấm Che Pin Cao Áp',
+        name: 'VF 9 — Tấm Che Pin Cao Áp',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dwca9bd466/images/Accessory/EEP80001000/1.png',
@@ -165,7 +166,7 @@ const accessoriesData = [
         discount: 18,
         vehicle: 'vf9',
         vehicleType: 'car',
-        vehicleName: 'VF 9'
+        vehicleName: 'VinFast VF 9'
     },
     {
         id: 'mod-008',
@@ -178,7 +179,7 @@ const accessoriesData = [
         discount: 21,
         vehicle: 'vf3',
         vehicleType: 'car',
-        vehicleName: 'VF 3'
+        vehicleName: 'VinFast VF 3'
     },
     {
         id: 'mod-009',
@@ -191,7 +192,7 @@ const accessoriesData = [
         discount: 18,
         vehicle: 'vf8',
         vehicleType: 'car',
-        vehicleName: 'VF 8'
+        vehicleName: 'VinFast VF 8'
     },
     {
         id: 'mod-010',
@@ -204,20 +205,20 @@ const accessoriesData = [
         discount: 27,
         vehicle: 'vf9',
         vehicleType: 'car',
-        vehicleName: 'VF 9'
+        vehicleName: 'VinFast VF 9'
     },
     {
         id: 'mod-011',
-        name: 'VF 7 Tấm Che Pin Cao Áp',
+        name: 'VF 7 — Tấm Che Pin Cao Áp',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw2aa5cf69/images/Accessory/EEP71061000/1.png',
         price: 8000000,
         price_old: 11000000,
         discount: 27,
-        vehicle: 'vf9',
+        vehicle: 'vf7',
         vehicleType: 'car',
-        vehicleName: 'VF 9'
+        vehicleName: 'VinFast VF 7'
     },
     {
         id: 'mod-012',
@@ -230,12 +231,12 @@ const accessoriesData = [
         discount: 18,
         vehicle: 'vf8',
         vehicleType: 'car',
-        vehicleName: 'VF 8'
+        vehicleName: 'VinFast VF 8'
     },
 
-   // Mô hình xe cao cấp (Premium Car Models)
+    // Mô hình xe cao cấp (Premium Car Models) 
     {
-        id: 'mod-001',
+        id: 'col-001',
         name: 'Mô Hình Xe VinFast VF 3',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
@@ -246,7 +247,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'vf3',
         vehicleType: 'car',
-        vehicleName: 'VF 3'
+        vehicleName: 'VinFast VF 3'
     },
     {
         id: 'bat-002',
@@ -257,9 +258,9 @@ const accessoriesData = [
         price: 3800000,
         price_old: 4500000,
         discount: 16,
-        vehicle: 'vf6',
+        vehicle: 'vf8',
         vehicleType: 'car',
-        vehicleName: 'VF 6'
+        vehicleName: 'VinFast VF 8'
     },
     {
         id: 'bat-003',
@@ -270,13 +271,13 @@ const accessoriesData = [
         price: 3600000,
         price_old: 4300000,
         discount: 16,
-        vehicle: 'vfe34',
+        vehicle: 'vf9',
         vehicleType: 'car',
-        vehicleName: 'VFe34'
+        vehicleName: 'VinFast VF 9'
     },
     {
         id: 'bat-004',
-        name: 'Mô Hình Xe VinFast lux A2.0',
+        name: 'Mô Hình Xe VinFast Lux A2.0',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://trummohinh.com/wp-content/uploads/2020/03/VINFAST-LUX-A2.0-SEDAN_01.jpg',
@@ -284,16 +285,14 @@ const accessoriesData = [
         price_old: 5000000,
         discount: 16,
         isNew: true,
-        vehicle: 'vf7',
+        vehicle: 'lux',
         vehicleType: 'car',
-        vehicleName: 'VF 7'
+        vehicleName: 'VinFast Lux A2.0'
     },
-
-
     // Bộ sạc VinFast chính hãng (VinFast Official Chargers)
     {
         id: 'chg-001',
-        name: 'Sạc Tại Nhà 3KW',
+        name: 'Sạc Tại Nhà 3 kW',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw626dfae2/images/Accessory/EEP69072176AB/01.png',
@@ -302,8 +301,8 @@ const accessoriesData = [
         discount: 19,
         isNew: true,
         vehicle: 'all',
-        vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleType: 'car',
+        vehicleName: 'Tất cả ô tô điện'
     },
     {
         id: 'chg-002',
@@ -315,8 +314,8 @@ const accessoriesData = [
         price_old: 15000000,
         discount: 17,
         vehicle: 'all',
-        vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleType: 'car',
+        vehicleName: 'Tất cả ô tô điện'
     },
     {
         id: 'chg-003',
@@ -329,11 +328,11 @@ const accessoriesData = [
         discount: 20,
         vehicle: 'all',
         vehicleType: 'car',
-        vehicleName: 'Tất cả xe máy điện'
+        vehicleName: 'Tất cả ô tô điện'
     },
     {
         id: 'chg-004',
-        name: 'Bộ Sạc Treo Tường AC 7,4 kW',
+        name: 'Bộ Sạc Treo Tường AC 7.4 kW',
         category: 'car_acc',
         categoryName: 'Phụ kiện Ô tô điện',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dwa0be0ad5/images/Accessory/CHG00009020/1.png',
@@ -358,7 +357,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-002',
@@ -372,7 +371,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-003',
@@ -385,7 +384,7 @@ const accessoriesData = [
         discount: 33,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-004',
@@ -399,7 +398,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng văn phòng & Quà tặng'
     },
     {
         id: 'lfs-005',
@@ -412,7 +411,7 @@ const accessoriesData = [
         discount: 32,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng văn phòng & Quà tặng' 
     },
     {
         id: 'lfs-006',
@@ -426,11 +425,11 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-007',
-        name: 'Thắt lưng da VinFast',
+        name: 'Thắt Lưng Da VinFast',
         category: 'lifestyle',
         categoryName: 'Phong cách sống',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw1cf7889e/images/Accessory/LEATHERBELTSVINFAST/4.png',
@@ -438,8 +437,8 @@ const accessoriesData = [
         price_old: 1650000,
         discount: 27,
         vehicle: 'all',
-        vehicleType: 'scooter',
-        vehicleName: 'Tất cả xe máy điện'
+        vehicleType: 'all',
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-008',
@@ -453,7 +452,7 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng trong xe'
     },
     {
         id: 'lfs-009',
@@ -467,11 +466,11 @@ const accessoriesData = [
         isNew: true,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng văn phòng & Quà tặng'
     },
     {
         id: 'lfs-010',
-        name: 'Áo Polo Nữ',
+        name: 'Áo Polo Nữ VinFast',
         category: 'lifestyle',
         categoryName: 'Phong cách sống',
         img: 'https://shop.vinfastauto.com/on/demandware.static/-/Sites-vinfast_vn_master/default/dw87a3fb7a/images/Accessory/FEMALEPOLOSHIRT/1.png',
@@ -480,7 +479,7 @@ const accessoriesData = [
         discount: 40,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Thời trang & Phụ kiện'
     },
     {
         id: 'lfs-011',
@@ -493,7 +492,7 @@ const accessoriesData = [
         discount: 40,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng trong xe'
     },
     {
         id: 'lfs-012',
@@ -506,17 +505,17 @@ const accessoriesData = [
         discount: 40,
         vehicle: 'all',
         vehicleType: 'all',
-        vehicleName: 'Tất cả xe'
+        vehicleName: 'Đồ dùng trong xe'
     }
 ];
 
 // Category mapping for filtering
 const accessoriesCategories = [
-    { id: 'all', name: 'Tất cả sản phẩm', icon: 'fa-box', labelKey: 'accessories_cat_all' },
-    { id: 'new', name: 'Sản phẩm mới', icon: 'fa-star', labelKey: 'accessories_cat_new' },
-    { id: 'lifestyle', name: 'Phong cách sống', icon: 'fa-tshirt', labelKey: 'accessories_cat_lifestyle' },
-    { id: 'car_acc', name: 'Phụ kiện Ô tô điện', icon: 'fa-car', labelKey: 'accessories_cat_car' },
-    { id: 'scooter_acc', name: 'Phụ kiện Xe máy điện', icon: 'fa-motorcycle', labelKey: 'accessories_cat_scooter' }
+    { id: 'all',         name: 'Tất cả sản phẩm',       icon: 'fa-box',        labelKey: 'accessories_cat_all' },
+    { id: 'new',         name: 'Sản phẩm mới',          icon: 'fa-star',       labelKey: 'accessories_cat_new' },
+    { id: 'lifestyle',   name: 'Phong cách sống',       icon: 'fa-tshirt',     labelKey: 'accessories_cat_lifestyle' },
+    { id: 'car_acc',     name: 'Phụ kiện Ô tô điện',    icon: 'fa-car',        labelKey: 'accessories_cat_car' },
+    { id: 'scooter_acc', name: 'Phụ kiện Xe máy điện',  icon: 'fa-motorcycle', labelKey: 'accessories_cat_scooter' }
 ];
 
 // Format price to VND
