@@ -20,7 +20,7 @@
             sectionSub: 'L-Corporation cung cấp đa dạng giải pháp sạc để đáp ứng nhu cầu sử dụng của Khách hàng một cách thuận tiện nhất.',
             types: [
                 {
-                    img: '../Data/Images/charging/image copy 6.png',       // đường dẫn ảnh tính từ index.html
+                    img: '../Data/Images/charging/C 250kW.png',       // đường dẫn ảnh tính từ index.html
                     name: 'Trụ sạc ô tô – Sạc siêu nhanh DC 250kW',
                     desc: 'Thiết bị sạc Ô tô điện DC 250kW cung cấp nguồn điện một chiều sạc trực tiếp cho pin, thiết kế dạng tủ đứng, 1 cổng sạc, công suất 250kW.',
                     specs: [
@@ -34,7 +34,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy 7.png',
+                    img: '../Data/Images/charging/DC 150kW.png',
                     name: 'Trụ sạc ô tô – Sạc siêu nhanh DC 150kW',
                     desc: 'Thiết kế dạng tủ đứng, mỗi thiết bị được trang bị 2 cổng sạc, công suất sạc có thể lên tới 150kW.',
                     specs: [
@@ -48,7 +48,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy 8.png',
+                    img: '../Data/Images/charging/DC 60kW.png',
                     name: 'Trụ sạc ô tô – Sạc nhanh DC 60kW',
                     desc: 'Thiết kế dạng tủ đứng, mỗi thiết bị được trang bị 2 cổng sạc, công suất 60 kW/1 cổng sạc.',
                     specs: [
@@ -62,7 +62,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy 10.png',
+                    img: '../Data/Images/charging/DC 30kW.png',
                     name: 'Trụ sạc ô tô – Sạc nhanh DC 30kW',
                     desc: 'Trụ sạc DC Ô tô điện dùng tại điểm dừng nghỉ, bãi đỗ xe công cộng. Kiểu treo tường hoặc tủ đứng linh hoạt.',
                     specs: [
@@ -83,7 +83,7 @@
             sectionSub: 'L-Corporation cung cấp giải pháp sạc thông minh, tiện lợi cho xe máy điện — phủ khắp khu dân cư, trường học, văn phòng trên toàn quốc.',
             types: [
                 {
-                    img: '../Data/Images/Charging/image.png',
+                    img: '../Data/Images/charging/Swap Station.png',
                     name: 'Trạm đổi pin – Swap Station',
                     desc: 'Công nghệ đổi pin thông minh — thay pin đầy trong vòng 60 giây, không cần chờ sạc. Phù hợp cho người dùng cần di chuyển liên tục.',
                     specs: [
@@ -97,7 +97,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy.png',
+                    img: '../Data/Images/charging/3,3kW.png',
                     name: 'Trụ sạc xe máy – Sạc nhanh 3,3kW',
                     desc: 'Trụ sạc AC tiêu chuẩn cho xe máy điện, sạc đầy trong khoảng 2 giờ. Thiết kế gọn, lắp đặt linh hoạt tại nhiều địa điểm.',
                     specs: [
@@ -111,7 +111,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy 2.png',
+                    img: '../Data/Images/charging/Home Charger.png',
                     name: 'Trụ sạc tại nhà – Home Charger',
                     desc: 'Giải pháp sạc tại nhà tiện lợi, lắp đặt đơn giản. Sạc qua đêm là đủ năng lượng cho cả ngày di chuyển.',
                     specs: [
@@ -125,7 +125,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/Charging/image copy 3.png',
+                    img: '../Data/Images/charging/Multi Port 6,6kW.png',
                     name: 'Trụ sạc cộng đồng – Multi Port 6,6kW',
                     desc: 'Trụ sạc nhiều cổng dành cho khu chung cư, bãi đỗ xe, văn phòng. Quản lý thông minh qua app, chia sẻ dễ dàng.',
                     specs: [
