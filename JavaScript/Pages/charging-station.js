@@ -20,7 +20,7 @@
             sectionSub: 'L-Corporation cung cấp đa dạng giải pháp sạc để đáp ứng nhu cầu sử dụng của Khách hàng một cách thuận tiện nhất.',
             types: [
                 {
-                    img: '../Data/Images/Charging/image copy 6.png',       // đường dẫn ảnh tính từ index.html
+                    img: '../Data/Images/charging/image copy 6.png',       // đường dẫn ảnh tính từ index.html
                     name: 'Trụ sạc ô tô – Sạc siêu nhanh DC 250kW',
                     desc: 'Thiết bị sạc Ô tô điện DC 250kW cung cấp nguồn điện một chiều sạc trực tiếp cho pin, thiết kế dạng tủ đứng, 1 cổng sạc, công suất 250kW.',
                     specs: [
