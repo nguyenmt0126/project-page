@@ -34,7 +34,7 @@
                     ]
                 },
                 {
-                    img: '../Data/Images/charging/C 250kW.png',
+                    img: '../Data/Images/charging/DC 150kW.png',
                     name: 'Trụ sạc ô tô – Sạc siêu nhanh DC 150kW',
                     desc: 'Thiết kế dạng tủ đứng, mỗi thiết bị được trang bị 2 cổng sạc, công suất sạc có thể lên tới 150kW.',
                     specs: [
