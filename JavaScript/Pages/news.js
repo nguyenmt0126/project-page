@@ -1,526 +1,608 @@
 /**
- * L-Corparation — News Section Plugin v3
- * - Không link ngoài, nội dung đọc trong trang
- * - Click bài → mở modal đọc full content
- * - Featured bự, layout tạp chí
+ * L-Corparation — News Plugin v7.0
+ * Compact auto-slide: ảnh trái, chữ phải, click mở reader full
+ * Gắn vào nav + section#news-section-root
  */
-
 (function () {
     'use strict';
 
-    // ============================================================
-    // 1. DỮ LIỆU TIN TỨC — nội dung đầy đủ
-    // ============================================================
-    const newsData = [
+    const NEWS = [
         {
-            id: 1,
-            featured: true,
-            title: { vi: 'VinFast VF3 chính thức bàn giao hàng loạt — Xe điện phổ thông dưới 300 triệu đã có mặt', en: 'VinFast VF3 Mass Delivered — Affordable EV Under 300M VND Now Available' },
-            desc: { vi: 'Hàng nghìn chiếc VF3 được bàn giao trong lễ ra mắt hoành tráng tại TP.HCM. Với mức giá chỉ từ 245 triệu đồng, VF3 được kỳ vọng thay đổi cuộc chơi xe điện phổ thông tại Việt Nam.', en: 'Thousands of VF3 units were delivered in a grand ceremony in HCMC. Priced from 245 million VND, the VF3 is expected to change the game for affordable EVs.' },
-            content: {
-                vi: `<p>Ngày 15 tháng 3 năm 2025, tại sân vận động Phú Thọ, TP. Hồ Chí Minh, <strong>VinFast</strong> tổ chức lễ bàn giao xe điện VF3 quy mô lớn nhất trong lịch sử hãng với hơn 3.000 chiếc được trao tay khách hàng chỉ trong một ngày.</p>
-                <p>VF3 là mẫu xe điện mini thuộc phân khúc A, được định vị là sản phẩm xe điện phổ thông đầu tiên của VinFast hướng đến đại đa số người dùng đô thị Việt Nam. Xe có giá bán từ <strong>245 triệu đồng</strong> (chưa bao gồm pin thuê), hoặc 322 triệu đồng nếu mua kèm pin.</p>
-                <h4>Thông số kỹ thuật nổi bật</h4>
-                <p>VF3 trang bị động cơ điện công suất 42 mã lực, mô-men xoắn 110 Nm. Pin dung lượng 18,6 kWh cho phép xe di chuyển khoảng 210 km (theo chu trình NEDC) hoặc xấp xỉ 150–170 km trong điều kiện thực tế đô thị.</p>
-                <p>Xe có kích thước nhỏ gọn, phù hợp cho việc di chuyển trong nội đô với các con phố chật hẹp tại Hà Nội và TP.HCM. Thời gian sạc từ 20–80% chỉ mất khoảng 45 phút với trụ sạc nhanh DC.</p>
-                <h4>Phản hồi từ thị trường</h4>
-                <p>Ngay trong ngày mở bán, VinFast ghi nhận hơn <strong>27.000 đơn đặt hàng</strong> VF3 trên toàn quốc — một con số kỷ lục đối với phân khúc xe điện phổ thông tại Việt Nam. Điều này cho thấy nhu cầu về xe điện giá rẻ trong nước đang rất lớn.</p>
-                <p>Nhiều chuyên gia nhận định VF3 sẽ là "đòn bẩy" giúp VinFast chiếm lĩnh phân khúc thị trường mà trước nay vẫn thuộc về xe máy điện và xe xăng cỡ nhỏ.</p>`,
-                en: `<p>On March 15, 2025, at Phu Tho Stadium in Ho Chi Minh City, <strong>VinFast</strong> held the largest vehicle handover ceremony in its history, delivering over 3,000 VF3 units to customers in a single day.</p>
-                <p>The VF3 is a mini electric vehicle in the A-segment, positioned as VinFast's first mass-market EV targeting the majority of Vietnamese urban drivers. The vehicle is priced from <strong>245 million VND</strong> (battery rental not included), or 322 million VND with the battery included.</p>
-                <h4>Key Specifications</h4>
-                <p>The VF3 is equipped with a 42 hp electric motor with 110 Nm of torque. Its 18.6 kWh battery allows approximately 210 km of range (NEDC cycle) or around 150–170 km in real-world urban conditions.</p>
-                <p>The compact size makes it ideal for navigating the narrow streets of Hanoi and Ho Chi Minh City. Charging from 20–80% takes approximately 45 minutes with a DC fast charger.</p>
-                <h4>Market Response</h4>
-                <p>On launch day, VinFast recorded over <strong>27,000 VF3 orders</strong> nationwide — a record for the affordable EV segment in Vietnam. This demonstrates the enormous demand for affordable electric vehicles in the country.</p>`
+            id: 1, cat: 'xe-may',
+            tag: { vi: 'Kỷ lục', en: 'Record' }, tagColor: '#c8102e',
+            title: { vi: 'VinFast lập kỷ lục 135.000 đơn hàng xe máy điện trong tháng 3/2026', en: 'VinFast Sets Record 135,000 E-Scooter Orders in March 2026' },
+            desc: { vi: 'Tháng 3/2026, VinFast nhận hơn 135.000 đơn đặt hàng và xuất xưởng hơn 93.000 xe máy điện — mức doanh số tháng cao nhất từ trước đến nay.', en: 'In March 2026, VinFast received over 135,000 orders and shipped over 93,000 e-scooters — the highest monthly sales ever.' },
+            body: {
+                vi: `<p>Ngày 3/4/2026, VinFast công bố kết quả kinh doanh tháng 3 với con số kỷ lục chưa từng có: <strong>hơn 135.000 đơn đặt hàng</strong> từ các đại lý phân phối trên toàn quốc và <strong>hơn 93.000 xe</strong> đã xuất xưởng ra thị trường.</p><h3>Evo và Feliz dẫn đầu</h3><p>Hơn <strong>52.000 xe Evo</strong> và <strong>24.000 xe Feliz</strong> đến tay khách hàng trong tháng 3 — chiếm gần 82% tổng sản lượng.</p><h3>Vì sao doanh số bùng nổ?</h3><p>Giá xăng biến động mạnh, chương trình <strong>"Thu xăng — Đổi điện"</strong> gia hạn đến 30/4/2026 và chính sách hỗ trợ mua trả góp 0 đồng là 3 yếu tố chính.</p>`,
+                en: `<p>On April 3, 2026, VinFast announced record-breaking March figures: <strong>over 135,000 orders</strong> and <strong>over 93,000 units</strong> shipped to market.</p><h3>Evo and Feliz Lead</h3><p>Over <strong>52,000 Evo</strong> and <strong>24,000 Feliz</strong> units reached customers — accounting for nearly 82% of total output.</p>`
             },
-            source: 'VnExpress', date: '2025-03-15',
-            readTime: { vi: '4 phút đọc', en: '4 min read' },
-            tag: { vi: 'Nổi bật', en: 'Featured' }, tagColor: '#E53935',
-            img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=900&q=80'
+            video: '../Data/Images/news/YTSave.com_YouTube_XE-MAY-DIEN-VINFAST-LAP-KY-LUC-DOANH-SO-_Media_IWEsAWlV_tE_002_720p.mp4',
+            date: '2026-04-03', source: 'Báo Công An Nhân Dân',
+            readTime: { vi: '4 phút', en: '4 min' },
+            img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80'
         },
         {
-            id: 2,
-            title: { vi: 'Chính phủ gia hạn miễn thuế trước bạ xe điện đến hết năm 2027', en: 'Government Extends EV Registration Tax Exemption to End of 2027' },
-            desc: { vi: 'Nghị định mới tiếp tục miễn 100% thuế trước bạ và giảm 50% phí đường bộ cho tất cả xe điện đăng ký mới, kích thích tiêu dùng xanh.', en: 'New decree continues 100% registration tax exemption and 50% road fee reduction for all newly registered EVs.' },
-            content: {
-                vi: `<p>Chính phủ vừa ban hành <strong>Nghị định 47/2025/NĐ-CP</strong> về việc tiếp tục gia hạn các chính sách ưu đãi thuế dành cho xe điện đến hết ngày 31 tháng 12 năm 2027.</p>
-                <p>Theo đó, tất cả xe ô tô điện chạy hoàn toàn bằng pin (BEV) đăng ký mới trong giai đoạn từ nay đến cuối năm 2027 sẽ được <strong>miễn 100% thuế trước bạ</strong>. Bên cạnh đó, phí đường bộ hàng năm cũng được giảm 50% so với mức áp dụng cho xe xăng cùng phân khúc.</p>
-                <h4>Tác động lên thị trường</h4>
-                <p>Với mức thuế trước bạ hiện tại dao động từ 2–10% tùy tỉnh thành, chính sách miễn thuế giúp người mua xe điện tiết kiệm từ <strong>5 đến 30 triệu đồng</strong> tùy theo giá trị xe và địa phương đăng ký.</p>
-                <p>Hiệp hội Các nhà sản xuất ô tô Việt Nam (VAMA) đánh giá đây là tín hiệu tích cực, dự kiến sẽ giúp doanh số xe điện tăng thêm 25–30% trong năm 2025 so với năm ngoái.</p>
-                <h4>Lộ trình dài hạn</h4>
-                <p>Chính phủ cũng công bố lộ trình: từ năm 2028 trở đi, xe điện sẽ được áp dụng mức thuế trước bạ ưu đãi thay vì miễn hoàn toàn, với mức dự kiến chỉ bằng 50% so với xe xăng tương đương.</p>`,
-                en: `<p>The government has just issued <strong>Decree 47/2025/ND-CP</strong> extending preferential tax policies for electric vehicles through December 31, 2027.</p>
-                <p>Accordingly, all battery electric vehicles (BEVs) newly registered from now through end of 2027 will receive a <strong>100% registration tax exemption</strong>. Additionally, annual road fees will be reduced by 50% compared to equivalent gasoline vehicles.</p>
-                <h4>Market Impact</h4>
-                <p>With current registration tax rates ranging from 2–10% depending on province, the exemption saves EV buyers between <strong>5 to 30 million VND</strong> depending on vehicle value and registration location.</p>`
+            id: 2, cat: 'o-to',
+            tag: { vi: 'Ô tô điện', en: 'EV Car' }, tagColor: '#1a56db',
+            title: { vi: 'VinFast chính thức nhận đặt cọc VF MPV 7 tại Ấn Độ — xe đa dụng 7 chỗ', en: 'VinFast Opens VF MPV 7 Bookings in India — 7-Seat MPV' },
+            desc: { vi: 'VinFast chính thức nhận đặt cọc mẫu xe điện thứ ba tại Ấn Độ, VF MPV 7 — đánh dấu bước mở rộng mạnh sang thị trường Nam Á.', en: 'VinFast officially opened bookings for the VF MPV 7 — marking a bold expansion into South Asia.' },
+            body: {
+                vi: `<p>Ngày 02/04/2026, VinFast mở nhận đặt cọc <strong>VF MPV 7</strong> tại Ấn Độ — mẫu xe điện đa dụng 7 chỗ, sản phẩm thứ ba tại thị trường tỷ dân này.</p><h3>Thông số kỹ thuật</h3><p>Pin 75 kWh, tầm hoạt động ~450 km (WLTP), màn hình 15,6 inch, sạc nhanh 150 kW DC.</p>`,
+                en: `<p>On April 2, 2026, VinFast opened bookings for the <strong>VF MPV 7</strong> in India.</p><h3>Specifications</h3><p>75 kWh battery, ~450 km WLTP range, 15.6-inch display, 150 kW DC fast charging.</p>`
             },
-            source: 'Tuổi Trẻ', date: '2025-03-10',
-            readTime: { vi: '3 phút đọc', en: '3 min read' },
-            tag: { vi: 'Chính sách', en: 'Policy' }, tagColor: '#1565C0',
-            img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=600&q=80'
+            date: '2026-04-02', source: 'VinFast Global',
+            readTime: { vi: '3 phút', en: '3 min' },
+            img: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80'
         },
         {
-            id: 3,
-            title: { vi: 'Dat Bike Weaver++ ra mắt: 200km một lần sạc, giá chỉ 65 triệu đồng', en: 'Dat Bike Weaver++ Launched: 200km Range, Priced at Just 65M VND' },
-            desc: { vi: 'Startup xe máy điện Dat Bike tiếp tục gây bất ngờ với Weaver++ — pin LFP 4.2kWh, sạc đầy chỉ 3.5 giờ và màn hình TFT 5 inch kết nối smartphone.', en: 'Dat Bike surprises again with Weaver++ — 4.2kWh LFP battery, full charge in 3.5 hours and 5-inch TFT display.' },
-            content: {
-                vi: `<p><strong>Dat Bike</strong>, startup xe máy điện Việt Nam, vừa chính thức ra mắt mẫu xe Weaver++ với hàng loạt cải tiến đáng kể so với thế hệ trước, đưa hãng bước vào cuộc cạnh tranh trực tiếp với VinFast ở phân khúc xe máy điện tầm trung.</p>
-                <h4>Thông số kỹ thuật</h4>
-                <p>Weaver++ sử dụng pin <strong>LFP (Lithium Iron Phosphate) 4.2 kWh</strong> — loại pin an toàn hơn, tuổi thọ cao hơn (2.000+ chu kỳ sạc) và ít bị ảnh hưởng bởi nhiệt độ cao so với pin NMC thông thường. Tầm hoạt động đạt <strong>200km</strong> theo chu trình thử nghiệm.</p>
-                <p>Động cơ công suất <strong>5kW liên tục, 9kW đỉnh</strong> giúp xe đạt tốc độ tối đa 90km/h. Thời gian sạc từ 0–100% là 3,5 giờ với bộ sạc đi kèm, hoặc có thể sạc nhanh DC rút ngắn xuống còn 1,5 giờ.</p>
-                <h4>Tính năng nổi bật</h4>
-                <p>Màn hình TFT màu 5 inch hiển thị tốc độ, mức pin, bản đồ điều hướng và kết nối với ứng dụng Dat Bike trên điện thoại. Ứng dụng cho phép theo dõi lịch sử hành trình, khóa/mở xe từ xa và cập nhật phần mềm OTA.</p>
-                <p>Giá bán <strong>65 triệu đồng</strong> đặt Weaver++ vào vị trí cạnh tranh trực tiếp với VinFast Feliz S và Klara S2 — mức giá hấp dẫn cho một xe máy điện có tầm hoạt động 200km.</p>`,
-                en: `<p><strong>Dat Bike</strong>, Vietnam's electric motorcycle startup, has officially launched the Weaver++ with significant improvements over its predecessor, entering direct competition with VinFast in the mid-range electric motorcycle segment.</p>
-                <h4>Technical Specifications</h4>
-                <p>The Weaver++ uses a <strong>4.2 kWh LFP (Lithium Iron Phosphate) battery</strong> — safer, longer-lasting (2,000+ charge cycles) and less affected by high temperatures than conventional NMC batteries. Range reaches <strong>200km</strong> on the test cycle.</p>
-                <p>The <strong>5kW continuous, 9kW peak</strong> motor delivers a top speed of 90km/h. Charging from 0–100% takes 3.5 hours with the included charger, or as little as 1.5 hours with DC fast charging.</p>`
+            id: 3, cat: 'o-to',
+            tag: { vi: 'Kỷ lục', en: 'Record' }, tagColor: '#047857',
+            title: { vi: 'VinFast bàn giao hơn 3.520 ô tô điện trong một ngày 28/3', en: 'VinFast Delivers Over 3,520 Electric Cars in a Single Day' },
+            desc: { vi: 'Ngày 28/3/2026, VinFast bàn giao 3.520 đơn hàng ô tô điện — kỷ lục bàn giao đơn ngày chưa từng có tại Việt Nam.', en: 'VinFast delivered 3,520 electric car orders in a single day — unprecedented in Vietnam.' },
+            body: {
+                vi: `<p>VinFast tổ chức sự kiện bàn giao lịch sử với <strong>3.520 ô tô điện</strong> trong một ngày.</p><h3>VF5, VF6, VF7 dẫn đầu</h3><p>VF5 chiếm ~42%, VF6 ~31%, VF7 ~18%.</p>`,
+                en: `<p>VinFast delivered <strong>3,520 electric cars</strong> in a single day.</p><h3>VF5, VF6 and VF7 Lead</h3><p>VF5 ~42%, VF6 ~31%, VF7 ~18%.</p>`
             },
-            source: 'Zing News', date: '2025-03-05',
-            readTime: { vi: '5 phút đọc', en: '5 min read' },
-            tag: { vi: 'Công nghệ', en: 'Tech' }, tagColor: '#6A1B9A',
-            img: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=600&q=80'
+            date: '2026-03-28', source: 'VinFast Official',
+            readTime: { vi: '3 phút', en: '3 min' },
+            img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80'
         },
         {
-            id: 4,
-            title: { vi: 'Việt Nam top 5 thị trường xe điện tăng trưởng nhanh nhất Đông Nam Á', en: 'Vietnam Top 5 Fastest-Growing EV Markets in Southeast Asia' },
-            desc: { vi: 'Báo cáo BloombergNEF ghi nhận Việt Nam tăng trưởng 340% doanh số xe điện năm 2024, chỉ sau Thái Lan và Indonesia về tổng lượng xe.', en: 'BloombergNEF records Vietnam with 340% EV sales growth in 2024, trailing only Thailand and Indonesia.' },
-            content: {
-                vi: `<p>Theo báo cáo mới nhất của <strong>BloombergNEF</strong> về thị trường xe điện Đông Nam Á năm 2024, Việt Nam ghi nhận mức tăng trưởng doanh số ấn tượng <strong>340%</strong> so với năm 2023 — mức tăng cao nhất trong khu vực.</p>
-                <h4>Con số thống kê</h4>
-                <p>Tổng doanh số xe điện tại Việt Nam năm 2024 đạt khoảng <strong>85.000 xe</strong>, trong đó VinFast chiếm khoảng 78% thị phần. Số còn lại thuộc về các thương hiệu như BYD, Wuling và một số xe nhập khẩu khác.</p>
-                <p>Đặc biệt, phân khúc xe máy điện tại Việt Nam tiếp tục dẫn đầu khu vực với hơn <strong>600.000 xe máy điện</strong> được bán ra trong năm 2024, trong đó VinFast, Dat Bike và Yadea là ba thương hiệu hàng đầu.</p>
-                <h4>Dự báo 2025–2027</h4>
-                <p>BloombergNEF dự báo tỷ lệ xe điện trong tổng doanh số xe ô tô mới tại Việt Nam sẽ đạt <strong>15% vào năm 2025</strong> và có thể lên tới 35% vào năm 2027 nếu các chính sách ưu đãi được duy trì và hạ tầng sạc tiếp tục mở rộng.</p>`,
-                en: `<p>According to the latest <strong>BloombergNEF</strong> report on Southeast Asia's EV market in 2024, Vietnam recorded an impressive <strong>340% growth</strong> in EV sales compared to 2023 — the highest growth rate in the region.</p>
-                <h4>Statistics</h4>
-                <p>Total EV sales in Vietnam in 2024 reached approximately <strong>85,000 vehicles</strong>, with VinFast accounting for about 78% market share. The remainder belonged to brands such as BYD, Wuling, and other imported vehicles.</p>`
+            id: 4, cat: 'chinh-sach',
+            tag: { vi: 'Chính sách', en: 'Policy' }, tagColor: '#d97706',
+            title: { vi: '"Thu xăng — Đổi điện": VinFast gia hạn ưu đãi 5% đến 30/4/2026', en: '"Trade Gas for Electric": VinFast Extends 5% Discount to April 30' },
+            desc: { vi: 'Chương trình "Thu xăng — Đổi điện" gia hạn đến 30/4/2026, tặng thêm 5% giá xe khi chuyển từ xe xăng sang xe máy điện VinFast.', en: 'VinFast extends program to April 30, 2026, giving an extra 5% discount when switching from gasoline.' },
+            body: {
+                vi: `<p>VinFast gia hạn <strong>"Thu xăng — Đổi điện"</strong> đến hết <strong>30/4/2026</strong>. Thêm 5% giá xe khi đổi xe xăng cũ, cộng dồn ưu đãi 6% và hỗ trợ 100% lệ phí trước bạ.</p>`,
+                en: `<p>VinFast extends <strong>"Trade Gas for Electric"</strong> through April 30 with an extra 5% discount on trading in a gasoline vehicle.</p>`
             },
-            source: 'Bloomberg', date: '2025-02-28',
-            readTime: { vi: '5 phút đọc', en: '5 min read' },
-            tag: { vi: 'Thị trường', en: 'Market' }, tagColor: '#00695C',
-            img: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=600&q=80'
+            date: '2026-03-20', source: 'CafeF',
+            readTime: { vi: '3 phút', en: '3 min' },
+            img: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=800&q=80'
         },
         {
-            id: 5,
-            title: { vi: 'VinFast khai trương 200 trạm sạc siêu nhanh DC 120kW trên toàn quốc', en: 'VinFast Opens 200 Ultra-Fast DC 120kW Charging Stations Nationwide' },
-            desc: { vi: 'Hệ thống sạc siêu nhanh mới cho phép sạc thêm 200km chỉ trong 18 phút, đặt tại các trung tâm thương mại và cao tốc trọng điểm.', en: 'New ultra-fast charging system allows adding 200km in just 18 minutes, located at key shopping centers and expressways.' },
-            content: {
-                vi: `<p><strong>VinFast</strong> vừa công bố khai trương đồng loạt <strong>200 trạm sạc siêu nhanh DC 120kW</strong> tại 63 tỉnh thành trên toàn quốc, đánh dấu bước đột phá lớn trong hạ tầng sạc điện tại Việt Nam.</p>
-                <h4>Công nghệ sạc siêu nhanh</h4>
-                <p>Mỗi trạm sạc DC 120kW có khả năng cung cấp thêm <strong>200km hành trình chỉ trong 18 phút</strong> cho các mẫu xe VinFast VF8 và VF9 — tương đương với thời gian nghỉ ngơi và uống cà phê trên hành trình đường dài.</p>
-                <p>Các trạm sạc này được trang bị màn hình cảm ứng 10 inch, hỗ trợ thanh toán qua ứng dụng VinFast, thẻ ngân hàng, ví điện tử MoMo và ZaloPay. Người dùng cũng có thể đặt lịch sạc trước qua ứng dụng để tránh chờ đợi.</p>
-                <h4>Vị trí chiến lược</h4>
-                <p>200 trạm sạc mới được đặt tại các vị trí chiến lược: trung tâm thương mại Vincom, các nút giao cao tốc Bắc–Nam, sân bay và bến xe lớn. Khoảng cách trung bình giữa các trạm sạc trên cao tốc Bắc–Nam hiện đạt <strong>dưới 70km</strong> — đủ để người dùng VF8, VF9 di chuyển xuyên quốc gia mà không lo "hết pin giữa đường".</p>`,
-                en: `<p><strong>VinFast</strong> has announced the simultaneous opening of <strong>200 DC 120kW ultra-fast charging stations</strong> across 63 provinces nationwide, marking a major breakthrough in Vietnam's EV charging infrastructure.</p>
-                <h4>Ultra-Fast Charging Technology</h4>
-                <p>Each DC 120kW charging station can add <strong>200km of range in just 18 minutes</strong> for VinFast VF8 and VF9 models — equivalent to a coffee break on a long journey.</p>`
+            id: 5, cat: 'xe-may',
+            tag: { vi: 'Ra mắt', en: 'Launch' }, tagColor: '#059669',
+            title: { vi: 'Honda CUV e: chính thức mở bán từ 26/3/2026 — giá từ 45 triệu', en: 'Honda CUV e: On Sale from March 26, 2026 — From 45M VND' },
+            desc: { vi: 'Honda Việt Nam mở bán CUV e: với 2 gói: kèm pin 65 triệu hoặc không pin 45 triệu. Màn hình TFT 7 inch, Honda RoadSync Duo, tốc độ 80km/h.', en: 'Honda Vietnam launched CUV e: with 7-inch TFT, 80km/h top speed, two battery packages.' },
+            body: {
+                vi: `<p>Honda Việt Nam chính thức mở bán <strong>CUV e:</strong> từ 26/3/2026.</p><h3>Hai gói</h3><p>Kèm pin: <strong>65 triệu</strong>. Không pin: <strong>45 triệu</strong> + thuê 250.000đ/tháng.</p>`,
+                en: `<p>Honda Vietnam opened sales of <strong>CUV e:</strong> from March 26, 2026.</p><h3>Two Packages</h3><p>With battery: <strong>65M VND</strong>. Without: <strong>45M VND</strong> + rental.</p>`
             },
-            source: 'VinFast Official', date: '2025-02-20',
-            readTime: { vi: '4 phút đọc', en: '4 min read' },
-            tag: { vi: 'Hạ tầng', en: 'Infrastructure' }, tagColor: '#E65100',
-            img: 'https://images.unsplash.com/photo-1649433391420-542fcd3d9adb?w=600&q=80'
+            video: 'https://www.youtube.com/embed/DtXCGBrZIUE',
+            date: '2026-03-26', source: 'Honda Việt Nam',
+            readTime: { vi: '4 phút', en: '4 min' },
+            img: 'https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=800&q=80'
         },
         {
-            id: 6,
-            title: { vi: 'Pin thể rắn "Made in Vietnam": L-Corparation hợp tác Bách Khoa nghiên cứu', en: 'Solid-State Battery "Made in Vietnam": L-Corparation Partners with HUST' },
-            desc: { vi: 'Dự án pin thể rắn nội địa nhắm tới mật độ năng lượng 400 Wh/kg — gấp đôi pin lithium-ion hiện tại — dự kiến thương mại hóa năm 2028.', en: 'Domestic solid-state battery project targeting 400 Wh/kg energy density — double current lithium-ion — commercialization in 2028.' },
-            content: {
-                vi: `<p><strong>L-Corparation</strong> và <strong>Đại học Bách Khoa Hà Nội</strong> vừa ký kết hợp tác nghiên cứu và phát triển pin thể rắn (Solid-State Battery) thế hệ mới, với mục tiêu tạo ra sản phẩm pin điện "Made in Vietnam" đầu tiên cho xe điện.</p>
-                <h4>Tại sao pin thể rắn?</h4>
-                <p>Pin thể rắn sử dụng chất điện phân dạng rắn thay vì dạng lỏng như pin lithium-ion truyền thống, mang lại nhiều ưu điểm vượt trội: <strong>mật độ năng lượng cao hơn 2 lần</strong> (400 Wh/kg so với 200 Wh/kg), an toàn hơn (không có nguy cơ cháy nổ), tuổi thọ dài hơn (5.000+ chu kỳ sạc) và hoạt động tốt hơn trong điều kiện nhiệt độ cao của khí hậu Việt Nam.</p>
-                <h4>Lộ trình dự án</h4>
-                <p>Giai đoạn 1 (2025–2026): Nghiên cứu vật liệu điện phân rắn và tối ưu hóa công thức pin trong điều kiện khí hậu nhiệt đới.<br>
-                Giai đoạn 2 (2027): Sản xuất thử nghiệm batch nhỏ, tích hợp vào nguyên mẫu xe điện L-Corparation.<br>
-                Giai đoạn 3 (2028): Thương mại hóa và bắt đầu sản xuất hàng loạt tại nhà máy Hải Phòng.</p>
-                <p>Nếu thành công, đây sẽ là lần đầu tiên Việt Nam có chuỗi sản xuất pin xe điện nội địa hoàn chỉnh, giảm phụ thuộc vào nhập khẩu từ Trung Quốc và Hàn Quốc.</p>`,
-                en: `<p><strong>L-Corparation</strong> and <strong>Hanoi University of Science and Technology</strong> have signed a research and development agreement for next-generation solid-state batteries, aiming to create Vietnam's first domestically produced EV battery.</p>
-                <h4>Why Solid-State?</h4>
-                <p>Solid-state batteries use a solid electrolyte instead of liquid like conventional lithium-ion batteries, offering significant advantages: <strong>2x higher energy density</strong> (400 Wh/kg vs 200 Wh/kg), safer (no fire risk), longer lifespan (5,000+ charge cycles) and better performance in Vietnam's hot climate.</p>`
+            id: 6, cat: 'chinh-sach',
+            tag: { vi: 'Hạ tầng', en: 'Infrastructure' }, tagColor: '#b45309',
+            title: { vi: 'Mạng lưới trạm sạc V-Green: Sạc miễn phí đến tháng 5/2027', en: 'V-Green Network: Free Charging Until May 2027' },
+            desc: { vi: 'V-Green cung cấp sạc miễn phí tại trạm công cộng cho chủ xe VinFast đến hết 31/5/2027. Hơn 150.000 cổng sạc trên 63 tỉnh thành.', en: 'V-Green provides free public charging for VinFast owners until May 31, 2027 across 63 provinces.' },
+            body: {
+                vi: `<p>V-Green duy trì <strong>sạc miễn phí</strong> tại hơn <strong>150.000 cổng sạc</strong> — toàn bộ Vincom, Vinhomes, Vinpearl và cao tốc Bắc–Nam.</p>`,
+                en: `<p>V-Green maintains <strong>free charging</strong> at over <strong>150,000 ports</strong> nationwide until May 2027.</p>`
             },
-            source: 'Khoa học & Đời sống', date: '2025-02-10',
-            readTime: { vi: '6 phút đọc', en: '6 min read' },
-            tag: { vi: 'Nghiên cứu', en: 'Research' }, tagColor: '#B71C1C',
-            img: 'https://images.unsplash.com/photo-1620714223084-8fcacc2dfd4d?w=600&q=80'
+            date: '2026-02-20', source: 'VinFast Official',
+            readTime: { vi: '4 phút', en: '4 min' },
+            img: 'https://images.unsplash.com/photo-1649433391420-542fcd3d9adb?w=800&q=80'
         },
         {
-            id: 7,
-            title: { vi: 'TP.HCM thí điểm 50 xe buýt điện BYD K9 trên 5 tuyến trung tâm', en: 'HCMC Pilots 50 BYD K9 Electric Buses on 5 Central Routes' },
-            desc: { vi: 'Dự án thí điểm mở đầu kế hoạch điện hóa toàn bộ đội xe buýt công cộng TP.HCM trước năm 2030, giảm 60% lượng khí thải CO2.', en: 'The pilot project kicks off HCMC\'s plan to electrify its entire public bus fleet before 2030, reducing CO2 emissions by 60%.' },
-            content: {
-                vi: `<p><strong>Sở Giao thông Vận tải TP. Hồ Chí Minh</strong> vừa chính thức đưa vào vận hành <strong>50 xe buýt điện BYD K9</strong> trên 5 tuyến buýt trọng điểm qua trung tâm thành phố, đánh dấu bước khởi đầu của quá trình điện hóa giao thông công cộng.</p>
-                <h4>5 tuyến thí điểm</h4>
-                <p>Tuyến 01: Bến Thành – Bến xe Chợ Lớn<br>
-                Tuyến 13: Bến Thành – Bến xe Miền Tây<br>
-                Tuyến 36: Đại học Quốc gia – Bến Thành<br>
-                Tuyến 53: Bến Thành – Khu chế xuất Linh Trung<br>
-                Tuyến 72: Sân bay Tân Sơn Nhất – Bến xe Miền Đông</p>
-                <h4>Ưu điểm của xe buýt điện BYD K9</h4>
-                <p>Xe buýt BYD K9 có tầm hoạt động <strong>250km/lần sạc</strong>, đủ để vận hành một ngày làm việc đầy đủ mà không cần sạc giữa chừng. Xe trang bị hệ thống điều hòa không khí cao cấp, USB sạc điện thoại và màn hình thông tin tuyến đường.</p>
-                <p>Theo tính toán của Sở GTVT, 50 xe buýt điện này sẽ giúp giảm khoảng <strong>1.200 tấn CO2</strong> mỗi năm so với xe buýt diesel cùng chặng — tương đương trồng 60.000 cây xanh.</p>
-                <h4>Lộ trình đến 2030</h4>
-                <p>TP.HCM đặt mục tiêu điện hóa <strong>100% đội xe buýt công cộng</strong> trước năm 2030, với tổng số khoảng 3.000 xe. Ngân sách dành cho chương trình này ước tính khoảng 15.000 tỷ đồng, trong đó 40% từ ngân sách nhà nước và 60% từ hợp tác công tư.</p>`,
-                en: `<p>The <strong>Ho Chi Minh City Department of Transport</strong> has officially launched <strong>50 BYD K9 electric buses</strong> on 5 key bus routes through the city center, marking the beginning of public transport electrification.</p>
-                <h4>Advantages of BYD K9</h4>
-                <p>The BYD K9 bus has a range of <strong>250km per charge</strong>, sufficient for a full working day without intermediate charging. The bus features premium air conditioning, phone charging USB ports, and route information displays.</p>`
+            id: 7, cat: 'xe-may',
+            tag: { vi: 'Mới 2026', en: 'New 2026' }, tagColor: '#7c3aed',
+            title: { vi: 'VinFast ra mắt 5 mẫu xe máy điện đời mới 2026: Amio, Feliz II, Evo đổi pin...', en: 'VinFast Launches 5 New 2026 E-Scooter Models' },
+            desc: { vi: 'Chỉ trong tháng 1/2026, VinFast trình làng 5 mẫu xe mới: Amio, Feliz II, Evo đổi pin, Viper và Flazz.', en: 'In January 2026, VinFast unveiled 5 new e-scooter models: Amio, Feliz II, Evo battery-swap, Viper, and Flazz.' },
+            body: {
+                vi: `<p>VinFast đồng loạt trình làng <strong>5 mẫu xe máy điện mới</strong> trong tháng 1/2026.</p><h3>Amio</h3><p>Pin LFP 1,024 kWh cố định, tầm 65 km, không cần bằng lái.</p><h3>Evo đổi pin</h3><p>Tích hợp đổi pin tại trạm V-Green.</p>`,
+                en: `<p>VinFast unveiled <strong>5 all-new e-scooter models</strong> in January 2026.</p><h3>Amio</h3><p>Fixed 1.024 kWh LFP, 65 km range, no license required.</p>`
             },
-            source: 'Người Lao Động', date: '2025-01-30',
-            readTime: { vi: '4 phút đọc', en: '4 min read' },
-            tag: { vi: 'Giao thông', en: 'Transport' }, tagColor: '#37474F',
-            img: 'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=600&q=80'
+            date: '2026-01-27', source: 'Websosanh.vn',
+            readTime: { vi: '5 phút', en: '5 min' },
+            img: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80'
+        },
+        {
+            id: 8, cat: 'o-to',
+            tag: { vi: 'Tài chính', en: 'Finance' }, tagColor: '#0369a1',
+            title: { vi: 'VinFast ghi nhận tăng trưởng doanh số ô tô điện 68% — Q1/2026', en: 'VinFast Records 68% EV Sales Growth — Q1/2026' },
+            desc: { vi: 'Quý 1/2026, VinFast tăng trưởng 68% doanh số ô tô điện so với cùng kỳ 2025 với hơn 18.500 xe bán ra.', en: 'Q1/2026, VinFast recorded 68% electric car sales growth with over 18,500 cars sold.' },
+            body: {
+                vi: `<p>VinFast ghi nhận <strong>tăng trưởng 68%</strong> Q1/2026 với <strong>hơn 18.500 xe</strong>. VF5 dẫn đầu (~39%), VF6 (~28%), VF7 (~21%).</p>`,
+                en: `<p>VinFast recorded <strong>68% growth</strong> in Q1/2026. VF5 led (~39%), VF6 (~28%), VF7 (~21%).</p>`
+            },
+            date: '2026-04-01', source: 'VinFast Official',
+            readTime: { vi: '3 phút', en: '3 min' },
+            img: 'https://images.unsplash.com/photo-1558981285-6f0c68243f18?w=800&q=80'
         }
     ];
 
-    // ============================================================
-    // 2. TRANSLATIONS
-    // ============================================================
-    const T = {
-        vi: { title: 'Tin Tức', accent: 'Xe Điện', subtitle: 'Góc nhìn mới nhất về thị trường xe điện Việt Nam', view_all: 'Tất cả bài viết', read: 'Đọc bài', latest: 'Mới nhất', close: 'Đóng', by: 'Nguồn' },
-        en: { title: 'Electric', accent: 'News', subtitle: 'Latest perspective on Vietnam electric vehicle market', view_all: 'All articles', read: 'Read', latest: 'Latest', close: 'Close', by: 'Source' }
+    // ── LANG ─────────────────────────────────────────────────────
+    const L = {
+        vi: {
+            navLabel: 'Tin tức', heading: 'Tin tức Xe Điện',
+            sub: 'Cập nhật thị trường xe điện Việt Nam',
+            close: 'Đóng', video: 'Video liên quan', minread: 'phút đọc',
+            prev: '‹', next: '›', readmore: 'Đọc tiếp →',
+            of: 'của'
+        },
+        en: {
+            navLabel: 'News', heading: 'EV News',
+            sub: 'Vietnam electric vehicle market updates',
+            close: 'Close', video: 'Related Video', minread: 'min read',
+            prev: '‹', next: '›', readmore: 'Read more →',
+            of: 'of'
+        }
     };
 
-    function lang() { return typeof window.currentLang !== 'undefined' ? window.currentLang : 'vi'; }
-    function t(k) { return (T[lang()] || T.vi)[k] || T.vi[k]; }
-    function tx(obj) { if (!obj) return ''; return obj[lang()] || obj.vi || ''; }
-    function fmtDate(str) {
-        const d = new Date(str);
-        if (isNaN(d)) return str;
-        return d.toLocaleDateString(lang() === 'vi' ? 'vi-VN' : 'en-US', { day: '2-digit', month: 'long', year: 'numeric' });
-    }
+    const g = () => (typeof window.currentLang !== 'undefined' ? window.currentLang : 'vi');
+    const l = k => (L[g()] || L.vi)[k];
+    const tx = o => (o ? o[g()] || o.vi || '' : '');
+    const fd = s => { const d = new Date(s); return isNaN(d) ? s : d.toLocaleDateString(g() === 'vi' ? 'vi-VN' : 'en-US', { day: '2-digit', month: '2-digit', year: 'numeric' }); };
 
-    // ============================================================
-    // 3. CSS
-    // ============================================================
-    function injectStyles() {
-        if (document.getElementById('nws3-styles')) return;
-        const s = document.createElement('style');
-        s.id = 'nws3-styles';
-        s.textContent = `
-        #news-section-root { background:#fff; padding:90px 0 80px; position:relative; }
-        .nws3-wrap { max-width:1160px; margin:0 auto; padding:0 24px; }
+    // ── STATE ─────────────────────────────────────────────────────
+    let currentSlide = 0;
+    let autoTimer = null;
+    const AUTO_INTERVAL = 5000;
 
-        /* HEADER */
-        .nws3-head { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; gap:16px; flex-wrap:wrap; padding-bottom:20px; border-bottom:2.5px solid #111; }
-        .nws3-eyebrow { font-size:.68rem; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#2E7D32; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
-        .nws3-eyebrow::before { content:''; display:inline-block; width:28px; height:2px; background:#2E7D32; }
-        .nws3-h1 { font-size:clamp(2rem,4vw,3rem); font-weight:900; color:#111; line-height:1; margin:0; letter-spacing:-.03em; }
-        .nws3-h1 span { color:#2E7D32; }
-        .nws3-sub { font-size:.95rem; color:#888; margin-top:8px; }
-        .nws3-all { display:inline-flex; align-items:center; gap:6px; font-size:.85rem; font-weight:700; color:#111; text-decoration:none; border-bottom:2px solid #111; padding-bottom:2px; transition:color .2s,border-color .2s; white-space:nowrap; cursor:pointer; }
-        .nws3-all:hover { color:#2E7D32; border-color:#2E7D32; }
+    // ── CSS ───────────────────────────────────────────────────────
+    function css() {
+        if (document.getElementById('nw7-css')) return;
+        const st = document.createElement('style');
+        st.id = 'nw7-css';
+        st.textContent = `
+/* ═══════ SECTION WRAPPER ═══════ */
+#news-section-root{
+    background:#f8f9fa;
+    padding:56px 0 48px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+}
+.nw7-wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
 
-        /* FEATURED — HERO BIG */
-        .nws3-hero {
-            display:grid; grid-template-columns:1.15fr 1fr;
-            border:2px solid #111; margin-bottom:2px;
-            cursor:pointer; text-decoration:none; color:inherit;
-            background:#fff;
-        }
-        .nws3-hero-img-wrap { overflow:hidden; aspect-ratio:4/3; }
-        .nws3-hero-img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; display:block; }
-        .nws3-hero:hover .nws3-hero-img { transform:scale(1.04); }
-        .nws3-hero-body { padding:40px 40px 36px; display:flex; flex-direction:column; justify-content:space-between; border-left:2px solid #111; }
-        .nws3-tag { display:inline-block; font-size:.62rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#fff; padding:5px 14px; border-radius:2px; margin-bottom:20px; }
-        .nws3-hero-title { font-size:1.75rem; font-weight:900; color:#111; line-height:1.2; letter-spacing:-.02em; margin-bottom:18px; }
-        .nws3-hero-desc { font-size:.95rem; color:#555; line-height:1.75; flex:1; display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden; }
-        .nws3-hero-foot { display:flex; align-items:center; justify-content:space-between; margin-top:28px; padding-top:20px; border-top:1px solid #e0e0e0; flex-wrap:wrap; gap:12px; }
-        .nws3-hero-meta { font-size:.78rem; color:#aaa; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-        .nws3-src { font-weight:700; color:#333; }
-        .nws3-read-btn { display:inline-flex; align-items:center; gap:6px; background:#111; color:#fff; font-size:.8rem; font-weight:700; padding:10px 22px; border-radius:2px; border:none; cursor:pointer; text-decoration:none; transition:background .2s; }
-        .nws3-read-btn:hover { background:#2E7D32; color:#fff; }
+/* ═══════ HEADER ═══════ */
+.nw7-header{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #111;margin-bottom:28px;gap:12px;flex-wrap:wrap;}
+.nw7-label{font-size:.6rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#16a34a;display:block;margin-bottom:4px;}
+.nw7-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#111;letter-spacing:-.03em;line-height:1;}
+.nw7-title span{color:#16a34a;}
+.nw7-sub{font-size:.78rem;color:#999;margin-top:5px;}
 
-        /* GRID — 4 bài nhỏ */
-        .nws3-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:#e8e8e8; border:2px solid #111; border-top:none; margin-bottom:2px; }
-        .nws3-card { background:#fff; padding:20px; cursor:pointer; text-decoration:none; color:inherit; display:block; transition:background .2s; position:relative; }
-        .nws3-card:hover { background:#f5f5f5; }
-        .nws3-card-num { font-size:2.5rem; font-weight:900; color:#f0f0f0; line-height:1; margin-bottom:8px; font-style:italic; }
-        .nws3-card-tag { font-size:.6rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px; }
-        .nws3-card-title { font-size:.88rem; font-weight:700; color:#111; line-height:1.45; margin-bottom:10px; display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden; }
-        .nws3-card-img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; margin-bottom:12px; border-radius:2px; }
-        .nws3-card-meta { font-size:.72rem; color:#bbb; display:flex; gap:6px; flex-wrap:wrap; }
-        .nws3-card-src { font-weight:600; color:#888; }
+.nw7-counter strong{color:#111;}
 
-        /* BOTTOM — 2 bài ngang */
-        .nws3-bottom { display:grid; grid-template-columns:1fr 1fr; gap:2px; background:#e8e8e8; border:2px solid #111; border-top:none; }
-        .nws3-bcard { background:#fff; display:flex; gap:20px; padding:24px; cursor:pointer; text-decoration:none; color:inherit; transition:background .2s; align-items:flex-start; }
-        .nws3-bcard:hover { background:#f8f8f8; }
-        .nws3-bcard-img { width:120px; height:90px; object-fit:cover; flex-shrink:0; border-radius:2px; }
-        .nws3-bcard-body {}
-        .nws3-bcard-tag { font-size:.6rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
-        .nws3-bcard-title { font-size:.9rem; font-weight:700; color:#111; line-height:1.4; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
-        .nws3-bcard-meta { font-size:.72rem; color:#bbb; display:flex; gap:6px; }
-        .nws3-bcard-src { font-weight:600; color:#888; }
+/* ═══════ SLIDER CONTAINER ═══════ */
+.nw7-slider-outer{position:relative;overflow:hidden;}
+.nw7-slider-track{display:flex;transition:transform .42s cubic-bezier(.4,0,.2,1);width:100%;}
+.nw7-slide{flex:0 0 100%;width:100%;min-width:100%;display:grid;grid-template-columns:340px 1fr;gap:0;cursor:pointer;background:#fff;border:1px solid #e5e5e5;box-sizing:border-box;}
+.nw7-slide:hover .nw7-slide-img img{transform:scale(1.04);}
 
-        /* ANIMATION */
-        .nws3-anim { opacity:0; transform:translateY(20px); transition:opacity .5s ease, transform .5s ease; }
-        .nws3-anim.nws3-vis { opacity:1; transform:translateY(0); }
+/* ═══════ SLIDE IMAGE ═══════ */
+.nw7-slide-img{overflow:hidden;position:relative;}
+.nw7-slide-img img{width:100%;height:100%;min-height:260px;object-fit:cover;display:block;transition:transform .5s ease;}
+.nw7-slide-tag{position:absolute;top:14px;left:14px;font-size:.55rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:4px 10px;z-index:2;}
 
-        /* ===== MODAL ===== */
-        .nws3-modal-overlay {
-            position:fixed; inset:0; background:rgba(0,0,0,.7);
-            z-index:9999; display:flex; align-items:flex-start; justify-content:center;
-            padding:40px 16px; overflow-y:auto;
-            opacity:0; pointer-events:none;
-            transition:opacity .3s ease;
-        }
-        .nws3-modal-overlay.open { opacity:1; pointer-events:all; }
-        .nws3-modal {
-            background:#fff; max-width:760px; width:100%; border-radius:0;
-            border:2px solid #111; position:relative;
-            transform:translateY(30px); transition:transform .3s ease;
-        }
-        .nws3-modal-overlay.open .nws3-modal { transform:translateY(0); }
-        .nws3-modal-img { width:100%; max-height:380px; object-fit:cover; display:block; }
-        .nws3-modal-body { padding:36px 40px 44px; }
-        .nws3-modal-tag { display:inline-block; font-size:.62rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#fff; padding:5px 14px; border-radius:2px; margin-bottom:16px; }
-        .nws3-modal-title { font-size:1.7rem; font-weight:900; color:#111; line-height:1.2; letter-spacing:-.02em; margin-bottom:14px; }
-        .nws3-modal-meta { font-size:.8rem; color:#aaa; display:flex; gap:12px; margin-bottom:28px; padding-bottom:20px; border-bottom:1px solid #e8e8e8; flex-wrap:wrap; }
-        .nws3-modal-src { font-weight:700; color:#333; }
-        .nws3-modal-content { font-size:.97rem; color:#333; line-height:1.85; }
-        .nws3-modal-content h4 { font-size:1.05rem; font-weight:800; color:#111; margin:24px 0 10px; }
-        .nws3-modal-content p { margin:0 0 16px; }
-        .nws3-modal-content strong { color:#111; }
-        .nws3-modal-close {
-            position:absolute; top:16px; right:16px;
-            width:36px; height:36px; background:#111; color:#fff; border:none;
-            border-radius:50%; cursor:pointer; font-size:1rem;
-            display:flex; align-items:center; justify-content:center;
-            transition:background .2s; z-index:10;
-        }
-        .nws3-modal-close:hover { background:#E53935; }
+/* ═══════ SLIDE BODY ═══════ */
+.nw7-slide-body{padding:28px 32px;display:flex;flex-direction:column;justify-content:center;border-left:3px solid transparent;}
+.nw7-slide:hover .nw7-slide-body{border-left-color:#16a34a;}
+.nw7-slide-cat{font-size:.6rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;}
+.nw7-slide-headline{font-size:1.08rem;font-weight:800;color:#111;line-height:1.4;letter-spacing:-.02em;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.nw7-slide-desc{font-size:.82rem;color:#777;line-height:1.65;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+.nw7-slide-meta{font-size:.7rem;color:#bbb;display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
+.nw7-slide-src{font-weight:700;color:#888;}
+.nw7-slide-readmore{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;color:#16a34a;letter-spacing:.03em;}
 
-        /* RESPONSIVE */
-        @media(max-width:900px){
-            .nws3-hero { grid-template-columns:1fr; }
-            .nws3-hero-img-wrap { aspect-ratio:16/9; }
-            .nws3-hero-body { border-left:none; border-top:2px solid #111; padding:24px; }
-            .nws3-grid { grid-template-columns:1fr 1fr; }
-            .nws3-hero-title { font-size:1.4rem; }
-        }
-        @media(max-width:600px){
-            #news-section-root { padding:60px 0 40px; }
-            .nws3-grid { grid-template-columns:1fr; }
-            .nws3-bottom { grid-template-columns:1fr; }
-            .nws3-modal-body { padding:24px 20px 32px; }
-            .nws3-modal-title { font-size:1.3rem; }
-        }
+/* ═══════ CONTROLS ═══════ */
+.nw7-controls{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:12px;}
+.nw7-dots{display:flex;gap:6px;align-items:center;}
+.nw7-dot{width:6px;height:6px;border-radius:50%;background:#ddd;cursor:pointer;transition:all .2s;border:none;padding:0;}
+.nw7-dot.active{background:#16a34a;width:18px;border-radius:3px;}
+.nw7-arrows{display:flex;gap:6px;}
+.nw7-arrow{width:34px;height:34px;border:1.5px solid #ddd;background:#fff;cursor:pointer;border-radius:2px;font-size:1rem;color:#555;display:flex;align-items:center;justify-content:center;transition:all .18s;font-family:inherit;}
+.nw7-arrow:hover{border-color:#111;color:#111;background:#f8f8f8;}
+.nw7-progress{flex:1;height:2px;background:#eee;border-radius:1px;overflow:hidden;}
+.nw7-progress-bar{height:100%;background:#16a34a;width:0%;transition:width linear;}
+
+/* ═══════ NAV DROPDOWN (compact panel) ═══════ */
+.nw7-nav-dropdown{
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    z-index:99990;background:rgba(0,0,0,.55);
+    opacity:0;pointer-events:none;transition:opacity .22s;
+    backdrop-filter:blur(3px);
+}
+.nw7-nav-dropdown.open{opacity:1;pointer-events:all;}
+.nw7-nav-panel{
+    position:absolute;top:52px;left:50%;transform:translateX(-50%);
+    width:min(780px,96vw);background:#fff;
+    box-shadow:0 20px 60px rgba(0,0,0,.18);
+    border:1px solid #e0e0e0;max-height:540px;overflow:hidden;
+    display:flex;flex-direction:column;
+}
+.nw7-nav-header{
+    padding:16px 20px;border-bottom:1px solid #eee;
+    display:flex;align-items:center;justify-content:space-between;flex-shrink:0;
+}
+.nw7-nav-htitle{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#111;}
+.nw7-nav-hclose{background:none;border:1.5px solid #ddd;color:#555;font-size:.75rem;font-weight:600;padding:5px 12px;cursor:pointer;border-radius:2px;font-family:inherit;transition:all .15s;}
+.nw7-nav-hclose:hover{border-color:#111;color:#111;}
+.nw7-nav-list{overflow-y:auto;flex:1;}
+.nw7-nav-item{
+    display:grid;grid-template-columns:120px 1fr;
+    cursor:pointer;border-bottom:1px solid #f2f2f2;
+    transition:background .15s;
+}
+.nw7-nav-item:last-child{border-bottom:none;}
+.nw7-nav-item:hover{background:#fafafa;}
+.nw7-nav-item:hover .nw7-nav-ititle{color:#16a34a;}
+.nw7-nav-img{overflow:hidden;height:80px;}
+.nw7-nav-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.nw7-nav-item:hover .nw7-nav-img img{transform:scale(1.06);}
+.nw7-nav-ibody{padding:14px 18px;display:flex;flex-direction:column;justify-content:center;}
+.nw7-nav-itag{font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:inline-block;padding:3px 8px;margin-bottom:6px;}
+.nw7-nav-ititle{font-size:.82rem;font-weight:700;color:#111;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color .15s;}
+.nw7-nav-imeta{font-size:.65rem;color:#bbb;margin-top:5px;display:flex;gap:6px;}
+.nw7-nav-isrc{font-weight:600;color:#999;}
+
+/* ═══════ READER (full screen) ═══════ */
+.nw7-reader{position:fixed;inset:0;z-index:99999;background:#fff;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .22s;}
+.nw7-reader.open{opacity:1;pointer-events:all;}
+.nw7-prog{position:fixed;top:0;left:0;height:3px;background:#16a34a;width:0%;z-index:100001;transition:width .08s linear;pointer-events:none;}
+.nw7-rbar{
+    position:sticky;top:0;z-index:100000;
+    background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+    border-bottom:1px solid #e5e5e5;padding:0 24px;height:52px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nw7-rbrand{font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#16a34a;}
+.nw7-rtitle{font-size:.78rem;color:#777;font-weight:500;flex:1;text-align:center;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.nw7-rclose{display:flex;align-items:center;gap:5px;background:none;border:1.5px solid #ddd;color:#555;font-size:.75rem;font-weight:600;padding:6px 14px;cursor:pointer;border-radius:2px;transition:all .2s;white-space:nowrap;font-family:inherit;}
+.nw7-rclose:hover{border-color:#111;color:#111;}
+.nw7-rarticle{max-width:700px;margin:0 auto;padding:44px 24px 80px;}
+.nw7-r-tag{display:inline-block;font-size:.58rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:5px 13px;margin-bottom:18px;}
+.nw7-r-title{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;color:#111;line-height:1.25;letter-spacing:-.03em;margin-bottom:14px;}
+.nw7-r-meta{display:flex;gap:10px;align-items:center;font-size:.78rem;color:#aaa;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #eee;flex-wrap:wrap;}
+.nw7-r-src{font-weight:700;color:#333;}
+.nw7-r-img{width:100%;max-height:400px;object-fit:cover;display:block;margin-bottom:28px;}
+.nw7-r-body{font-size:1rem;line-height:1.85;color:#2a2a2a;}
+.nw7-r-body h3{font-size:1.05rem;font-weight:700;color:#111;margin:28px 0 10px;border-left:3px solid #16a34a;padding-left:12px;}
+.nw7-r-body p{margin:0 0 16px;}
+.nw7-r-body strong{color:#111;}
+.nw7-r-video{margin:24px 0;}
+.nw7-r-video-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#16a34a;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.nw7-r-video-label::before{content:'▶';font-size:.5rem;}
+.nw7-r-video iframe{width:100%;aspect-ratio:16/9;border:none;display:block;}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:700px){
+    .nw7-slide{grid-template-columns:1fr;}
+    .nw7-slide-img{height:180px;}
+    .nw7-slide-body{padding:18px 20px;}
+    .nw7-nav-panel{top:0;width:100%;max-height:100vh;}
+    .nw7-nav-item{grid-template-columns:90px 1fr;}
+    .nw7-nav-img{height:65px;}
+}
+@media(max-width:440px){
+    .nw7-slide-headline{font-size:.95rem;}
+}
         `;
-        document.head.appendChild(s);
+        document.head.appendChild(st);
     }
 
-    // ============================================================
-    // 4. MODAL
-    // ============================================================
-    function buildModal() {
-        if (document.getElementById('nws3-modal-overlay')) return;
-        const overlay = document.createElement('div');
-        overlay.id = 'nws3-modal-overlay';
-        overlay.className = 'nws3-modal-overlay';
-        overlay.innerHTML = `
-        <div class="nws3-modal" id="nws3-modal">
-            <button class="nws3-modal-close" id="nws3-modal-close">✕</button>
-            <img id="nws3-modal-img" class="nws3-modal-img" src="" alt="">
-            <div class="nws3-modal-body">
-                <span class="nws3-modal-tag" id="nws3-modal-tag"></span>
-                <div class="nws3-modal-title" id="nws3-modal-title"></div>
-                <div class="nws3-modal-meta" id="nws3-modal-meta"></div>
-                <div class="nws3-modal-content" id="nws3-modal-content"></div>
+    // ── READER ────────────────────────────────────────────────────
+    let rdr, prog;
+    function buildReader() {
+        if (document.getElementById('nw7-reader')) { rdr = document.getElementById('nw7-reader'); prog = document.getElementById('nw7-prog'); return; }
+        prog = document.createElement('div'); prog.id = 'nw7-prog'; prog.className = 'nw7-prog';
+        rdr = document.createElement('div'); rdr.id = 'nw7-reader'; rdr.className = 'nw7-reader';
+        rdr.innerHTML = `
+            <div class="nw7-rbar">
+                <span class="nw7-rbrand">L-Corparation</span>
+                <span class="nw7-rtitle" id="nw7-rtitle"></span>
+                <button class="nw7-rclose" id="nw7-rclose">← Đóng</button>
             </div>
-        </div>`;
-        document.body.appendChild(overlay);
-
-        const closeBtn = document.getElementById('nws3-modal-close');
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+            <div class="nw7-rarticle" id="nw7-rarticle"></div>`;
+        document.body.appendChild(prog);
+        document.body.appendChild(rdr);
+        document.getElementById('nw7-rclose').addEventListener('click', closeReader);
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && rdr.classList.contains('open')) closeReader(); });
+        rdr.addEventListener('scroll', () => {
+            const h = rdr.scrollHeight - rdr.clientHeight;
+            prog.style.width = (h > 0 ? (rdr.scrollTop / h) * 100 : 0) + '%';
+        });
     }
 
-    function openModal(article) {
-        const overlay = document.getElementById('nws3-modal-overlay');
-        const img     = document.getElementById('nws3-modal-img');
-        const tagEl   = document.getElementById('nws3-modal-tag');
-        const titleEl = document.getElementById('nws3-modal-title');
-        const metaEl  = document.getElementById('nws3-modal-meta');
-        const contEl  = document.getElementById('nws3-modal-content');
-
-        img.src = article.img;
-        img.alt = tx(article.title);
-        tagEl.textContent = tx(article.tag);
-        tagEl.style.background = article.tagColor;
-        titleEl.textContent = tx(article.title);
-        metaEl.innerHTML = `<span class="nws3-modal-src">${article.source}</span><span>·</span><span>${fmtDate(article.date)}</span><span>·</span><span>${tx(article.readTime)}</span>`;
-        contEl.innerHTML = tx(article.content);
-
-        overlay.classList.add('open');
+    function openReader(art) {
+        buildReader();
+        document.getElementById('nw7-rtitle').textContent = tx(art.title);
+        document.getElementById('nw7-rclose').innerHTML = `← ${l('close')}`;
+        const isLocalVideo = art.video && (art.video.endsWith('.mp4') || art.video.endsWith('.webm'));
+        const videoHTML = art.video ? `<div class="nw7-r-video"><div class="nw7-r-video-label">${l('video')}</div>${
+            isLocalVideo
+            ? `<video controls style="width:100%;aspect-ratio:16/9;display:block;background:#000;" preload="metadata"><source src="${art.video}" type="video/mp4">Trình duyệt không hỗ trợ video.</video>`
+            : `<iframe src="${art.video}" allowfullscreen loading="lazy"></iframe>`
+        }</div>` : '';
+        document.getElementById('nw7-rarticle').innerHTML = `
+            <span class="nw7-r-tag" style="background:${art.tagColor}">${tx(art.tag)}</span>
+            <h1 class="nw7-r-title">${tx(art.title)}</h1>
+            <div class="nw7-r-meta">
+                <span class="nw7-r-src">${art.source}</span><span>·</span>
+                <span>${fd(art.date)}</span><span>·</span>
+                <span>${tx(art.readTime)} ${l('minread')}</span>
+            </div>
+            <img class="nw7-r-img" src="${art.img}" alt="${tx(art.title)}" onerror="this.style.display='none'">
+            ${videoHTML}
+            <div class="nw7-r-body">${tx(art.body)}</div>`;
+        rdr.scrollTop = 0;
+        prog.style.width = '0%';
+        requestAnimationFrame(() => rdr.classList.add('open'));
         document.body.style.overflow = 'hidden';
-
-        // Scroll modal về đầu
-        document.getElementById('nws3-modal').scrollTop = 0;
-        overlay.scrollTop = 0;
     }
 
-    function closeModal() {
-        const overlay = document.getElementById('nws3-modal-overlay');
-        overlay.classList.remove('open');
+    function closeReader() {
+        rdr && rdr.classList.remove('open');
         document.body.style.overflow = '';
     }
 
-    // ============================================================
-    // 5. BUILD HTML
-    // ============================================================
-    function buildHTML() {
-        const featured   = newsData.find(n => n.featured) || newsData[0];
-        const gridItems  = newsData.filter(n => !n.featured).slice(0, 4);
-        const bottomItems= newsData.filter(n => !n.featured).slice(4);
+    // ── NAV DROPDOWN ──────────────────────────────────────────────
+    let navDropdown = null;
 
-        // Featured hero
-        const heroHTML = `
-        <div class="nws3-hero nws3-anim" data-id="${featured.id}">
-            <div class="nws3-hero-img-wrap">
-                <img class="nws3-hero-img" src="${featured.img}" alt="${tx(featured.title)}" loading="lazy">
-            </div>
-            <div class="nws3-hero-body">
-                <div>
-                    <span class="nws3-tag" style="background:${featured.tagColor}">${tx(featured.tag)}</span>
-                    <div class="nws3-hero-title">${tx(featured.title)}</div>
-                    <p class="nws3-hero-desc">${tx(featured.desc)}</p>
+    function buildNavDropdown() {
+        if (document.getElementById('nw7-nav-dropdown')) {
+            navDropdown = document.getElementById('nw7-nav-dropdown');
+            updateNavDropdown();
+            return;
+        }
+        navDropdown = document.createElement('div');
+        navDropdown.id = 'nw7-nav-dropdown';
+        navDropdown.className = 'nw7-nav-dropdown';
+        navDropdown.innerHTML = `
+            <div class="nw7-nav-panel">
+                <div class="nw7-nav-header">
+                    <span class="nw7-nav-htitle">📰 ${l('heading')}</span>
+                    <button class="nw7-nav-hclose" id="nw7-nav-close">✕ ${l('close')}</button>
                 </div>
-                <div class="nws3-hero-foot">
-                    <div class="nws3-hero-meta">
-                        <span class="nws3-src">${featured.source}</span>
-                        <span>·</span><span>${fmtDate(featured.date)}</span>
-                        <span>·</span><span>${tx(featured.readTime)}</span>
-                    </div>
-                    <button class="nws3-read-btn" data-id="${featured.id}">
-                        ${t('read')} →
-                    </button>
-                </div>
-            </div>
-        </div>`;
+                <div class="nw7-nav-list" id="nw7-nav-list"></div>
+            </div>`;
+        document.body.appendChild(navDropdown);
 
-        // Grid 4 bài nhỏ
-        const gridHTML = `
-        <div class="nws3-grid">
-            ${gridItems.map((item, i) => `
-            <div class="nws3-card nws3-anim" data-id="${item.id}" style="transition-delay:${i*0.08}s">
-                <img class="nws3-card-img" src="${item.img}" alt="${tx(item.title)}" loading="lazy" onerror="this.style.display='none'">
-                <div class="nws3-card-num">${String(i+1).padStart(2,'0')}</div>
-                <div class="nws3-card-tag" style="color:${item.tagColor}">${tx(item.tag)}</div>
-                <div class="nws3-card-title">${tx(item.title)}</div>
-                <div class="nws3-card-meta">
-                    <span class="nws3-card-src">${item.source}</span>
-                    <span>·</span><span>${fmtDate(item.date)}</span>
-                </div>
-            </div>`).join('')}
-        </div>`;
-
-        // Bottom 2 bài ngang
-        const bottomHTML = bottomItems.length ? `
-        <div class="nws3-bottom">
-            ${bottomItems.slice(0,2).map((item, i) => `
-            <div class="nws3-bcard nws3-anim" data-id="${item.id}" style="transition-delay:${i*0.1}s">
-                <img class="nws3-bcard-img" src="${item.img}" alt="${tx(item.title)}" loading="lazy" onerror="this.style.display='none'">
-                <div class="nws3-bcard-body">
-                    <div class="nws3-bcard-tag" style="color:${item.tagColor}">${tx(item.tag)}</div>
-                    <div class="nws3-bcard-title">${tx(item.title)}</div>
-                    <div class="nws3-bcard-meta">
-                        <span class="nws3-bcard-src">${item.source}</span>
-                        <span>·</span><span>${fmtDate(item.date)}</span>
-                    </div>
-                </div>
-            </div>`).join('')}
-        </div>` : '';
-
-        return `
-        <div class="nws3-wrap">
-            <div class="nws3-head">
-                <div>
-                    <div class="nws3-eyebrow">L-Corparation Journal</div>
-                    <h2 class="nws3-h1">${t('title')} <span>${t('accent')}</span></h2>
-                    <p class="nws3-sub">${t('subtitle')}</p>
-                </div>
-                <span class="nws3-all">${t('view_all')} →</span>
-            </div>
-            ${heroHTML}
-            ${gridHTML}
-            ${bottomHTML}
-        </div>`;
+        document.getElementById('nw7-nav-close').addEventListener('click', closeNavDropdown);
+        navDropdown.addEventListener('click', e => { if (e.target === navDropdown) closeNavDropdown(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && navDropdown.classList.contains('open')) closeNavDropdown(); });
+        updateNavDropdown();
     }
 
-    // ============================================================
-    // 6. RENDER & EVENTS
-    // ============================================================
-    function render() {
-        const root = document.getElementById('news-section-root');
-        if (!root) return;
-        root.innerHTML = buildHTML();
-
-        // Gắn click mở modal cho tất cả card
-        root.querySelectorAll('[data-id]').forEach(el => {
-            el.addEventListener('click', (e) => {
-                // Nếu click vào button bên trong hero thì không double-trigger
-                if (e.target.closest('.nws3-read-btn') && !el.classList.contains('nws3-read-btn')) return;
-                const id = parseInt(el.dataset.id || el.closest('[data-id]')?.dataset.id);
-                const article = newsData.find(a => a.id === id);
-                if (article) openModal(article);
+    function updateNavDropdown() {
+        const list = document.getElementById('nw7-nav-list');
+        if (!list) return;
+        list.innerHTML = NEWS.map(a => `
+            <div class="nw7-nav-item" data-id="${a.id}">
+                <div class="nw7-nav-img"><img src="${a.img}" loading="lazy" alt="" onerror="this.parentElement.style.display='none'"></div>
+                <div class="nw7-nav-ibody">
+                    <span class="nw7-nav-itag" style="background:${a.tagColor}">${tx(a.tag)}</span>
+                    <div class="nw7-nav-ititle">${tx(a.title)}</div>
+                    <div class="nw7-nav-imeta">
+                        <span class="nw7-nav-isrc">${a.source}</span>
+                        <span>·</span><span>${fd(a.date)}</span>
+                    </div>
+                </div>
+            </div>`).join('');
+        list.querySelectorAll('.nw7-nav-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const art = NEWS.find(a => a.id === parseInt(el.dataset.id));
+                if (art) { closeNavDropdown(); openReader(art); }
             });
         });
-
-        requestAnimationFrame(initAnim);
+        // Update header title text
+        const htitle = navDropdown.querySelector('.nw7-nav-htitle');
+        if (htitle) htitle.textContent = '📰 ' + l('heading');
+        const hclose = document.getElementById('nw7-nav-close');
+        if (hclose) hclose.textContent = '✕ ' + l('close');
     }
 
-    // ============================================================
-    // 7. ANIMATION
-    // ============================================================
-    function initAnim() {
-        const els = document.querySelectorAll('#news-section-root .nws3-anim');
-        if ('IntersectionObserver' in window) {
-            const obs = new IntersectionObserver((entries) => {
-                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('nws3-vis'); obs.unobserve(e.target); } });
-            }, { threshold: 0.08 });
-            els.forEach(el => obs.observe(el));
-        } else {
-            els.forEach(el => el.classList.add('nws3-vis'));
+    function openNavDropdown() {
+        buildNavDropdown();
+        navDropdown.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNavDropdown() {
+        navDropdown && navDropdown.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // ── NAV LINK ──────────────────────────────────────────────────
+    function scrollToNews() {
+        const section = document.getElementById('news-section-root');
+        if (!section) return;
+        const navbar = document.getElementById('mainNavbar');
+        const offset = navbar ? navbar.offsetHeight + 8 : 70;
+        const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    function injectNavLink() {
+        // Tìm nav item có data-i18n="nav_news"
+        const existing = document.querySelector('[data-i18n="nav_news"]');
+        if (existing) {
+            existing.style.cursor = 'pointer';
+            existing.textContent = l('navLabel');
+            // Xóa listener cũ bằng clone
+            const fresh = existing.cloneNode(true);
+            existing.parentNode.replaceChild(fresh, existing);
+            fresh.addEventListener('click', e => { e.preventDefault(); scrollToNews(); });
+            return;
+        }
+        // Fallback: thêm mới vào navbar
+        const navList = document.querySelector('.navbar-nav');
+        if (!navList) return;
+        if (document.getElementById('nw7-nav-link')) return; // tránh duplicate
+        const li = document.createElement('li');
+        li.className = 'nav-item';
+        li.innerHTML = `<a class="nav-link" href="#news-section-root" id="nw7-nav-link">${l('navLabel')}</a>`;
+        const aboutLi = [...navList.querySelectorAll('.nav-item')].find(i => i.querySelector('[data-i18n="nav_about"]'));
+        if (aboutLi) navList.insertBefore(li, aboutLi);
+        else navList.appendChild(li);
+        li.querySelector('a').addEventListener('click', e => { e.preventDefault(); scrollToNews(); });
+    }
+
+    // ── SLIDER ────────────────────────────────────────────────────
+    function goTo(idx) {
+        currentSlide = (idx + NEWS.length) % NEWS.length;
+        const track = document.getElementById('nw7-track');
+        if (track) {
+            // Lấy width của 1 slide (children[0]) - luôn chính xác vì flex:0 0 100%
+            const slide = track.children[currentSlide] || track.children[0];
+            const w = slide ? slide.offsetWidth : track.offsetWidth;
+            track.style.transform = 'translateX(-' + (currentSlide * w) + 'px)';
+        }
+        // dots
+        document.querySelectorAll('.nw7-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+
+        // progress bar restart
+        const bar = document.getElementById('nw7-pbar');
+        if (bar) {
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            requestAnimationFrame(() => {
+                bar.style.transition = `width ${AUTO_INTERVAL}ms linear`;
+                bar.style.width = '100%';
+            });
         }
     }
 
-    // ============================================================
-    // 8. PATCH setLanguage
-    // ============================================================
-    function patchLang() {
-        if (typeof window.setLanguage === 'function') { applyPatch(); return; }
-        let _s;
+    function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(() => goTo(currentSlide + 1), AUTO_INTERVAL);
+        const bar = document.getElementById('nw7-pbar');
+        if (bar) {
+            bar.style.transition = 'none';
+            bar.style.width = '0%';
+            requestAnimationFrame(() => {
+                bar.style.transition = `width ${AUTO_INTERVAL}ms linear`;
+                bar.style.width = '100%';
+            });
+        }
+    }
+
+    function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    }
+
+    // ── RENDER SECTION ────────────────────────────────────────────
+    function render() {
+        const root = document.getElementById('news-section-root');
+        if (!root) return;
+
+        const slidesHTML = NEWS.map((a, i) => `
+            <div class="nw7-slide" data-id="${a.id}">
+                <div class="nw7-slide-img">
+                    <img src="${a.img}" loading="${i === 0 ? 'eager' : 'lazy'}" alt="" onerror="this.parentElement.style.display='none'">
+                    <span class="nw7-slide-tag" style="background:${a.tagColor}">${tx(a.tag)}</span>
+                </div>
+                <div class="nw7-slide-body">
+                    <div class="nw7-slide-cat" style="color:${a.tagColor}">${tx(a.tag)}</div>
+                    <div class="nw7-slide-headline">${tx(a.title)}</div>
+                    <p class="nw7-slide-desc">${tx(a.desc)}</p>
+                    <div class="nw7-slide-meta">
+                        <span class="nw7-slide-src">${a.source}</span>
+                        <span>·</span><span>${fd(a.date)}</span>
+                        <span>·</span><span>${tx(a.readTime)} ${l('minread')}</span>
+                    </div>
+                    <span class="nw7-slide-readmore">${l('readmore')}</span>
+                </div>
+            </div>`).join('');
+
+        const dotsHTML = NEWS.map((_, i) =>
+            `<button class="nw7-dot${i === 0 ? ' active' : ''}" data-i="${i}" aria-label="Slide ${i+1}"></button>`
+        ).join('');
+
+        root.innerHTML = `
+            <div class="nw7-wrap">
+                <div class="nw7-header">
+                    <div>
+                        <span class="nw7-label">L-Corparation Journal</span>
+                        <h2 class="nw7-title">${l('heading').split(' ')[0]} <span>${l('heading').split(' ').slice(1).join(' ') || 'Xe Điện'}</span></h2>
+                        <p class="nw7-sub">${l('sub')}</p>
+                    </div>
+                    
+                </div>
+                <div class="nw7-slider-outer" id="nw7-slider">
+                    <div class="nw7-slider-track" id="nw7-track">${slidesHTML}</div>
+                </div>
+                <div class="nw7-controls">
+                    <div class="nw7-dots" id="nw7-dots">${dotsHTML}</div>
+                    <div class="nw7-progress"><div class="nw7-progress-bar" id="nw7-pbar"></div></div>
+                    <div class="nw7-arrows">
+                        <button class="nw7-arrow" id="nw7-prev" aria-label="Prev">${l('prev')}</button>
+                        <button class="nw7-arrow" id="nw7-next" aria-label="Next">${l('next')}</button>
+                    </div>
+                </div>
+            </div>`;
+
+        // Slide click → open reader
+        root.querySelectorAll('.nw7-slide').forEach(el => {
+            el.addEventListener('click', () => {
+                const art = NEWS.find(a => a.id === parseInt(el.dataset.id));
+                if (art) openReader(art);
+            });
+        });
+
+        // Dot clicks
+        root.querySelectorAll('.nw7-dot').forEach(d => {
+            d.addEventListener('click', () => { stopAuto(); goTo(parseInt(d.dataset.i)); startAuto(); });
+        });
+
+        // Arrow clicks
+        document.getElementById('nw7-prev').addEventListener('click', () => { stopAuto(); goTo(currentSlide - 1); startAuto(); });
+        document.getElementById('nw7-next').addEventListener('click', () => { stopAuto(); goTo(currentSlide + 1); startAuto(); });
+
+        // Pause on hover
+        const slider = document.getElementById('nw7-slider');
+        slider.addEventListener('mouseenter', stopAuto);
+        slider.addEventListener('mouseleave', startAuto);
+
+        // Touch/swipe support
+        let tx0 = 0;
+        slider.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+        slider.addEventListener('touchend', e => {
+            const diff = tx0 - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) { stopAuto(); goTo(diff > 0 ? currentSlide + 1 : currentSlide - 1); startAuto(); }
+        });
+
+        // Recalc on resize
+
+
+        // Init
+        goTo(0);
+        startAuto();
+    }
+
+    // ── PATCH setLanguage ─────────────────────────────────────────
+    function patch() {
+        if (typeof window.setLanguage === 'function') { apply(); return; }
+        let _f;
         Object.defineProperty(window, 'setLanguage', {
-            configurable:true, enumerable:true,
-            get(){ return _s; },
-            set(fn){ _s=fn; applyPatch(); }
+            configurable: true, enumerable: true,
+            get() { return _f; }, set(fn) { _f = fn; apply(); }
+        });
+    }
+    function apply() {
+        if (window.__nw7p) return; window.__nw7p = true;
+        const orig = window.setLanguage;
+        Object.defineProperty(window, 'setLanguage', {
+            configurable: true, writable: true,
+            value(lg) {
+                orig(lg);
+                render();
+                injectNavLink();
+                if (navDropdown) updateNavDropdown();
+            }
         });
     }
 
-    function applyPatch() {
-        if (window.__nws3Patched) return;
-        window.__nws3Patched = true;
-        const _orig = window.setLanguage;
-        Object.defineProperty(window, 'setLanguage', {
-            configurable:true, writable:true,
-            value: function(l) { _orig(l); render(); }
-        });
-    }
-
-    // ============================================================
-    // 9. INIT
-    // ============================================================
+    // ── INIT ──────────────────────────────────────────────────────
     function init() {
-        injectStyles();
-        buildModal();
+        css();
+        buildReader();
         render();
-        patchLang();
+        injectNavLink();
+        patch();
     }
-
-    document.readyState === 'loading'
-        ? document.addEventListener('DOMContentLoaded', init)
-        : init();
-
+    document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', init) : init();
 })();
