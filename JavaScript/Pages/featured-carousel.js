@@ -100,17 +100,17 @@ function setupCarousel(data, imgId, infoId, prevBtnId, nextBtnId, bulletsId) {
             
             ${specsHTML}
             
-            <div class="col-6 col-md spec-block-minimal mb-4 d-flex flex-column align-items-center position-relative">
+            <div class="col-6 col-md spec-block-minimal mb-0 d-flex flex-column align-items-center">
                 <span class="spec-label-minimal">${t('spec_price_from')}</span>
-                <span class="spec-value-minimal lh-1 mt-1" id="${infoId}-price"></span>
-                <div class="position-absolute w-100 text-center" style="top: 100%; left: 0; margin-top: -5px;">
+                <div class="d-flex flex-column align-items-center" style="min-height: 60px;">
+                    <span class="spec-value-minimal lh-1 mt-1" id="${infoId}-price"></span>
                     <div class="text-decoration-line-through text-muted fw-normal" style="font-size: 0.8rem; display: none; line-height: 1.2;" id="${infoId}-price-old"></div>
                     <div class="badge bg-danger rounded-pill mt-1" id="${infoId}-discount" style="font-size: 0.7rem; font-weight: 700; line-height: 1.2; padding: 0.35em 0.65em;"></div>
                 </div>
             </div>
         </div>
         
-        <div class="d-flex justify-content-center gap-3 mb-4 mt-2">
+        <div class="d-flex justify-content-center gap-3 mb-4 mt-0">
             <a href="#" class="btn btn-primary rounded-1 px-5 py-2 fw-bold tesla-btn-primary" id="${infoId}-order-btn">${t('btn_order')}</a>
             <a href="#" class="btn btn-outline-primary rounded-1 px-5 py-2 fw-bold tesla-btn-outline" id="${infoId}-link">${t('btn_detail')}</a>
         </div>
