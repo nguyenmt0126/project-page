@@ -61,6 +61,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
+    max-width: 74%;
 }
 
 .navbar.scrolled {

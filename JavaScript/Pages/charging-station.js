@@ -20,7 +20,7 @@
             sectionSub: 'L-Corporation cung cấp đa dạng giải pháp sạc để đáp ứng nhu cầu sử dụng của Khách hàng một cách thuận tiện nhất.',
             types: [
                 {
-                    img: '../Data/Images/charging/C 250kW.png',       // đường dẫn ảnh tính từ index.html
+                    img: '../Data/Images/charging/C 250kW.png',
                     name: 'Trụ sạc ô tô – Sạc siêu nhanh DC 250kW',
                     desc: 'Thiết bị sạc Ô tô điện DC 250kW cung cấp nguồn điện một chiều sạc trực tiếp cho pin, thiết kế dạng tủ đứng, 1 cổng sạc, công suất 250kW.',
                     specs: [
@@ -146,7 +146,6 @@
     // CSS — inject thẳng vào <head>, không cần file .css riêng
     // ============================================================
     function injectStyles() {
-        // Kiểm tra nếu đã inject rồi thì thôi, tránh bị trùng
         if (document.getElementById('cs-plugin-styles')) return;
 
         const style = document.createElement('style');
@@ -170,7 +169,7 @@
                 background: none;
                 border: none;
                 border-bottom: 3px solid transparent;
-                margin-bottom: -2px;   /* che border-bottom của tabbar */
+                margin-bottom: -2px;
                 cursor: pointer;
                 transition: all 0.25s;
                 display: flex;
@@ -182,7 +181,6 @@
             .cs-tabbar-btn:hover { color: #1565C0; }
             .cs-tabbar-btn.active { color: #1565C0; border-bottom-color: #1565C0; }
 
-            /* ── Hiện/ẩn tab content ── */
             .cs-tab-pane { display: none; }
             .cs-tab-pane.active { display: block; animation: csFadeUp 0.35s ease; }
             @keyframes csFadeUp {
@@ -190,7 +188,6 @@
                 to   { opacity: 1; transform: translateY(0); }
             }
 
-            /* ── Tiêu đề section ── */
             .cs-section-header {
                 text-align: center;
                 padding: 64px 24px 40px;
@@ -206,7 +203,6 @@
             }
             .cs-section-header p { color: #666; font-size: 0.95rem; line-height: 1.6; }
 
-            /* ── Grid 4 cột ── */
             .cs-cards-wrap {
                 max-width: 1280px;
                 margin: 0 auto;
@@ -216,13 +212,11 @@
                 gap: 24px;
             }
 
-            /* ── Card ── */
             .cs-card {
                 border: 1px solid #e2e6f0;
                 border-radius: 12px;
                 overflow: hidden;
                 background: #fff;
-                /* Ban đầu ẩn, chờ scroll tới mới hiện (xem initAnim) */
                 opacity: 0;
                 transform: translateY(20px);
             }
@@ -233,7 +227,6 @@
             }
             .cs-card:hover { box-shadow: 0 8px 28px rgba(21,101,192,0.13); transform: translateY(-4px); }
 
-            /* ── Phần ảnh — cursor zoom-in để người dùng biết có thể click ── */
             .cs-card-img-wrap {
                 background: #eef2f8;
                 height: 200px;
@@ -249,11 +242,10 @@
                 max-width: 90%;
                 object-fit: contain;
                 transition: transform 0.4s ease;
-                pointer-events: none; /* tránh ảnh chặn click của wrap */
+                pointer-events: none;
             }
             .cs-card-img-wrap:hover .cs-card-img { transform: scale(1.08); }
 
-            /* ── Badge "Phóng to" hiện khi hover ── */
             .cs-zoom-hint {
                 position: absolute;
                 bottom: 8px; right: 8px;
@@ -272,7 +264,6 @@
             .cs-zoom-hint svg { width: 12px; height: 12px; stroke: #fff; fill: none; }
             .cs-card-img-wrap:hover .cs-zoom-hint { opacity: 1; }
 
-            /* ── Placeholder khi ảnh bị lỗi ── */
             .cs-img-placeholder {
                 width: 100%; height: 100%;
                 display: flex; align-items: center; justify-content: center;
@@ -280,23 +271,20 @@
             }
             .cs-img-placeholder svg { width: 48px; height: 48px; stroke: #bbb; fill: none; }
 
-            /* ── Nội dung card ── */
             .cs-card-body { padding: 18px 20px 22px; }
             .cs-card-name { font-size: 0.92rem; font-weight: 700; color: #111; margin-bottom: 8px; line-height: 1.4; }
             .cs-card-desc { font-size: 0.8rem; color: #666; line-height: 1.6; margin-bottom: 14px; }
 
-            /* ── Bảng thông số kỹ thuật ── */
             .cs-specs { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
             .cs-specs tr { border-top: 1px solid #f0f2f8; }
             .cs-specs td { padding: 5px 4px; vertical-align: top; }
-            .cs-specs td:first-child { color: #999; width: 50%; }  /* cột label */
-            .cs-specs td:last-child  { color: #222; font-weight: 500; }  /* cột giá trị */
+            .cs-specs td:first-child { color: #999; width: 50%; }
+            .cs-specs td:last-child  { color: #222; font-weight: 500; }
 
-            /* ── Lightbox ── */
             .cs-lightbox {
                 position: fixed;
-                inset: 0;           /* full màn hình */
-                z-index: 99999;     /* luôn nằm trên cùng */
+                inset: 0;
+                z-index: 99999;
                 display: none;
                 align-items: center;
                 justify-content: center;
@@ -314,7 +302,6 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 14px;
-                /* Animation scale khi mở */
                 transform: scale(0.88);
                 opacity: 0;
                 transition: transform 0.3s ease, opacity 0.3s ease;
@@ -356,7 +343,6 @@
             }
             .cs-lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
-            /* ── Responsive ── */
             @media (max-width: 1100px) { .cs-cards-wrap { grid-template-columns: repeat(2,1fr); } }
             @media (max-width: 600px)  { .cs-cards-wrap { grid-template-columns: 1fr; } }
             @media (max-width: 768px)  { .cs-tabbar-btn { padding: 14px 22px; font-size: 0.9rem; } }
@@ -365,10 +351,69 @@
     }
 
     // ============================================================
-    // LIGHTBOX — tạo DOM 1 lần duy nhất, tái sử dụng cho mọi ảnh
+
+    // ============================================================
+    // NAV LINK — thêm "Chi tiết trạm sạc" vào navbar SAU "Trạm sạc"
+    // KHÔNG đụng vào link gốc, tránh trùng lặp
+    // ============================================================
+    function scrollToCS() {
+        var section = document.getElementById('cs-root');
+        if (!section) return;
+        var navbar = document.getElementById('mainNavbar');
+        var offset = navbar ? navbar.offsetHeight + 8 : 70;
+        var top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+
+    function injectNavLink() {
+        // Tránh thêm 2 lần
+        if (document.getElementById('cs-nav-link')) return;
+
+        var navList = document.querySelector('.navbar-nav');
+        if (!navList) return;
+
+        // Tìm nav item "Trạm sạc" để chèn ngay sau nó
+        var afterItem = null;
+        var allItems = navList.querySelectorAll('.nav-item');
+        for (var i = 0; i < allItems.length; i++) {
+            var txt = allItems[i].textContent.trim();
+            if (txt.indexOf('Trạm sạc') !== -1 || txt.indexOf('Trạm Sạc') !== -1) {
+                afterItem = allItems[i];
+                break;
+            }
+        }
+
+        // Tạo nav item mới "Chi tiết trạm sạc"
+        var li = document.createElement('li');
+        li.className = 'nav-item';
+
+        var a = document.createElement('a');
+        a.id = 'cs-nav-link';
+        a.className = 'nav-link';
+        a.href = '#cs-root';
+        a.textContent = 'Chi tiết trạm sạc';
+        a.style.cursor = 'pointer';
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            scrollToCS();
+        });
+
+        li.appendChild(a);
+
+        // Chèn ngay sau "Trạm sạc"
+        if (afterItem && afterItem.nextSibling) {
+            navList.insertBefore(li, afterItem.nextSibling);
+        } else if (afterItem) {
+            navList.appendChild(li);
+        } else {
+            navList.appendChild(li);
+        }
+    }
+
+    // ============================================================
+    // LIGHTBOX
     // ============================================================
     function createLightbox() {
-        // Nếu đã tạo rồi thì bỏ qua
         if (document.getElementById('cs-lightbox')) return;
 
         const lb = document.createElement('div');
@@ -378,23 +423,19 @@
         const inner = document.createElement('div');
         inner.className = 'cs-lightbox-inner';
 
-        // Nút X để đóng
         const closeBtn = document.createElement('button');
         closeBtn.className = 'cs-lightbox-close';
         closeBtn.textContent = '✕';
         closeBtn.addEventListener('click', function (e) {
-            e.stopPropagation(); // không cho click lan ra nền (tránh đóng 2 lần)
+            e.stopPropagation();
             closeLightbox();
         });
 
         const img = document.createElement('img');
         img.id = 'cs-lb-img';
         img.className = 'cs-lightbox-img';
-        img.addEventListener('click', function (e) {
-            e.stopPropagation(); // click vào ảnh không đóng lightbox
-        });
+        img.addEventListener('click', function (e) { e.stopPropagation(); });
 
-        // Tên trụ sạc hiện bên dưới ảnh
         const cap = document.createElement('div');
         cap.id = 'cs-lb-cap';
         cap.className = 'cs-lightbox-caption';
@@ -404,10 +445,7 @@
         inner.appendChild(cap);
         lb.appendChild(inner);
 
-        // Click ra ngoài ảnh (vùng tối) → đóng
         lb.addEventListener('click', closeLightbox);
-
-        // Nhấn ESC → đóng
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeLightbox();
         });
@@ -420,41 +458,37 @@
         const img = document.getElementById('cs-lb-img');
         const cap = document.getElementById('cs-lb-cap');
         if (!lb || !img) return;
-
         img.src = src;
         img.alt = name;
         cap.textContent = name;
         lb.classList.add('open');
-        document.body.style.overflow = 'hidden'; // khoá scroll trang khi lightbox mở
+        document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
         const lb = document.getElementById('cs-lightbox');
         if (!lb) return;
         lb.classList.remove('open');
-        document.body.style.overflow = ''; // trả lại scroll cho trang
+        document.body.style.overflow = '';
     }
 
     // ============================================================
-    // PLACEHOLDER — hiện khi ảnh bị lỗi (404 hoặc chưa có file)
+    // PLACEHOLDER
     // ============================================================
     function createPlaceholder() {
         const wrap = document.createElement('div');
         wrap.className = 'cs-img-placeholder';
-        // Dùng innerHTML cho SVG tĩnh này vì không có dữ liệu động, an toàn
         wrap.innerHTML = '<svg viewBox="0 0 24 24" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
         return wrap;
     }
 
     // ============================================================
-    // TẠO CARD — dùng createElement thay vì innerHTML
-    // (tránh lỗi dấu > trong SVG bị browser parse nhầm)
+    // TẠO CARD
     // ============================================================
     function createCard(t) {
         const card = document.createElement('div');
         card.className = 'cs-card';
 
-        // -- Phần ảnh --
         const imgWrap = document.createElement('div');
         imgWrap.className = 'cs-card-img-wrap';
         imgWrap.title = 'Nhấn để phóng to';
@@ -463,29 +497,22 @@
         img.className = 'cs-card-img';
         img.src = t.img;
         img.alt = t.name;
-        img.loading = 'lazy'; // lazy load: chỉ tải khi sắp vào viewport
+        img.loading = 'lazy';
         img.addEventListener('error', function () {
-            // Ảnh lỗi → thay bằng placeholder, bỏ cursor zoom
             imgWrap.replaceChild(createPlaceholder(), img);
             imgWrap.style.cursor = 'default';
         });
         imgWrap.appendChild(img);
 
-        // Badge "Phóng to" góc dưới phải
         const hint = document.createElement('div');
         hint.className = 'cs-zoom-hint';
         hint.innerHTML = '<svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Phóng to';
         imgWrap.appendChild(hint);
 
-        // Click vào ảnh → mở lightbox
         imgWrap.addEventListener('click', function () {
-            // Chỉ mở nếu ảnh vẫn còn trong DOM (chưa bị thay bằng placeholder)
-            if (document.contains(img)) {
-                openLightbox(t.img, t.name);
-            }
+            if (document.contains(img)) { openLightbox(t.img, t.name); }
         });
 
-        // -- Phần nội dung --
         const body = document.createElement('div');
         body.className = 'cs-card-body';
 
@@ -497,7 +524,6 @@
         desc.className = 'cs-card-desc';
         desc.textContent = t.desc;
 
-        // Bảng thông số kỹ thuật
         const table = document.createElement('table');
         table.className = 'cs-specs';
         t.specs.forEach(function (s) {
@@ -520,7 +546,7 @@
     }
 
     // ============================================================
-    // RENDER PANE — tạo nội dung cho 1 tab (header + grid card)
+    // RENDER PANE
     // ============================================================
     function renderPane(key) {
         const d = csData[key];
@@ -543,14 +569,13 @@
     }
 
     // ============================================================
-    // RENDER ROOT — dựng toàn bộ section vào #cs-root
+    // RENDER ROOT
     // ============================================================
     function render() {
         const root = document.getElementById('cs-root');
         if (!root) return;
-        root.innerHTML = ''; // xoá sạch trước khi render lại
+        root.innerHTML = '';
 
-        // -- Tab bar --
         const tabbar = document.createElement('div');
         tabbar.className = 'cs-tabbar';
 
@@ -563,14 +588,14 @@
         ].forEach(function (def, i) {
             const btn = document.createElement('button');
             btn.className = 'cs-tabbar-btn' + (i === 0 ? ' active' : '');
-            btn.dataset.tab = def.key; // lưu key để bindTabs đọc
+            btn.dataset.tab = def.key;
             btn.innerHTML = def.icon + ' ' + def.label;
             tabbar.appendChild(btn);
         });
 
         const panesWrap = document.createElement('div');
         panesWrap.className = 'cs-panes';
-        panesWrap.appendChild(renderPane('car')); // mặc định hiện tab ô tô trước
+        panesWrap.appendChild(renderPane('car'));
 
         root.appendChild(tabbar);
         root.appendChild(panesWrap);
@@ -580,28 +605,23 @@
     }
 
     // ============================================================
-    // BIND TABS — xử lý click chuyển tab
+    // BIND TABS
     // ============================================================
     function bindTabs(panesWrap) {
         document.querySelectorAll('.cs-tabbar-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const key = btn.dataset.tab;
-
-                // Bỏ active tất cả, gán lại cho btn được click
                 document.querySelectorAll('.cs-tabbar-btn').forEach(function (b) { b.classList.remove('active'); });
                 btn.classList.add('active');
-
-                // Render lại nội dung tab mới
                 panesWrap.innerHTML = '';
                 panesWrap.appendChild(renderPane(key));
-                initAnim(); // khởi động lại animation cho card mới
+                initAnim();
             });
         });
     }
 
     // ============================================================
-    // ANIMATION — card fade in khi scroll tới (không dùng CSS đơn thuần
-    // vì cần delay theo thứ tự từng card)
+    // ANIMATION
     // ============================================================
     function initAnim() {
         const cards = document.querySelectorAll('.cs-card');
@@ -611,34 +631,32 @@
             const obs = new IntersectionObserver(function (entries) {
                 entries.forEach(function (e, i) {
                     if (e.isIntersecting) {
-                        // Delay mỗi card 80ms để tạo hiệu ứng lần lượt
                         setTimeout(function () { e.target.classList.add('visible'); }, i * 80);
-                        obs.unobserve(e.target); // quan sát 1 lần là đủ
+                        obs.unobserve(e.target);
                     }
                 });
-            }, { threshold: 0.1 }); // kích hoạt khi 10% card vào viewport
+            }, { threshold: 0.1 });
 
             cards.forEach(function (c) { obs.observe(c); });
         } else {
-            // Trình duyệt cũ không hỗ trợ IntersectionObserver → hiện hết luôn
             cards.forEach(function (c) { c.classList.add('visible'); });
         }
     }
 
     // ============================================================
-    // INIT — điểm khởi động, gọi theo đúng thứ tự
+    // INIT
     // ============================================================
     function init() {
         injectStyles();   // 1. inject CSS
-        createLightbox(); // 2. tạo lightbox DOM (gắn vào body)
+        createLightbox(); // 2. tạo lightbox DOM
         render();         // 3. render section vào #cs-root
+        injectNavLink();  // 4. ← MỚI: gắn scroll vào nav "Trạm sạc"
     }
 
-    // Chờ DOM sẵn sàng rồi mới chạy
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
-        init(); // DOM đã sẵn sàng (script đặt cuối body)
+        init();
     }
 
 })();

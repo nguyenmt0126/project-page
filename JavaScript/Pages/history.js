@@ -1,21 +1,12 @@
 /**
  * L-Corparation — History Section Plugin
- * ----------------------------------------
- * CÁCH DÙNG: Chỉ cần thêm vào index.html, KHÔNG sửa file nào khác.
- *
- * 1. Thêm thẻ này vào HTML (sau #featured-scooters):
- *    <section id="history-section-root"></section>
- *
- * 2. Thêm script trước </body> (sau main.js):
- *    <script src="../JavaScript/Pages/history.js"></script>
+ * Layout: VinFast-style grid — ảnh to trên, text dưới, thanh năm ở cuối
+ * + Inject nav link "Lịch sử" vào navbar (giữ nguyên)
  */
 
 (function () {
     'use strict';
 
-    // ============================================================
-    // 1. DỮ LIỆU — chỉnh sửa ở đây nếu muốn thêm/sửa mốc lịch sử
-    // ============================================================
     const historyData = [
         {
             year: 2017,
@@ -67,334 +58,344 @@
         }
     ];
 
-    // ============================================================
-    // 2. CSS — inject vào <head>, không cần file .css riêng
-    // ============================================================
+    // ── LABEL đa ngôn ngữ ────────────────────────────────────────
+    const NAV_LABEL = { vi: 'Lịch sử', en: 'History' };
+    const HEADING   = { vi: 'Lịch sử thương hiệu', en: 'Brand History' };
+    const g = () => typeof window.currentLang !== 'undefined' ? window.currentLang : 'vi';
+    const navLabel  = () => NAV_LABEL[g()] || NAV_LABEL.vi;
+    const heading   = () => HEADING[g()] || HEADING.vi;
+
+    // ── INJECT NAV LINK (giữ nguyên) ────────────────────────────
+    function injectNavLink() {
+        const existing = document.getElementById('history-nav-link');
+        if (existing) { existing.textContent = navLabel(); return; }
+
+        const navList = document.querySelector('.navbar-nav');
+        if (!navList) return;
+
+        const li = document.createElement('li');
+        li.className = 'nav-item';
+        li.innerHTML = `<a class="nav-link" href="#history-section-root" id="history-nav-link">${navLabel()}</a>`;
+
+        const newsTrigger = navList.querySelector('#nw7-nav-link')?.parentElement
+            || [...navList.querySelectorAll('.nav-item')].find(i => i.querySelector('[data-i18n="nav_news"]'));
+        const aboutTrigger = [...navList.querySelectorAll('.nav-item')].find(i => i.querySelector('[data-i18n="nav_about"]'));
+
+        if (newsTrigger) navList.insertBefore(li, newsTrigger);
+        else if (aboutTrigger) navList.insertBefore(li, aboutTrigger);
+        else navList.appendChild(li);
+
+        li.querySelector('a').addEventListener('click', e => {
+            e.preventDefault();
+            scrollToHistory();
+        });
+    }
+
+    function scrollToHistory() {
+        const section = document.getElementById('history-section-root');
+        if (!section) return;
+        const navbar = document.getElementById('mainNavbar');
+        const offset = navbar ? navbar.offsetHeight + 8 : 70;
+        const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    // ── CSS ──────────────────────────────────────────────────────
     function injectStyles() {
         if (document.getElementById('history-plugin-styles')) return;
-
         const style = document.createElement('style');
         style.id = 'history-plugin-styles';
         style.textContent = `
-            /* ===== History Section ===== */
-            #history-section-root {
-                background: #0a0a0a14;
-                padding: 100px 0 80px;
-                overflow: hidden;
-                position: relative;
-            }
+/* ── SECTION ── */
+#history-section-root {
+    background: #fff;
+    padding: 72px 0 0;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
 
-            #history-section-root::before {
-                content: '';
-                position: absolute;
-                top: 0; left: 0; right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, #4CAF50, transparent);
-            }
+.hs-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
 
-            .history-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 24px;
-            }
+/* ── HEADING ── */
+.hs-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
 
-            /* --- Tiêu đề section --- */
-            .history-header {
-                text-align: center;
-                margin-bottom: 72px;
-            }
+.hs-heading h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 300;
+    color: #111;
+    letter-spacing: -0.01em;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
 
-            .history-header h2 {
-                font-size: clamp(2rem, 5vw, 3.2rem);
-                font-weight: 700;
-                color: #ffffff;
-                letter-spacing: -0.02em;
-                margin-bottom: 16px;
-                line-height: 1.1;
-            }
+.hs-heading h2::after { display: none; }
 
-            .history-header h2 span {
-                color: #4a8f4d;
-            }
+/* ── CARDS GRID ── */
+.hs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    overflow: hidden;
+}
 
-            .history-header p {
-                font-size: 1.1rem;
-                color: #9e9e9e;
-                max-width: 535px;
-                margin: 0 auto;
-                line-height: 1.6;
-            }
+/* ── SINGLE CARD ── */
+.hs-card {
+    padding: 0 20px 32px;
+    border-right: 1px solid #e8e8e8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    cursor: default;
+}
 
-            /* --- Timeline wrapper --- */
-            .history-timeline {
-                position: relative;
-                padding: 0 0 40px;
-            }
+.hs-card:last-child { border-right: none; }
 
-            /* Đường thẳng dọc giữa */
-            .history-timeline::before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                top: 0;
-                bottom: 0;
-                width: 2px;
-                background: linear-gradient(to bottom, transparent, #2E7D32 8%, #2E7D32 92%, transparent);
-                transform: translateX(-50%);
-            }
+.hs-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            /* --- Mỗi mốc lịch sử --- */
-            .history-item {
-                display: grid;
-                grid-template-columns: 1fr 60px 1fr;
-                gap: 0;
-                margin-bottom: 80px;
-                align-items: center;
-                opacity: 0;
-                transform: translateY(30px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-            }
+/* ── CARD IMAGE ── */
+.hs-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #f2f2f2;
+    margin-bottom: 20px;
+}
 
-            .history-item.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
+.hs-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
 
-            /* Item lẻ: nội dung bên trái, ảnh bên phải */
-            .history-item:nth-child(odd) .history-content { order: 1; text-align: right; padding-right: 48px; background: #f5deb333 }
-            .history-item:nth-child(odd) .history-dot    { order: 2; }
-            .history-item:nth-child(odd) .history-image  { order: 3; }
+.hs-card:hover .hs-card-img img { transform: scale(1.04); }
 
-            /* Item chẵn: ảnh bên trái, nội dung bên phải */
-            .history-item:nth-child(even) .history-image  { order: 1; }
-            .history-item:nth-child(even) .history-dot    { order: 2; }
-            .history-item:nth-child(even) .history-content { order: 3; text-align: left; padding-left: 48px; background: #f5deb333 }
+.hs-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    font-size: 0.78rem;
+}
 
-            /* --- Dot giữa timeline --- */
-            .history-dot {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-                position: relative;
-                z-index: 1;
-            }
+/* ── CARD DATE & TEXT ── */
+.hs-card-date {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #111;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
 
-            .history-dot-circle {
-                width: 16px;
-                height: 16px;
-                background: #4CAF50;
-                border-radius: 50%;
-                border: 3px solid #0a0a0a87;
-                box-shadow: 0 0 0 3px #217e26, 0 0 16px rgb(76 175 80 / 68%);
-                flex-shrink: 0;
-            }
+.hs-card-desc {
+    font-size: 0.83rem;
+    color: #555;
+    line-height: 1.65;
+    margin: 0;
+}
 
-            .history-year-badge {
-                background: #1B5E20;
-                color: #4CAF50;
-                font-size: 0.75rem;
-                font-weight: 700;
-                padding: 3px 10px;
-                border-radius: 20px;
-                letter-spacing: 0.05em;
-                white-space: nowrap;
-            }
+/* ── YEAR TIMELINE BAR ── */
+.hs-timeline-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    padding: 0 20px;
+    border-top: 1px solid #e0e0e0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
 
-            /* --- Nội dung text --- */
-            .history-content {
-                padding: 28px 32px;
-                background: #111;
-                border: 1px solid #1e1e1e;
-                border-radius: 12px;
-                transition: border-color 0.3s ease, transform 0.3s ease;
-            }
+.hs-timeline-bar::-webkit-scrollbar { display: none; }
 
-            .history-content:hover {
-                border-color: #2E7D32;
-                transform: translateY(-4px);
-            }
+.hs-year-item {
+    flex: 1;
+    min-width: 60px;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #aaa;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
 
-            .history-content-title {
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: #ffffff;
-                margin-bottom: 10px;
-                line-height: 1.3;
-            }
+.hs-year-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background 0.2s;
+}
 
-            .history-content-desc {
-                font-size: 0.95rem;
-                color: #9e9e9e;
-                line-height: 1.7;
-                margin: 0;
-            }
+.hs-year-item.active {
+    color: #111;
+}
 
-            /* --- Ảnh minh hoạ --- */
-            .history-image {
-                border-radius: 12px;
-                overflow: hidden;
-                background: #111;
-                border: 1px solid #1e1e1e;
-                aspect-ratio: 16/9;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
+.hs-year-item.active::before {
+    background: #1a56db;
+}
 
-            .history-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-                background: white;
-                transition: transform 0.5s ease;
-            }
+.hs-year-item:hover { color: #333; }
 
-            .history-image:hover img {
-                transform: scale(1.04);
-            }
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .hs-grid { grid-template-columns: repeat(3, 1fr); }
+    .hs-card:nth-child(3) { border-right: none; }
+    .hs-card:nth-child(4) { border-right: 1px solid #e8e8e8; }
+    .hs-card:nth-child(6) { border-right: none; }
+}
 
-            .history-img-placeholder {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                color: #444;
-                font-size: 0.85rem;
-                padding: 32px;
-                text-align: center;
-            }
+@media (max-width: 700px) {
+    #history-section-root { padding: 48px 0 0; }
+    .hs-wrap { padding: 0 16px; }
+    .hs-grid { grid-template-columns: repeat(2, 1fr); }
+    .hs-card { border-right: 1px solid #e8e8e8; padding: 0 12px 24px; }
+    .hs-card:nth-child(even) { border-right: none; }
+    .hs-card:nth-child(odd)  { border-right: 1px solid #e8e8e8; }
+}
 
-            .history-img-placeholder svg {
-                width: 40px;
-                height: 40px;
-                opacity: 0.4;
-            }
-
-            /* --- Responsive Mobile --- */
-            @media (max-width: 768px) {
-                #history-section-root { padding: 64px 0 48px; }
-
-                .history-timeline::before {
-                    left: 20px;
-                }
-
-                .history-item {
-                    grid-template-columns: 40px 1fr;
-                    grid-template-rows: auto auto;
-                    margin-bottom: 48px;
-                    gap: 0 16px;
-                }
-
-                .history-item:nth-child(odd) .history-content,
-                .history-item:nth-child(even) .history-content {
-                    order: 2; text-align: left;
-                    padding: 20px; grid-column: 2;
-                    grid-row: 1;
-                }
-
-                .history-item:nth-child(odd) .history-dot,
-                .history-item:nth-child(even) .history-dot {
-                    order: 1; grid-column: 1; grid-row: 1;
-                    align-items: flex-start; padding-top: 24px;
-                }
-
-                .history-item:nth-child(odd) .history-image,
-                .history-item:nth-child(even) .history-image {
-                    order: 3; grid-column: 2; grid-row: 2;
-                    margin-top: 12px;
-                }
-            }
+@media (max-width: 420px) {
+    .hs-grid { grid-template-columns: 1fr; }
+    .hs-card { border-right: none; border-bottom: 1px solid #e8e8e8; padding: 0 0 20px; margin-bottom: 20px; }
+    .hs-card:last-child { border-bottom: none; }
+}
         `;
         document.head.appendChild(style);
     }
 
-    // ============================================================
-    // 3. RENDER
-    // ============================================================
+    // ── STATE ────────────────────────────────────────────────────
+    let activeYear = null;
+    // Sort newest first (like VinFast — 2023, 2022, 2021, ...)
+    const sorted = [...historyData].sort((a, b) => b.year - a.year);
+
+    // Visible 4 at a time, default = 4 newest
+    let visibleStart = 0;
+    const PAGE = 4;
+
+    function currentItems() {
+        return sorted.slice(visibleStart, visibleStart + PAGE);
+    }
+
+    // ── FORMAT DATE ──────────────────────────────────────────────
+    function fmtDate(year) {
+        // Show as "YYYY" — matching the reference image style
+        return year.toString();
+    }
+
+    // ── RENDER ───────────────────────────────────────────────────
     function renderHistory() {
         const root = document.getElementById('history-section-root');
         if (!root) return;
 
-        const itemsHTML = historyData.map((item) => {
-            const imageHTML = `
-                <div class="history-image">
-                    <img
-                        src="${item.img}"
-                        alt="${item.title} ${item.year}"
-                        loading="lazy"
-                        onerror="this.parentElement.innerHTML='<div class=\\'history-img-placeholder\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'><rect x=\\'3\\' y=\\'3\\' width=\\'18\\' height=\\'18\\' rx=\\'2\\'/><circle cx=\\'8.5\\' cy=\\'8.5\\' r=\\'1.5\\'/><polyline points=\\'21 15 16 10 5 21\\'/></svg><span>Hình ảnh sắp có</span></div>'"
-                    >
-                </div>
-            `;
+        const items = currentItems();
+        const allYears = sorted.map(d => d.year);
+        const activeYr = activeYear || items[0]?.year;
 
-            const contentHTML = `
-                <div class="history-content">
-                    <div class="history-content-title">${item.title}</div>
-                    <p class="history-content-desc">${item.desc}</p>
-                </div>
-            `;
+        const cardsHTML = items.map((item, i) => `
+        <div class="hs-card" style="transition-delay:${i * 0.07}s">
+            <div class="hs-card-img">
+                <img src="${item.img}" alt="${item.title}" loading="lazy"
+                    onerror="this.parentElement.innerHTML='<div class=\\'hs-card-img-placeholder\\'>—</div>'">
+            </div>
+            <div class="hs-card-date">${item.year}.&thinsp;${item.title}</div>
+            <p class="hs-card-desc">${item.desc}</p>
+        </div>`).join('');
 
-            const dotHTML = `
-                <div class="history-dot">
-                    <div class="history-dot-circle"></div>
-                    <span class="history-year-badge">${item.year}</span>
-                </div>
-            `;
-
-            return `<div class="history-item">${imageHTML}${dotHTML}${contentHTML}</div>`;
-        }).join('');
+        const yearsHTML = allYears.map(y => `
+        <div class="hs-year-item${y === activeYr ? ' active' : ''}" data-year="${y}">${y}</div>`).join('');
 
         root.innerHTML = `
-            <div class="history-container">
-                <div class="history-header">
-                    <h2><span>Hành Trình</span> Hình Thành</h2>
-                    <p>Từ một ý tưởng táo bạo đến thương hiệu xe điện dẫn đầu Việt Nam</p>
-                </div>
-                <div class="history-timeline">
-                    ${itemsHTML}
-                </div>
+        <div class="hs-wrap">
+            <div class="hs-heading">
+                <h2>${heading()}</h2>
             </div>
-        `;
+            <div class="hs-grid" id="hs-grid">${cardsHTML}</div>
+            <div class="hs-timeline-bar" id="hs-bar">${yearsHTML}</div>
+        </div>`;
 
-        initScrollAnimation();
+        // Year click → jump to that year's page
+        root.querySelectorAll('.hs-year-item').forEach(el => {
+            el.addEventListener('click', () => {
+                const yr = parseInt(el.dataset.year);
+                const idx = sorted.findIndex(d => d.year === yr);
+                if (idx === -1) return;
+                // Show page containing that index
+                visibleStart = Math.floor(idx / PAGE) * PAGE;
+                activeYear = yr;
+                renderHistory();
+            });
+        });
+
+        // Animate cards
+        requestAnimationFrame(() => {
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+                    });
+                }, { threshold: 0.08 });
+                root.querySelectorAll('.hs-card').forEach(c => obs.observe(c));
+            } else {
+                root.querySelectorAll('.hs-card').forEach(c => c.classList.add('visible'));
+            }
+        });
     }
 
-    // ============================================================
-    // 4. ANIMATION — hiện item khi scroll tới
-    // ============================================================
-    function initScrollAnimation() {
-        const items = document.querySelectorAll('.history-item');
-        if (!items.length) return;
-
-        if ('IntersectionObserver' in window) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => entry.target.classList.add('visible'), 100);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.15 });
-            items.forEach(item => observer.observe(item));
-        } else {
-            items.forEach(item => item.classList.add('visible'));
-        }
+    // ── PATCH setLanguage (giữ nguyên) ──────────────────────────
+    function patchLang() {
+        if (typeof window.setLanguage === 'function') { applyPatch(); return; }
+        let _s;
+        Object.defineProperty(window, 'setLanguage', {
+            configurable: true, enumerable: true,
+            get() { return _s; },
+            set(fn) { _s = fn; applyPatch(); }
+        });
     }
 
-    // ============================================================
-    // 5. KHỞI ĐỘNG
-    // ============================================================
+    function applyPatch() {
+        if (window.__historyPatched) return;
+        window.__historyPatched = true;
+        const _orig = window.setLanguage;
+        Object.defineProperty(window, 'setLanguage', {
+            configurable: true, writable: true,
+            value(lang) {
+                _orig(lang);
+                renderHistory();
+                injectNavLink();
+            }
+        });
+    }
+
+    // ── INIT ─────────────────────────────────────────────────────
     function init() {
         injectStyles();
         renderHistory();
+        if (document.querySelector('.navbar-nav')) {
+            injectNavLink();
+        } else {
+            setTimeout(injectNavLink, 500);
+        }
+        patchLang();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
-
+    document.readyState === 'loading'
+        ? document.addEventListener('DOMContentLoaded', init)
+        : init();
 })();
