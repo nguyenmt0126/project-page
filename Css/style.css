@@ -61,7 +61,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
-    max-width: 74%;
+    max-width: 99%;
 }
 
 .navbar.scrolled {
@@ -98,7 +98,7 @@ body {
 .navbar-nav .nav-link {
     color: var(--text-dark) !important;
     font-weight: 500;
-    font-size: 0.88rem;
+    font-size: 13px;
     letter-spacing: 0.3px;
     padding: 0.5rem 0.9rem !important;
     position: relative;
